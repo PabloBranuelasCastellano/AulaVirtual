@@ -15,7 +15,7 @@
 			<li class="breadcrumb-item active text-white" id="Barra" aria-current="page">
 			    <img id='Imagen' src='<c:url value="/estaticos/img/profesores.png" />'/>
 			    <div id='Texto'>
-			    <p>${UsuarioConectado.usuarioprofesor}</p>
+			    <p>${UsuarioConectado.profesores.UsuarioProfesor}</p>
 
 					<a href="${pageContext.request.contextPath}/pages/logout" class="text-danger" >Cerrar Sesión</a>
 				</div>
