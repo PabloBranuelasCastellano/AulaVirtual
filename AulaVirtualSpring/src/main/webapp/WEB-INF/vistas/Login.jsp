@@ -15,7 +15,7 @@
 	<body>
 		<p><h1 id="Cabecera"><u>INICIO DE SESIÓN</u></h1></p>
 
-		<form action="${pageContext.request.contextPath}/pages/login" method="post">
+		<form action="${pageContext.request.contextPath}/Comprobar">
 		  <div class="form-group">
 			<p id="Encabezado">Correo del Usuario</p>
 			<input type="text" id="email" name="Email_Acceso" class="form-control Entrada_Datos">
