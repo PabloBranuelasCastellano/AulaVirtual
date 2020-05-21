@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -34,11 +35,16 @@ public class LogginController {
         PreparedStatement preparedStatement=connection.prepareStatement(Profesor);
         preparedStatement.setString(1,Email_Usuario);
         preparedStatement.setString(2,Clave_Usuario);
+
         ResultSet resultSet;
         resultSet=preparedStatement.executeQuery();
         if(resultSet.next()){
             System.out.println("Usuario Encontrado");
+            HttpSession session=request.getSession();
+            session.setAttribute("UsuarioConectado",Email_Usuario);
+            return "ProfesoresPanel;";
         }
+
 
         return "Login";
     }
