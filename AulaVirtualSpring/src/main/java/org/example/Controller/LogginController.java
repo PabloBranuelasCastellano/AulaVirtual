@@ -1,8 +1,10 @@
 package org.example.Controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.sql.DataSource;
@@ -13,15 +15,18 @@ import java.sql.SQLException;
 
 @Controller
 public class LogginController {
+    @Autowired
+    DataSource dataSource;
+    Connection connection;
     @GetMapping("/")
     public String InicioSesion(HttpServletRequest request, Model model){
         return "Login";
     }
 
-    @GetMapping("/Comprobar")
+    @PostMapping("/Comprobar")
     public String ComprobarUsuario(HttpServletRequest request,Model model)throws SQLException {
-        DataSource dataSource=null;
-        Connection connection=null;
+
+
         String Email_Usuario=request.getParameter("Email_Acceso");
         String Clave_Usuario=request.getParameter("Clave_Acceso");
         connection=dataSource.getConnection();
