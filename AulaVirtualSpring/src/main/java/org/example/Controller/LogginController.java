@@ -51,7 +51,7 @@ public class LogginController {
             profesores.setIdProfesor(resultSet.getInt("ProfesorId"));
             HttpSession session = request.getSession();
             session.setAttribute("UsuarioConectado", profesores);
-            model.addAttribute("UsuarioConectado",profesores);
+
             return "redirect:/homeProfesores";
         }
 
@@ -65,6 +65,7 @@ public class LogginController {
         Cookie[] cookies = request.getCookies();
         HttpSession session=request.getSession();
         model.asMap().clear();
+        session.removeAttribute("UsuarioConectado");
         session.invalidate();
         for (Cookie cookie : cookies) {
             cookie.setMaxAge(0);
