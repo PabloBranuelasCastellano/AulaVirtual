@@ -15,9 +15,15 @@
 			<li class="breadcrumb-item active text-white" id="Barra" aria-current="page">
 			    <img id='Imagen' src='<c:url value="/estaticos/img/profesores.png" />'/>
 			    <div id='Texto'>
+                
+              <c:if test = "${UsuarioConectado ==''}">
+                    <script>
+                        window.location.href("/");
+                    </script>
+               </c:if>
 			    <p>${UsuarioConectado.getUsuarioProfesor()}</p>
 
-					<a href="${pageContext.request.contextPath}/pages/logout" class="text-danger" >Cerrar Sesión</a>
+					<a href="${pageContext.request.contextPath}/logout" class="text-danger" >Cerrar Sesión</a>
 				</div>
 			</li>
 		  </ol>
