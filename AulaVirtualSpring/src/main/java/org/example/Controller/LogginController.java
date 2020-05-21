@@ -43,10 +43,10 @@ public class LogginController {
             profesores=new Profesores();
             profesores.setUsuarioProfesor(resultSet.getString("Usuario"));
             profesores.setUsuarioProfesor(resultSet.getString("ProfesorId"));
-            System.out.println("Usuario Encontrado");
+
             HttpSession session=request.getSession();
             session.setAttribute("UsuarioConectado",profesores);
-            return "ProfesoresPanel;";
+            return "panelprofesores";
         }
 
 
