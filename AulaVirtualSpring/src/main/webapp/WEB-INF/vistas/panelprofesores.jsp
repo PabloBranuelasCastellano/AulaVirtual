@@ -15,7 +15,7 @@
 			<li class="breadcrumb-item active text-white" id="Barra" aria-current="page">
 			    <img id='Imagen' src='<c:url value="/estaticos/img/profesores.png" />'/>
 			    <div id='Texto'>
-                
+
               <c:if test = "${UsuarioConectado ==''}">
                     <script>
                         window.location.href("/");
