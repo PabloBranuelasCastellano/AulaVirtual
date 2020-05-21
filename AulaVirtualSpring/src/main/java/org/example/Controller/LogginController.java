@@ -20,6 +20,7 @@ public class LogginController {
     @Autowired
     DataSource dataSource;
     Connection connection;
+    Profesores profesores;
     @GetMapping("/")
     public String InicioSesion(HttpServletRequest request, Model model){
         return "Login";
@@ -28,7 +29,7 @@ public class LogginController {
     @PostMapping("/Comprobar")
     public String ComprobarUsuario(HttpServletRequest request,Model model)throws SQLException {
 
-        Profesores profesores;
+       
         String Email_Usuario=request.getParameter("Email_Acceso");
         String Clave_Usuario=request.getParameter("Clave_Acceso");
         connection=dataSource.getConnection();
@@ -42,14 +43,20 @@ public class LogginController {
         if(resultSet.next()){
             profesores=new Profesores();
             profesores.setUsuarioProfesor(resultSet.getString("Usuario"));
-            profesores.setUsuarioProfesor(resultSet.getString("ProfesorId"));
-
+            profesores.setIdProfesor(resultSet.getInt("ProfesorId"));
             HttpSession session=request.getSession();
             session.setAttribute("UsuarioConectado",profesores);
-            return "panelprofesores";
+
+            return "redirect:/homeProfesores";
         }
 
 
         return "Login";
+    }
+    @GetMapping("/homeProfesores")
+    public String PanelProfesor(HttpServletRequest request,Model model){
+        System.out.println(profesores.getIdProfesor());
+        System.out.println(profesores.getUsuarioProfesor());
+        return "panelprofesores";
     }
 }
