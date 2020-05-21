@@ -1,5 +1,6 @@
 package org.example.Controller;
 
+import org.example.Entities.Profesores;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,7 +28,7 @@ public class LogginController {
     @PostMapping("/Comprobar")
     public String ComprobarUsuario(HttpServletRequest request,Model model)throws SQLException {
 
-
+        Profesores profesores;
         String Email_Usuario=request.getParameter("Email_Acceso");
         String Clave_Usuario=request.getParameter("Clave_Acceso");
         connection=dataSource.getConnection();
@@ -39,9 +40,12 @@ public class LogginController {
         ResultSet resultSet;
         resultSet=preparedStatement.executeQuery();
         if(resultSet.next()){
+            profesores=new Profesores();
+            profesores.setUsuarioProfesor(resultSet.getString("Usuario"));
+            profesores.setUsuarioProfesor(resultSet.getString("ProfesorId"));
             System.out.println("Usuario Encontrado");
             HttpSession session=request.getSession();
-            session.setAttribute("UsuarioConectado",Email_Usuario);
+            session.setAttribute("UsuarioConectado",profesores);
             return "ProfesoresPanel;";
         }
 
