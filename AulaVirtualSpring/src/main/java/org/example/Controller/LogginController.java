@@ -29,7 +29,7 @@ public class LogginController {
     @PostMapping("/Comprobar")
     public String ComprobarUsuario(HttpServletRequest request,Model model)throws SQLException {
 
-       
+
         String Email_Usuario=request.getParameter("Email_Acceso");
         String Clave_Usuario=request.getParameter("Clave_Acceso");
         connection=dataSource.getConnection();
@@ -53,10 +53,5 @@ public class LogginController {
 
         return "Login";
     }
-    @GetMapping("/homeProfesores")
-    public String PanelProfesor(HttpServletRequest request,Model model){
-        System.out.println(profesores.getIdProfesor());
-        System.out.println(profesores.getUsuarioProfesor());
-        return "panelprofesores";
-    }
+
 }
