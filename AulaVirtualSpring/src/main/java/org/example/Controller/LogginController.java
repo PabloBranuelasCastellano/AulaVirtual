@@ -106,7 +106,7 @@ public class LogginController {
             response.addCookie(cookie);
 
         }
-        return "Login";
+        return "redirect:/";
 
     }
 }
