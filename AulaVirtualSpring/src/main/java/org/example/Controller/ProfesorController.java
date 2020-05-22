@@ -1,6 +1,7 @@
 package org.example.Controller;
 
 import org.example.Entities.Grupos;
+import org.example.Entities.GruposAlumno;
 import org.example.Entities.Profesores;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,6 +25,7 @@ public class ProfesorController {
     @Autowired
     LogginController logginController;
     Profesores profesores;
+    GruposAlumno gruposAlumno=new GruposAlumno();
     Grupos grupos=new Grupos();
 
     @Autowired
@@ -70,12 +72,20 @@ public class ProfesorController {
         PreparedStatement preparedStatement=connection.prepareStatement(Alumnos_Grupo);
         preparedStatement.setInt(1,GrupoId);
         ResultSet resultSet=preparedStatement.executeQuery();
+        List<GruposAlumno>gruposAlumnoList=null;
         while(resultSet.next()){
+            gruposAlumnoList=new ArrayList<>();
+            gruposAlumno.setIdAlumno(resultSet.getInt(1));
             System.out.println("Id Alumno: "+resultSet.getInt(1));
+            gruposAlumno.setNombreAlumno(resultSet.getString(2));
             System.out.println("Nombre Alumno: "+resultSet.getString(2));
             System.out.println("1º Apellido Alumno: "+resultSet.getString(3));
+            gruposAlumno.setPrimerApellidoAlumno(resultSet.getString(3));
             System.out.println("2º Apellido Alumno: "+resultSet.getString(4));
+            gruposAlumno.setSegundoApellidoAlumno(resultSet.getString(4));
+            gruposAlumnoList.add(gruposAlumno);
         }
+        model.addAttribute("Lista_Alumnos",gruposAlumnoList);
         return "Alumnos_Grupo";
     }
 
