@@ -23,7 +23,7 @@ public class ProfesorController {
     @Autowired
     LogginController logginController;
     Profesores profesores;
-    Grupos grupos;
+    Grupos grupos=new Grupos();
 
     @Autowired
     DataSource dataSource;
@@ -45,17 +45,18 @@ public class ProfesorController {
         preparedStatement.setInt(1,logginController.profesores.getIdProfesor());
         //System.out.println(logginController.profesores.getIdProfesor());
         ResultSet resultSet=preparedStatement.executeQuery();
-        List<Grupos>gruposMateria;
+        List<Grupos>gruposMateria = null;
         while(resultSet.next()){
             gruposMateria=new ArrayList<>();
 
             grupos.setCursoAcademicoGrupo(resultSet.getString(2));
             grupos.setNombreGrupo(resultSet.getString(3));
             grupos.setNombreMateria(resultSet.getString(4));
-            grupos.setNivelGrpo(resultSet.getString(6));
+            grupos.setNivelGrupo(resultSet.getString(5));
             grupos.setProfesorGrupo(resultSet.getString(6));
             gruposMateria.add(grupos);
         }
+        model.addAttribute("Grupos_Materia",gruposMateria);
 
         return "panelprofesores";
     }
