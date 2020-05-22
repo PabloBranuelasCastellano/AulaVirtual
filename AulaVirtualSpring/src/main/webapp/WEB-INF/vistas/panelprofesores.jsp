@@ -40,7 +40,7 @@
                                         <p>
                                             Año:${g.getCursoAcademicoGrupo()} <a href="#"><img src='<c:url value="/estaticos/img/flecha.png" />' id='flecha' title='Ver Lista de Alumnos del Grupo'/></a>
                                         </p>
-                                       <p>${g.getNombreGrupo()} ${getNombreMateria()} ${g.getNivelGrupo()}</p>
+                                       <p>${g.getNombreGrupo()} ${g.getNombreMateria()} ${g.getNivelGrupo()}</p>
                                         </c:forEach>
                                 </div>
 							</p>
