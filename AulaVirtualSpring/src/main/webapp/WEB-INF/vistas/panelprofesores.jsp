@@ -13,11 +13,11 @@
 		<nav aria-label="breadcrumb">
 		  <ol class="breadcrumb bg-info">
 			<li class="breadcrumb-item active text-white" id="Barra" aria-current="page">
-			    <img id='Imagen' src='<c:url value="/estaticos/img/profesores.png" />'/>
+			    <img id='ImagenProfesores' src='<c:url value="/estaticos/img/profesores.png" />'/>
 			    <div id='Texto'>
 
 
-			    <label id="UsuarioConectado">${UsuarioConectado.getUsuarioProfesor()}</label>
+			    <label id="UsuarioProfesor">${UsuarioConectado.getUsuarioProfesor()}</label>
 
 					<a href="${pageContext.request.contextPath}/logout" class="text-danger" >Cerrar Sesión</a>
 				</div>
