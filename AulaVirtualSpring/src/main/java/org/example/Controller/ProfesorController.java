@@ -95,8 +95,15 @@ public class ProfesorController {
         List<Grupos>GruposDesactivados=null;
         while(resultSet.next()){
             GruposDesactivados=new ArrayList<>();
+            grupos.setCursoAcademicoGrupo(resultSet.getString(1));
+            grupos.setNombreGrupo(resultSet.getString(2));
             grupos.setNombreMateria(resultSet.getString(3));
+            grupos.setNivelGrupo(resultSet.getString(4));
+            grupos.setProfesorGrupo(resultSet.getString(5));
+            GruposDesactivados.add(grupos);
+
         }
+        model.addAttribute("GruposDesactivados",GruposDesactivados);
         return "Grupos_no_activos";
     }
 
