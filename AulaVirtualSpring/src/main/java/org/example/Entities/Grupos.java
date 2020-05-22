@@ -6,7 +6,7 @@ public class Grupos {
     private  String NivelGrpo;
     private  int ProfesorGrupo;
     private String NombreGrupo;
-    private int CursoAcademicoGrupo;
+    private String CursoAcademicoGrupo;
 
     public int getIdGrupo() {
         return idGrupo;
@@ -48,11 +48,11 @@ public class Grupos {
         NombreGrupo = nombreGrupo;
     }
 
-    public int getCursoAcademicoGrupo() {
+    public String getCursoAcademicoGrupo() {
         return CursoAcademicoGrupo;
     }
 
-    public void setCursoAcademicoGrupo(int cursoAcademicoGrupo) {
+    public void setCursoAcademicoGrupo(String cursoAcademicoGrupo) {
         CursoAcademicoGrupo = cursoAcademicoGrupo;
     }
 }
