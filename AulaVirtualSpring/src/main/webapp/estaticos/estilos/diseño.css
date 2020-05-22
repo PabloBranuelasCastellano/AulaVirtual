@@ -54,6 +54,16 @@
     margin-left:-3rem;
     margin-top:2rem;
 }
+#UsuarioProfesor{
+    margin-left:-3rem;
+}
+
+#ImagenAlumnos{
+	margin-top:0.5rem;
+	margin-left:-15rem;
+	width:8rem;
+	height:4rem;
+}
 #Texto{
 	margin-top:-6rem;
 }
