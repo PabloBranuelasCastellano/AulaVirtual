@@ -36,11 +36,11 @@
 						<div class="card-body bg-secondary">
 							<p class="card-text ">
                                 <div>
-                                     <c:forEach var = "g" items="${grupos}">
+                                     <c:forEach var = "g" items="${Grupos_Materia}">
                                         <p>
-                                            Año:${g.cursoAcademico} <a href="#"><img src='<c:url value="/estaticos/img/flecha.png" />' id='flecha' title='Ver Lista de Alumnos del Grupo'/></a>
+                                            Año:${g.getCursoAcademicoGrupo()} <a href="#"><img src='<c:url value="/estaticos/img/flecha.png" />' id='flecha' title='Ver Lista de Alumnos del Grupo'/></a>
                                         </p>
-                                        <p>${g.nombreGrupo} ${g.materia} ${g.nivel}</p>
+                                       <p>${g.getNombreGrupo()} ${getNombreMateria()} ${g.getNivelGrupo()}</p>
                                         </c:forEach>
                                 </div>
 							</p>
