@@ -73,6 +73,8 @@ public class LogginController {
                 alumnos=new Alumnos();
                 alumnos.setUsuarioAlumno(resultSet.getString("Usuario"));
                 alumnos.setIdAlumno(resultSet.getInt("AlumnoId"));
+                HttpSession session = request.getSession();
+                session.setAttribute("UsuarioConectado", alumnos);
                 return "redirect:/homeAlumnos";
 
             }
