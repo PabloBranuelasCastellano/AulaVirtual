@@ -90,9 +90,9 @@ public class LogginController {
 
 
 
-    @GetMapping("/logout/{idProfesor}")
-    public String Cerrar_Sesion(HttpServletRequest request, HttpServletResponse response, Model model, @PathVariable int idProfesor ) {
-        System.out.println("El Id es "+idProfesor);
+    @GetMapping("/logout")
+    public String Cerrar_Sesion(HttpServletRequest request, HttpServletResponse response, Model model) {
+        
         Cookie[] cookies = request.getCookies();
         HttpSession session=request.getSession();
         model.asMap().clear();
