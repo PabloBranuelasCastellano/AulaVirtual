@@ -51,7 +51,7 @@
 #flecha{
 	width:2rem;
 	height:2rem;
-	margin-top:-2rem;
+	margin-top:-1.9rem;
 	margin-left:10rem;
 }
 #lapiz{
@@ -72,6 +72,11 @@
 	height:1.2rem;
 	margin-left:12rem;
 	margin-top:-2.5rem;
+}
+
+#Grupos{
+    padding-top:1rem;
+
 }
 a:link, a:visited, a:active {
     text-decoration:none;
