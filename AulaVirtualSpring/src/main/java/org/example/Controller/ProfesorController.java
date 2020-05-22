@@ -48,7 +48,7 @@ public class ProfesorController {
         List<Grupos>gruposMateria = null;
         while(resultSet.next()){
             gruposMateria=new ArrayList<>();
-
+            grupos.setIdGrupo(resultSet.getInt(1));
             grupos.setCursoAcademicoGrupo(resultSet.getString(2));
             grupos.setNombreGrupo(resultSet.getString(3));
             grupos.setNombreMateria(resultSet.getString(4));
