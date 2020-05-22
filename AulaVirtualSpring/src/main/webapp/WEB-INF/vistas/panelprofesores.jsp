@@ -37,10 +37,11 @@
 							<p class="card-text ">
                                 <div>
                                      <c:forEach var = "g" items="${Grupos_Materia}">
-                                        <p>
-                                            Año:${g.getCursoAcademicoGrupo()} <a href="#"><img src='<c:url value="/estaticos/img/flecha.png" />' id='flecha' title='Ver Lista de Alumnos del Grupo'/></a>
-                                        </p>
-                                       <p>${g.getNombreGrupo()} ${g.getNombreMateria()} ${g.getNivelGrupo()}</p>
+                                        <label>
+                                            Año:${g.getCursoAcademicoGrupo()}
+                                        </label>
+                                        <label>${g.getNombreGrupo()} ${g.getNivelGrupo()} <a href="#"><img src='<c:url value="/estaticos/img/flecha.png" />' id='flecha' title='Ver Lista de Alumnos del Grupo'/></a></label>
+                                       <label> ${g.getNombreMateria()} </label>
                                         </c:forEach>
                                 </div>
 							</p>
