@@ -15,6 +15,16 @@
         <c:choose>
 
             <c:when test="${Lista_Alumnos.size() gt 0}">
+                <table class='table table-bordered'>
+                    <thead>
+                        <tr class='bg-primary'>
+                            <th scope='col'>Id Alumno</th>
+                            <th scope='col'>Nombre Alumno</th>
+                            <th scope='col'>Primer Apellido</th>
+                            <th scope='col'>Segundo Apellido</th>
+                         </tr>
+                    </thead>
+                </table>
                 <c:forEach var = "galumns" items="${Lista_Alumnos}">
                     <p>${galumns.getNombreAlumno()}&nbsp;&nbsp;${galumns.getPrimerApellidoAlumno()} &nbsp;&nbsp;${galumns.getSegundoApellidoAlumno()}</p>
                  </c:forEach>
