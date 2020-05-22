@@ -55,14 +55,15 @@
     margin-top:2rem;
 }
 #UsuarioProfesor{
-    margin-left:-3rem;
+    margin-left:-8rem;
+    margin-top:-0.5rem;
 }
 
 #ImagenProfesores{
-	margin-top:0.5rem;
-	margin-left:-15rem;
+	margin-top:-1.5rem;
+	margin-left:-20rem;
 	width:8rem;
-	height:4rem;
+	height:8rem;
 }
 #Texto{
 	margin-top:-6rem;
