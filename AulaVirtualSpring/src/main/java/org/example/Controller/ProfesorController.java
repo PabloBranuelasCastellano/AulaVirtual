@@ -76,12 +76,8 @@ public class ProfesorController {
         while(resultSet.next()){
             gruposAlumnoList=new ArrayList<>();
             gruposAlumno.setIdAlumno(resultSet.getInt(1));
-            System.out.println("Id Alumno: "+resultSet.getInt(1));
             gruposAlumno.setNombreAlumno(resultSet.getString(2));
-            System.out.println("Nombre Alumno: "+resultSet.getString(2));
-            System.out.println("1º Apellido Alumno: "+resultSet.getString(3));
             gruposAlumno.setPrimerApellidoAlumno(resultSet.getString(3));
-            System.out.println("2º Apellido Alumno: "+resultSet.getString(4));
             gruposAlumno.setSegundoApellidoAlumno(resultSet.getString(4));
             gruposAlumnoList.add(gruposAlumno);
         }
