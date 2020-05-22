@@ -19,7 +19,7 @@
 
 			    <p>${UsuarioConectado.getUsuarioProfesor()}</p>
 
-					<a href="${pageContext.request.contextPath}/logout}" class="text-danger" >Cerrar Sesión</a>
+					<a href="${pageContext.request.contextPath}/logout" class="text-danger" >Cerrar Sesión</a>
 				</div>
 			</li>
 		  </ol>
