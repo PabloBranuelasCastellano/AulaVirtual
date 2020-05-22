@@ -61,6 +61,11 @@ public class ProfesorController {
         return "panelprofesores";
     }
 
+    @GetMapping("/VerAlumnos/{GrupoId}")
+    public String AlumnosGrupos(HttpServletRequest request,Model model,@PathVariable int GrupoId){
+        System.out.println("El id del grupo es "+GrupoId);
+        return  null;
+    }
 
 
 
