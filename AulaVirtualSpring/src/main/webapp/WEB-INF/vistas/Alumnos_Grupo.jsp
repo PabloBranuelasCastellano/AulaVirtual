@@ -31,7 +31,7 @@
                                 <td>${galumns.getIdAlumno()}</td>
                                 <td>${galumns.getNombreAlumno()}</td>
                                 <td>${galumns.getPrimerApellidoAlumno()}</td>
-                                <td>${galumns.getSegundoApellidoAlumno(}</td>
+                                <td>${galumns.getSegundoApellidoAlumno()}</td>
                             </tr>
                             </c:forEach>
                      </tbody>
