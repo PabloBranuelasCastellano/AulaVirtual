@@ -24,10 +24,18 @@
                             <th scope='col'>Segundo Apellido</th>
                          </tr>
                     </thead>
+                    <tbody class='bg-info'>
+
+                         <c:forEach var = "galumns" items="${Lista_Alumnos}">
+                            <tr>
+                                <td>${galumns.getIdAlumno()}</td>
+                                <td>${galumns.getNombreAlumno()}</td>
+                                <td>${galumns.getPrimerApellidoAlumno()}</td>
+                                <td>${galumns.getSegundoApellidoAlumno(}</td>
+                            </tr>
+                            </c:forEach>
+                     </tbody>
                 </table>
-                <c:forEach var = "galumns" items="${Lista_Alumnos}">
-                    <p>${galumns.getNombreAlumno()}&nbsp;&nbsp;${galumns.getPrimerApellidoAlumno()} &nbsp;&nbsp;${galumns.getSegundoApellidoAlumno()}</p>
-                 </c:forEach>
             </c:when>
             <c:otherwise>
                 <p>No hay alumnos</p>
