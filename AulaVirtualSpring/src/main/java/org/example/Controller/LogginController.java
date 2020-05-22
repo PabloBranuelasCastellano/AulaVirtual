@@ -71,11 +71,14 @@ public class LogginController {
             if(resultSet.next()){
                 alumnos=new Alumnos();
                 alumnos.setUsuarioAlumno(resultSet.getString("Usuario"));
+                alumnos.setIdAlumno(resultSet.getInt("AlumnoId"));
+                return "redirect:/homeAlumnos";
+
             }
 
         }
 
-    return "Login";
+        return "Login";
         }
 
 
