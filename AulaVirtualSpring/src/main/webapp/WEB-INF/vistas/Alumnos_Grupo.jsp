@@ -6,11 +6,22 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <html><meta charset='utf-8'>
+    <head>
+    	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    		<link rel="stylesheet" type="text/css" href="<c:url value="/estaticos/estilos/diseño.css"/>">
+    </head>
     <body>
-        <c:if test="${Lista_Alumnos.size() gt 0}">
-            <c:forEach var = "galumns" items="${Lista_Alumnos}">
-                <p>${galumns.getNombreAlumno()}&nbsp;&nbsp;${galumns.getPrimerApellidoAlumno()} &nbsp;&nbsp;${galumns.getSegundoApellidoAlumno()}</p>
-             </c:forEach>
-        </c:if>
+        <c:choose>
+
+            <c:when test="${Lista_Alumnos.size() gt 5}">
+                <c:forEach var = "galumns" items="${Lista_Alumnos}">
+                    <p>${galumns.getNombreAlumno()}&nbsp;&nbsp;${galumns.getPrimerApellidoAlumno()} &nbsp;&nbsp;${galumns.getSegundoApellidoAlumno()}</p>
+                 </c:forEach>
+            </c:when>
+            <c:otherwise>
+                <p>No hay alumnos</p>
+            </c:otherwise>
+        </c:choose>
     </body>
 </html>
