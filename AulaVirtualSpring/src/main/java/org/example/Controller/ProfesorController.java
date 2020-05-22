@@ -85,6 +85,12 @@ public class ProfesorController {
         return "Alumnos_Grupo";
     }
 
+    @GetMapping("/Gruposnoactivos")
+    public String VerGruposDesactivados(HttpServletRequest request,Model model){
+
+        return "Grupos_no_activos";
+    }
+
 
 
 
