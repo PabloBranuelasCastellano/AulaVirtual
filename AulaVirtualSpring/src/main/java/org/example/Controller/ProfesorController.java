@@ -50,9 +50,11 @@ public class ProfesorController {
             gruposMateria=new ArrayList<>();
 
             grupos.setCursoAcademicoGrupo(resultSet.getString(2));
-            System.out.println(resultSet.getString(3));
-            System.out.println(resultSet.getString(4));
-            System.out.println(resultSet.getString(6));
+            grupos.setNombreGrupo(resultSet.getString(3));
+            grupos.setNombreMateria(resultSet.getString(4));
+            grupos.setNivelGrpo(resultSet.getString(6));
+            grupos.setProfesorGrupo(resultSet.getString(6));
+            gruposMateria.add(grupos);
         }
 
         return "panelprofesores";
