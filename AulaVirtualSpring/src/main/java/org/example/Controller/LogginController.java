@@ -79,7 +79,7 @@ public class LogginController {
 
         }
 
-        return "Error";
+        return "Errores";
         }
 
 
