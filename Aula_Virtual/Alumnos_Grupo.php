@@ -44,7 +44,8 @@
 							echo("</tr>");
 						
 					}
-					echo("</table>");
+					echo("</tbody>");
+				echo("</table>");
 			}
 			else{
 				echo("No hay Alumnos en este grupo");					
