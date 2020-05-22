@@ -1,6 +1,11 @@
-<html><meta cahrset='utf-8'>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<html><meta charset='utf-8'>
+    <head>
+        <meta charset="utf-8">
+    </head>
     <script>
-        window.alert("Usuario o contraseñas incorrectas");
-        window.location.href("/Login");
+    alert("Usuario o contraseña incorrectas");
+       location.href="${pageContext.request.contextPath}/";
     </script>
 </html>
