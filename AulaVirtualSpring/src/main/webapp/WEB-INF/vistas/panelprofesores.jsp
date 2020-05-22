@@ -49,7 +49,7 @@
 							</p>
 
 						</div>
-						<p class="card-text bg-secondary"><a href="Grupos_no_activos.php"class="text-white"style="margin-left:40%;"><u>Ver grupos no activos</a></u></p>
+						<p class="card-text bg-secondary"><a href="${pageContext.request.contextPath}/Gruposnoactivos"class="text-white"style="margin-left:40%;"><u>Ver grupos no activos</a></u></p>
 
 
 					</div>
