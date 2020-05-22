@@ -32,6 +32,7 @@ public class LogginController {
 
     @GetMapping("/")
     public String InicioSesion(HttpServletRequest request, Model model) {
+
         return "Login";
     }
 
@@ -78,7 +79,7 @@ public class LogginController {
 
         }
 
-        return "Login";
+        return "Error";
         }
 
 
