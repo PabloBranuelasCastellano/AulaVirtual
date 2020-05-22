@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.Cookie;
@@ -60,8 +61,9 @@ public class LogginController {
     }
 
 
-    @GetMapping("/logout")
-    public String Cerrar_Sesion(HttpServletRequest request, HttpServletResponse response, Model model) {
+    @GetMapping("/logout/{idProfesor}")
+    public String Cerrar_Sesion(HttpServletRequest request, HttpServletResponse response, Model model, @PathVariable int idProfesor ) {
+        System.out.println("El Id es "+idProfesor);
         Cookie[] cookies = request.getCookies();
         HttpSession session=request.getSession();
         model.asMap().clear();
