@@ -14,7 +14,7 @@
     <body>
         <c:choose>
 
-            <c:when test="${Lista_Alumnos.size() gt 5}">
+            <c:when test="${Lista_Alumnos.size() gt 0}">
                 <c:forEach var = "galumns" items="${Lista_Alumnos}">
                     <p>${galumns.getNombreAlumno()}&nbsp;&nbsp;${galumns.getPrimerApellidoAlumno()} &nbsp;&nbsp;${galumns.getSegundoApellidoAlumno()}</p>
                  </c:forEach>
