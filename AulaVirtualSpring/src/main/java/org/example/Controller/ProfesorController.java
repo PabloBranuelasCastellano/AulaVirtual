@@ -64,11 +64,18 @@ public class ProfesorController {
 
     @GetMapping("/VerAlumnos/{GrupoId}")
     public String AlumnosGrupos(HttpServletRequest request,Model model,@PathVariable int GrupoId)throws SQLException{
-        System.out.println("El id del grupo es "+GrupoId);
+        //System.out.println("El id del grupo es "+GrupoId);
         connection=dataSource.getConnection();
         String Alumnos_Grupo="select a.AlumnoId ,a.Nombre,a.PrimerApellido ,a.SegundoApellido from alumnos a, gruposalumnos ga  ,grupos g  where (ga.GrupoId =g.GrupoId and ga.AlumnoId =a.AlumnoId and g.GrupoId=?) order by a.PrimerApellido asc";
         PreparedStatement preparedStatement=connection.prepareStatement(Alumnos_Grupo);
         preparedStatement.setInt(1,GrupoId);
+        ResultSet resultSet=preparedStatement.executeQuery();
+        while(resultSet.next()){
+            System.out.println("Id Alumno: "+resultSet.getInt(1));
+            System.out.println("Nombre Alumno: "+resultSet.getString(2));
+            System.out.println("1º Apellido Alumno: "+resultSet.getString(3));
+            System.out.println("2º Apellido Alumno: "+resultSet.getString(4));
+        }
         return "Alumnos_Grupo";
     }
 
