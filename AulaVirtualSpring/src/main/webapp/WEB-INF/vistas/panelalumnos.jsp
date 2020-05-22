@@ -17,7 +17,7 @@
 			    <div id='Texto'>
 
 
-			    <p>${UsuarioConectado.getUsuarioAlumno()}</p>
+			    <label id="UsuarioConectado">${UsuarioConectado.getUsuarioAlumno()}</label>
 
 					<a href="${pageContext.request.contextPath}/logout" class="text-danger" >Cerrar Sesión</a>
 				</div>
