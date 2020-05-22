@@ -43,8 +43,16 @@
 	width:8rem;
 	height:8rem;	
 }
-#UsuarioConectado{
+
+#ImagenAlumnos{
+	margin-top:0.5rem;
+	margin-left:-15rem;
+	width:8rem;
+	height:4rem;
+}
+#UsuarioAlumnos{
     margin-left:-3rem;
+    margin-top:2rem;
 }
 #Texto{
 	margin-top:-6rem;
