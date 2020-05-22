@@ -92,7 +92,7 @@ public class LogginController {
 
     @GetMapping("/logout")
     public String Cerrar_Sesion(HttpServletRequest request, HttpServletResponse response, Model model) {
-        
+
         Cookie[] cookies = request.getCookies();
         HttpSession session=request.getSession();
         model.asMap().clear();
