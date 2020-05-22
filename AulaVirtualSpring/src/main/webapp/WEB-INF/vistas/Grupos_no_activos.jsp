@@ -25,9 +25,23 @@
                             <th scope='col'>Profesor que lo imparte</th>
                         </tr>
                     </thead>
+                    <tbody class='bg-info'>
+                        <c:forEach var = "gruposfalse" items="${GruposDesactivados}">
+                            <tr>
+                                <td>${gruposfalse.getCursoAcademicoGrupo()}</td>
+                                <td>${gruposfalse.getNombreGrupo()}</td>
+                                <td>${gruposfalse.getNombreMateria()}</td>
+                                <td>${gruposfalse.getNivelGrupo()}</td>
+                                <td>${gruposfalse.getProfesorGrupo()}</td>
+
+                            </tr>
+                        </c:forEach>
+                    </tbody>
                 </table>
             </c:when>
             <c:otherwise>
                 <p>NO hay ningun grupo desactivado</p>
             </c:otherwise>
         </c:choose>
+    </body>
+</html>
