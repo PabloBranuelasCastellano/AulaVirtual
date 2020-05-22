@@ -15,8 +15,9 @@ public class AlumnosController {
     Alumnos alumnos;
     @GetMapping("/homeAlumnos")
     public  String PanelAlumnos(HttpServletRequest request, Model model)throws SQLException{
+        System.out.println("Pagina de Alumnos");
         alumnos=logginController.alumnos;
-        return "panelprofesores";
+        return "panelalumnos";
     }
 
 }
