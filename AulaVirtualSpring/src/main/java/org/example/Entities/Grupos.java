@@ -3,11 +3,19 @@ package org.example.Entities;
 public class Grupos {
     private  int idGrupo;
     private  String NombreMateria;
-
+    private  int IdMateria;
     private  String NivelGrupo;
     private  String ProfesorGrupo;
     private String NombreGrupo;
     private String CursoAcademicoGrupo;
+
+    public int getIdMateria() {
+        return IdMateria;
+    }
+
+    public void setIdMateria(int idMateria) {
+        IdMateria = idMateria;
+    }
 
     public int getIdGrupo() {
         return idGrupo;
