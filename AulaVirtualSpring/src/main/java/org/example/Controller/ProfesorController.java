@@ -86,8 +86,17 @@ public class ProfesorController {
     }
 
     @GetMapping("/Gruposnoactivos")
-    public String VerGruposDesactivados(HttpServletRequest request,Model model){
-
+    public String VerGruposDesactivados(HttpServletRequest request,Model model)throws SQLException{
+        connection=dataSource.getConnection();
+        String GruposNoActivos="select  ca.Denominacion as AnioEscolar ,G.Nombre as NombreGrupo ,M.Nombre as Asignatura ,N.Denominacion as NivelEducativo ,P.Usuario as Nombre_Profesor from grupos g,materias m ,niveles n ,profesores p, cursosacademicos ca where(g.MateriaId=M.MateriaId and g.NivelId =n.NivelId and g.ProfesorId =P.ProfesorId and g.CursoAcademicoId =ca.CursoAcademicoId  and ca.EsActivo =false and P.ProfesorId=? )";
+        PreparedStatement preparedStatement=connection.prepareStatement(GruposNoActivos);
+        preparedStatement.setInt(1,logginController.profesores.getIdProfesor());
+        ResultSet resultSet=preparedStatement.executeQuery();
+        List<Grupos>GruposDesactivados=null;
+        while(resultSet.next()){
+            GruposDesactivados=new ArrayList<>();
+            grupos.setNombreMateria(resultSet.getString(3));
+        }
         return "Grupos_no_activos";
     }
 
