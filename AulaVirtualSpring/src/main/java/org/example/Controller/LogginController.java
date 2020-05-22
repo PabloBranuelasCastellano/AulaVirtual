@@ -1,5 +1,6 @@
 package org.example.Controller;
 
+import org.example.Entities.Alumnos;
 import org.example.Entities.Profesores;
 import org.hibernate.validator.constraints.Email;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +26,10 @@ public class LogginController {
     DataSource dataSource;
     Connection connection;
     Profesores profesores;
+    Alumnos alumnos;
     String Email_Usuario;
     String Clave_Usuario;
+
     @GetMapping("/")
     public String InicioSesion(HttpServletRequest request, Model model) {
         return "Login";
@@ -36,13 +39,13 @@ public class LogginController {
     public String ComprobarUsuario(HttpServletRequest request, Model model) throws SQLException {
 
 
-         Email_Usuario= request.getParameter("Email_Acceso");
-         Clave_Usuario = request.getParameter("Clave_Acceso");
-         connection = dataSource.getConnection();
-         String Profesor = "Select * from profesores where Email=? and Password=md5(?)";
-         PreparedStatement preparedStatement = connection.prepareStatement(Profesor);
-         preparedStatement.setString(1, Email_Usuario);
-         preparedStatement.setString(2, Clave_Usuario);
+        Email_Usuario = request.getParameter("Email_Acceso");
+        Clave_Usuario = request.getParameter("Clave_Acceso");
+        connection = dataSource.getConnection();
+        String Profesor = "Select * from profesores where Email=? and Password=md5(?)";
+        PreparedStatement preparedStatement = connection.prepareStatement(Profesor);
+        preparedStatement.setString(1, Email_Usuario);
+        preparedStatement.setString(2, Clave_Usuario);
 
         ResultSet resultSet;
         resultSet = preparedStatement.executeQuery();
@@ -55,10 +58,32 @@ public class LogginController {
 
             return "redirect:/homeProfesores";
         }
+        else{
+            Email_Usuario = request.getParameter("Email_Acceso");
+            Clave_Usuario = request.getParameter("Clave_Acceso");
+            connection = dataSource.getConnection();
+            String Alumno = "Select * from Alumnos where Email=? and Password=md5(?)";
+            preparedStatement = connection.prepareStatement(Alumno);
+            preparedStatement.setString(1, Email_Usuario);
+            preparedStatement.setString(2, Clave_Usuario);
+
+            resultSet = preparedStatement.executeQuery();
+            if(resultSet.next()){
+                alumnos=new Alumnos();
+                alumnos.setUsuarioAlumno(resultSet.getString("Usuario"));
+            }
+
+        }
+
+    return "Login";
+        }
 
 
-        return "Login";
-    }
+
+
+
+
+
 
 
     @GetMapping("/logout/{idProfesor}")
