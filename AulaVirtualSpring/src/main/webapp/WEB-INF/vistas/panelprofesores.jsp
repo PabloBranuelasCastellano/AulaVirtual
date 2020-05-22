@@ -13,7 +13,7 @@
 		<nav aria-label="breadcrumb">
 		  <ol class="breadcrumb bg-info">
 			<li class="breadcrumb-item active text-white" id="Barra" aria-current="page">
-			    <img id='Imagen' src='<c:url value="/estaticos/img/alumnos.png" />'/>
+			    <img id='Imagen' src='<c:url value="/estaticos/img/profesores.png" />'/>
 			    <div id='Texto'>
 
 
