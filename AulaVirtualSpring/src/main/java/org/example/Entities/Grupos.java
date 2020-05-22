@@ -3,7 +3,8 @@ package org.example.Entities;
 public class Grupos {
     private  int idGrupo;
     private  String NombreMateria;
-    private  String NivelGrpo;
+
+    private  String NivelGrupo;
     private  String ProfesorGrupo;
     private String NombreGrupo;
     private String CursoAcademicoGrupo;
@@ -24,12 +25,12 @@ public class Grupos {
         NombreMateria = nombreMateria;
     }
 
-    public String getNivelGrpo() {
-        return NivelGrpo;
+    public String getNivelGrupo() {
+        return NivelGrupo;
     }
 
-    public void setNivelGrpo(String nivelGrpo) {
-        NivelGrpo = nivelGrpo;
+    public void setNivelGrupo(String nivelGrupo) {
+        NivelGrupo = nivelGrupo;
     }
 
     public String getProfesorGrupo() {
