@@ -16,7 +16,15 @@
 
             <c:when test="${GruposDesactivados.size() gt 0}">
                 <table class='table table-bordered'>
-                    
+                    <thead>
+                        <tr class='bg-primary'>
+                            <th scope='col'>Año Academico</th>
+                            <th scope='col'>Nombre Grupo</th>
+                            <th scope='col'>Asignatura</th>
+                            <th scope='col'>Nivel Educativo</th>
+                            <th scope='col'>Profesor que lo imparte</th>
+                        </tr>
+                    </thead>
                 </table>
             </c:when>
             <c:otherwise>
