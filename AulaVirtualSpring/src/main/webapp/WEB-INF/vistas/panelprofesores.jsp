@@ -44,6 +44,7 @@
                                         <label>${g.getNombreGrupo()} &nbsp;&nbsp; ${g.getNivelGrupo()} <a href="${pageContext.request.contextPath}/VerAlumnos/${g.getIdGrupo()}"><img src='<c:url value="/estaticos/img/flecha.png" />' id='flecha' title='Ver Lista de Alumnos del Grupo'/></a></label>
                                         </div>
                                        <label> ${g.getNombreMateria()} </label>
+                                        <p>
                                         </c:forEach>
                                 </div>
 							</p>
