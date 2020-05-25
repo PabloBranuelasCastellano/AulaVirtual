@@ -36,26 +36,23 @@
 						<div class="card-body bg-secondary">
 							<p class="card-text ">
                                <c:forEach var = "g" items="${Grupos_Materia}">
-                                     <p>
-                                        Año:${g.getCursoAcademicoGrupo()}
-                                        </p>
-                                        <div id='Grupos'>
+                                     <div id='Grupos'>
+                                        <label>Año:${g.getCursoAcademicoGrupo()}</label>
                                         <label>${g.getNombreGrupo()} &nbsp;&nbsp; ${g.getNivelGrupo()} <a href="${pageContext.request.contextPath}/VerAlumnos/${g.getIdGrupo()}"><img src='<c:url value="/estaticos/img/flecha.png" />' id='flecha' title='Ver Lista de Alumnos del Grupo'/></a></label>
-                                        </div>
-                                       <label> ${g.getNombreMateria()} </label>
-
+                                         <label> ${g.getNombreMateria()} </label>
+                                     </div>
                                </c:forEach>
-                                    
 
-							<p/>
 
-						</div>
+						<p/>
+
+					</div>
 						<p class="card-text bg-secondary"><a href="${pageContext.request.contextPath}/Gruposnoactivos"class="text-white"style="margin-left:40%;"><u>Ver grupos no activos</a></u></p>
 
 
-					</div>
-
 				</div>
+
+			</div>
 			<div class="col-sm">
 				<div class="card text-white  mb-3" style="background-color:blue;max-width: 18rem;min-height:20rem;">
 					<div class="card-header">Mis Temarios</div>
