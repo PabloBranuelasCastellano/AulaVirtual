@@ -50,7 +50,7 @@ public class ProfesorController {
         ResultSet resultSet=preparedStatement.executeQuery();
 
         while(resultSet.next()){
-            gruposMateria=new ArrayList<Grupos>();
+            gruposMateria=new ArrayList<>();
             System.out.print(resultSet.getInt(1)+" ");
             grupos.setIdGrupo(resultSet.getInt(1));
             System.out.print(resultSet.getString(2)+" ");
@@ -65,8 +65,9 @@ public class ProfesorController {
             grupos.setProfesorGrupo(resultSet.getString(6));
             System.out.println();
             gruposMateria.add(grupos);
-            model.addAttribute("Grupos_Materia",gruposMateria);
+
         }
+        model.addAttribute("Grupos_Materia",gruposMateria);
 
 
         return "panelprofesores";
