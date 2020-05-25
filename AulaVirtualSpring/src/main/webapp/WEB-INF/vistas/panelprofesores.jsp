@@ -35,8 +35,8 @@
 					<div class="card-header bg-success ">Mis Grupos</div>
 						<div class="card-body bg-secondary">
 							<p class="card-text ">
-                                <div>
-                                     <c:forEach var = "g" items="${Grupos_Materia}">
+                               <c:forEach var = "g" items="${Grupos_Materia}">
+                                     <p>
                                         <label>
                                             Año:${g.getCursoAcademicoGrupo()}
                                         </label>
@@ -44,10 +44,11 @@
                                         <label>${g.getNombreGrupo()} &nbsp;&nbsp; ${g.getNivelGrupo()} <a href="${pageContext.request.contextPath}/VerAlumnos/${g.getIdGrupo()}"><img src='<c:url value="/estaticos/img/flecha.png" />' id='flecha' title='Ver Lista de Alumnos del Grupo'/></a></label>
                                         </div>
                                        <label> ${g.getNombreMateria()} </label>
-                                        <p>
+
                                         </c:forEach>
-                                </div>
-							</p>
+                                     </p>
+
+							<p/>
 
 						</div>
 						<p class="card-text bg-secondary"><a href="${pageContext.request.contextPath}/Gruposnoactivos"class="text-white"style="margin-left:40%;"><u>Ver grupos no activos</a></u></p>
