@@ -67,7 +67,13 @@ public class ProfesorController {
             gruposMateria.add(grupos);
         }
         for (Grupos cancion : gruposMateria) {
-            System.out.println(cancion);
+            System.out.print(cancion.getIdGrupo()+" ");
+            System.out.print(cancion.getCursoAcademicoGrupo()+" ");
+            System.out.print(cancion.getNombreGrupo()+" ");
+            System.out.print(cancion.getNombreMateria()+" ");
+            System.out.print(cancion.getNivelGrupo()+" ");
+            System.out.print(cancion.getProfesorGrupo()+" ");
+            System.out.println();
         }
         model.addAttribute("Grupos_Materia",gruposMateria);
 
