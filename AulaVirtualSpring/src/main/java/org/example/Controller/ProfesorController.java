@@ -27,7 +27,7 @@ public class ProfesorController {
     Profesores profesores;
     GruposAlumno gruposAlumno=new GruposAlumno();
     Grupos grupos=new Grupos();
-    List<Grupos>gruposMateria;
+
     @Autowired
     DataSource dataSource;
     Connection connection;
@@ -48,9 +48,9 @@ public class ProfesorController {
         preparedStatement.setInt(1,logginController.profesores.getIdProfesor());
         //System.out.println(logginController.profesores.getIdProfesor());
         ResultSet resultSet=preparedStatement.executeQuery();
-
+        List<Grupos>gruposMateria=new ArrayList<>();
         while(resultSet.next()){
-            gruposMateria=new ArrayList<>();
+
             System.out.print(resultSet.getInt(1)+" ");
             grupos.setIdGrupo(resultSet.getInt(1));
             System.out.print(resultSet.getString(2)+" ");
@@ -82,8 +82,9 @@ public class ProfesorController {
         preparedStatement.setInt(1,GrupoId);
         ResultSet resultSet=preparedStatement.executeQuery();
         List<GruposAlumno>gruposAlumnoList=null;
+        gruposAlumnoList=new ArrayList<>();
         while(resultSet.next()){
-            gruposAlumnoList=new ArrayList<>();
+
             gruposAlumno.setIdAlumno(resultSet.getInt(1));
             gruposAlumno.setNombreAlumno(resultSet.getString(2));
             gruposAlumno.setPrimerApellidoAlumno(resultSet.getString(3));
