@@ -50,18 +50,19 @@ public class ProfesorController {
         ResultSet resultSet=preparedStatement.executeQuery();
 
         while(resultSet.next()){
-            System.out.println(resultSet.getInt(1));
+            System.out.print(resultSet.getInt(1)+" ");
             grupos.setIdGrupo(resultSet.getInt(1));
-            System.out.println(resultSet.getString(2));
+            System.out.print(resultSet.getString(2)+" ");
             grupos.setCursoAcademicoGrupo(resultSet.getString(2));
-            System.out.println(resultSet.getString(3));
+            System.out.print(resultSet.getString(3)+" ");
             grupos.setNombreGrupo(resultSet.getString(3));
             grupos.setNombreMateria(resultSet.getString(4));
-            System.out.println(resultSet.getString(4));
-            System.out.println(resultSet.getString(5));
+            System.out.print(resultSet.getString(4)+" ");
+            System.out.print(resultSet.getString(5)+" ");
             grupos.setNivelGrupo(resultSet.getString(5));
-            System.out.println(resultSet.getString(6));
+            System.out.print(resultSet.getString(6)+" ");
             grupos.setProfesorGrupo(resultSet.getString(6));
+            System.out.println();
             gruposMateria.add(grupos);
         }
         model.addAttribute("Grupos_Materia",gruposMateria);
