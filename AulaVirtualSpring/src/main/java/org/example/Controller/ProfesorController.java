@@ -65,7 +65,7 @@ public class ProfesorController {
             grupos.setProfesorGrupo(resultSet.getString(6));
             System.out.println();
             gruposMateria.add(grupos);
-            model.addAttribute(gruposMateria);
+            model.addAttribute("Grupos_Materia",gruposMateria);
         }
 
 
