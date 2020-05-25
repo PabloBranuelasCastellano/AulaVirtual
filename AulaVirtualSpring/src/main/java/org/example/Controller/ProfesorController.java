@@ -70,6 +70,7 @@ public class ProfesorController {
         model.addAttribute("Grupos_Materia",gruposMateria);
 
 
+
         return "panelprofesores";
     }
 
