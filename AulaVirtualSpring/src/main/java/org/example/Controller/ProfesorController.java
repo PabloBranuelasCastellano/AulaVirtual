@@ -27,7 +27,7 @@ public class ProfesorController {
     Profesores profesores;
     GruposAlumno gruposAlumno=new GruposAlumno();
     Grupos grupos=new Grupos();
-    ArrayList<Grupos>gruposMateria;
+    List<Grupos>gruposMateria;
     @Autowired
     DataSource dataSource;
     Connection connection;
@@ -43,14 +43,14 @@ public class ProfesorController {
 
     public String MostrarGrupos(HttpServletRequest request,Model model)throws SQLException {
         connection=dataSource.getConnection();
-        String VerGrupos="select g.GrupoId, ca.Denominacion as AnioEscolar ,G.Nombre as NombreGrupo ,M.Nombre as Asignatura ,N.Denominacion as NivelEducativo ,P.Usuario as Nombre_Profesor from grupos g,materias m ,niveles n ,profesores p, cursosacademicos ca where(g.MateriaId=M.MateriaId and g.NivelId =n.NivelId and g.ProfesorId =P.ProfesorId and g.CursoAcademicoId =ca.CursoAcademicoId  and ca.EsActivo =true and P.ProfesorId=?)";
+        String VerGrupos="select distinct g.GrupoId, ca.Denominacion as AnioEscolar ,G.Nombre as NombreGrupo ,M.Nombre as Asignatura ,N.Denominacion as NivelEducativo ,P.Usuario as Nombre_Profesor from grupos g,materias m ,niveles n ,profesores p, cursosacademicos ca where(g.MateriaId=M.MateriaId and g.NivelId =n.NivelId and g.ProfesorId =P.ProfesorId and g.CursoAcademicoId =ca.CursoAcademicoId  and ca.EsActivo =true and P.ProfesorId=?)";
         PreparedStatement preparedStatement=connection.prepareStatement(VerGrupos);
         preparedStatement.setInt(1,logginController.profesores.getIdProfesor());
         //System.out.println(logginController.profesores.getIdProfesor());
         ResultSet resultSet=preparedStatement.executeQuery();
 
         while(resultSet.next()){
-            gruposMateria=new ArrayList<>();
+            gruposMateria=new ArrayList<Grupos>();
             System.out.print(resultSet.getInt(1)+" ");
             grupos.setIdGrupo(resultSet.getInt(1));
             System.out.print(resultSet.getString(2)+" ");
@@ -65,17 +65,9 @@ public class ProfesorController {
             grupos.setProfesorGrupo(resultSet.getString(6));
             System.out.println();
             gruposMateria.add(grupos);
+            model.addAttribute(gruposMateria);
         }
-        for (Grupos cancion : gruposMateria) {
-            System.out.print(cancion.getIdGrupo()+" ");
-            System.out.print(cancion.getCursoAcademicoGrupo()+" ");
-            System.out.print(cancion.getNombreGrupo()+" ");
-            System.out.print(cancion.getNombreMateria()+" ");
-            System.out.print(cancion.getNivelGrupo()+" ");
-            System.out.print(cancion.getProfesorGrupo()+" ");
-            System.out.println();
-        }
-        model.addAttribute("Grupos_Materia",gruposMateria);
+
 
         return "panelprofesores";
     }
