@@ -30,10 +30,12 @@ public class Grupos {
     }
 
     public void setNombreMateria(String nombreMateria) {
+
         NombreMateria = nombreMateria;
     }
 
-    public String getNivelGrupo() {
+    public String getNivelGrupo()
+    {
         return NivelGrupo;
     }
 
@@ -42,26 +44,32 @@ public class Grupos {
     }
 
     public String getProfesorGrupo() {
+
         return ProfesorGrupo;
     }
 
     public void setProfesorGrupo(String profesorGrupo) {
+
         ProfesorGrupo = profesorGrupo;
     }
 
     public String getNombreGrupo() {
+
         return NombreGrupo;
     }
 
     public void setNombreGrupo(String nombreGrupo) {
+
         NombreGrupo = nombreGrupo;
     }
 
     public String getCursoAcademicoGrupo() {
+
         return CursoAcademicoGrupo;
     }
 
     public void setCursoAcademicoGrupo(String cursoAcademicoGrupo) {
+
         CursoAcademicoGrupo = cursoAcademicoGrupo;
     }
 }
