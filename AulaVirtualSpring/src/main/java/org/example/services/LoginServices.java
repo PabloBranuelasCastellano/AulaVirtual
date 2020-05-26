@@ -108,10 +108,11 @@ public class LoginServices {
             cookie.setPath("/");
             response.resetBuffer();
             response.reset();
-            response.addCookie(cookie);
+
 
         }
         profesores.setUsuarioProfesor(null);
+        profesores.setIdProfesor(0);
         return "Sesion Cerrada";
 
     }
