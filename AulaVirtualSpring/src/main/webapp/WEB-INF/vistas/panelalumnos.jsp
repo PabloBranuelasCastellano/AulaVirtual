@@ -16,8 +16,11 @@
 			    <img id='ImagenAlumnos' src='<c:url value="/estaticos/img/alumnos.png" />'/>
 
 			    <div id='Texto'>
-
-
+                <c:if test="${UsuarioConectado.getUsuarioAlumno() ==null}">
+                    <script>
+                    location.href="${pageContext.request.contextPath}/";
+                    </script>
+                </c:if>
 			    <label id="UsuarioAlumnos">${UsuarioConectado.getUsuarioAlumno()}</label>
 
 					<a href="${pageContext.request.contextPath}/logout" class="text-danger" >Cerrar Sesión</a>
