@@ -24,15 +24,9 @@ import java.util.List;
 @Controller
 public class ProfesorController {
 
-    @Autowired
-    LogginController logginController;
-    Profesores profesores;
-    GruposAlumno gruposAlumno=new GruposAlumno();
-    Grupos grupos;
 
-    @Autowired
-    DataSource dataSource;
-    Connection connection;
+
+    
     @Autowired
     LoginServices loginServices;
     @Autowired
