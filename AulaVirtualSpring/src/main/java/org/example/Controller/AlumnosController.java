@@ -1,6 +1,7 @@
 package org.example.Controller;
 
 import org.example.Entities.Alumnos;
+import org.example.services.AlumnosServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,11 +15,11 @@ public class AlumnosController {
     @Autowired
     LogginController logginController;
     Alumnos alumnos;
-
+    @Autowired
+    AlumnosServices alumnosServices;
     @GetMapping("/homeAlumnos")
     public  String PanelAlumnos(HttpServletRequest request, Model model)throws SQLException{
-        alumnos=logginController.alumnos;
-        return "panelalumnos";
+       return alumnosServices.PanelAlumnos(request, model);
     }
 
 }
