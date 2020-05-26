@@ -110,6 +110,7 @@ public class LoginServices {
             response.addCookie(cookie);
 
         }
+        profesores.setUsuarioProfesor(null);
         return "Sesion Cerrada";
 
     }
