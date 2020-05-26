@@ -42,8 +42,8 @@ public class LogginController {
     @PostMapping("/Comprobar")
     public String ComprobarUsuario(HttpServletRequest request, Model model) throws SQLException {
             loginServices.ComprobarUsuario(request,model);
-            if(loginServices.getRol().equals("Profesores")) {
-                return "redirect:/homeProfesores";
+            if(loginServices.getRol()==null) {
+                return "Errores";
 
             }
 
@@ -52,8 +52,9 @@ public class LogginController {
         else if(loginServices.getRol().equals("Alumnos")) {
                 return "redirect:/homeAlumnos";
         }
+
         else{
-            return "Errores";
+            return "redirect:/homeProfesores";
         }
 
     }
