@@ -2,6 +2,7 @@ package org.example.services;
 
 import org.example.Entities.Alumnos;
 import org.example.Entities.Profesores;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
@@ -16,11 +17,29 @@ import java.sql.SQLException;
 @Service
 public class LoginServices {
 
-    Connection connection=null;
-    DataSource dataSource=null;
+    @Autowired
+    DataSource dataSource;
+    Connection connection;
     Profesores profesores;
     Alumnos alumnos;
-    String rol=null;
+    String rol;
+
+    public Profesores getProfesores() {
+        return profesores;
+    }
+
+    public void setProfesores(Profesores profesores) {
+        this.profesores = profesores;
+    }
+
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
+
     public String ComprobarUsuario(HttpServletRequest request, Model model) throws SQLException {
 
 
@@ -40,7 +59,8 @@ public class LoginServices {
             profesores.setIdProfesor(resultSet.getInt("ProfesorId"));
             HttpSession session = request.getSession();
             session.setAttribute("UsuarioConectado", profesores);
-            rol="Profesor";
+            rol="Profesores";
+            setRol(rol);
             return rol;
         }
         else{
@@ -60,13 +80,14 @@ public class LoginServices {
                 HttpSession session = request.getSession();
                 session.setAttribute("UsuarioConectado", alumnos);
                 rol="Alumnos";
+                setRol(rol);
                 return rol;
 
             }
 
         }
-
-
+        rol=null;
+        setRol(rol);
         return rol;
     }
 }
