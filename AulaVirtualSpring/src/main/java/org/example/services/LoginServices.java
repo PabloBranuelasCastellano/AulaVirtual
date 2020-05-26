@@ -106,7 +106,8 @@ public class LoginServices {
             cookie.setMaxAge(0);
             cookie.setValue(null);
             cookie.setPath("/");
-
+            response.resetBuffer();
+            response.reset();
             response.addCookie(cookie);
 
         }
