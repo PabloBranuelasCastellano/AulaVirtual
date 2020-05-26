@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -59,11 +61,10 @@ public class LoginServices {
             profesores.setIdProfesor(resultSet.getInt("ProfesorId"));
             HttpSession session = request.getSession();
             session.setAttribute("UsuarioConectado", profesores);
-            rol="Profesores";
+            rol = "Profesores";
             setRol(rol);
             return rol;
-        }
-        else{
+        } else {
             Email_Usuario = request.getParameter("Email_Acceso");
             Clave_Usuario = request.getParameter("Clave_Acceso");
             connection = dataSource.getConnection();
@@ -73,13 +74,13 @@ public class LoginServices {
             preparedStatement.setString(2, Clave_Usuario);
 
             resultSet = preparedStatement.executeQuery();
-            if(resultSet.next()){
-                alumnos=new Alumnos();
+            if (resultSet.next()) {
+                alumnos = new Alumnos();
                 alumnos.setUsuarioAlumno(resultSet.getString("Usuario"));
                 alumnos.setIdAlumno(resultSet.getInt("AlumnoId"));
                 HttpSession session = request.getSession();
                 session.setAttribute("UsuarioConectado", alumnos);
-                rol="Alumnos";
+                rol = "Alumnos";
                 setRol(rol);
                 return rol;
 
@@ -87,8 +88,29 @@ public class LoginServices {
 
         }
 
-        rol=null;
+        rol = null;
         setRol(rol);
         return rol;
+    }
+
+    public String Cerrar_Sesion(HttpServletRequest request, HttpServletResponse response, Model model) {
+
+        Cookie[] cookies = request.getCookies();
+        HttpSession session = request.getSession();
+        model.asMap().clear();
+        session.removeAttribute("UsuarioConectado");
+
+        session.invalidate();
+
+        for (Cookie cookie : cookies) {
+            cookie.setMaxAge(0);
+            cookie.setValue(null);
+            cookie.setPath("/");
+
+            response.addCookie(cookie);
+
+        }
+        return "Sesion Cerrada";
+
     }
 }
