@@ -37,9 +37,10 @@ public class ProfesorController {
     LoginServices loginServices;
     @Autowired
     ProfesoresServices profesoresServices;
+
     @GetMapping("/homeProfesores")
-    public void PanelProfesor(HttpServletRequest request, Model model)throws SQLException{
-        profesoresServices.PanelProfesor(request, model);
+    public String PanelProfesor(HttpServletRequest request, Model model)throws SQLException{
+        return profesoresServices.PanelProfesor(request, model);
     }
 
     public String MostrarGrupos(HttpServletRequest request,Model model)throws SQLException {
