@@ -3,6 +3,7 @@ package org.example.Controller;
 import org.example.Entities.Grupos;
 import org.example.Entities.GruposAlumno;
 import org.example.Entities.Profesores;
+import org.example.services.LoginServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,11 +32,13 @@ public class ProfesorController {
     @Autowired
     DataSource dataSource;
     Connection connection;
+    @Autowired
+    LoginServices loginServices;
 
     @GetMapping("/homeProfesores")
     public String PanelProfesor(HttpServletRequest request, Model model)throws SQLException{
 
-        profesores=logginController.profesores;
+        profesores=loginServices.getProfesores();
         /*System.out.println(profesores.getIdProfesor());
         System.out.println(profesores.getUsuarioProfesor());*/
         return MostrarGrupos(request, model);
@@ -45,7 +48,7 @@ public class ProfesorController {
         connection=dataSource.getConnection();
         String VerGrupos="select g.GrupoId, ca.Denominacion as AnioEscolar ,G.Nombre as NombreGrupo ,M.Nombre as Asignatura ,N.Denominacion as NivelEducativo ,P.Usuario as Nombre_Profesor from grupos g,materias m ,niveles n ,profesores p, cursosacademicos ca where(g.MateriaId=M.MateriaId and g.NivelId =n.NivelId and g.ProfesorId =P.ProfesorId and g.CursoAcademicoId =ca.CursoAcademicoId  and ca.EsActivo =true and P.ProfesorId=?)";
         PreparedStatement preparedStatement=connection.prepareStatement(VerGrupos);
-        preparedStatement.setInt(1,logginController.profesores.getIdProfesor());
+        preparedStatement.setInt(1,profesores.getIdProfesor());
         //System.out.println(logginController.profesores.getIdProfesor());
         ResultSet resultSet=preparedStatement.executeQuery();
         List<Grupos>gruposMateria=new ArrayList<>();
@@ -101,7 +104,7 @@ public class ProfesorController {
         connection=dataSource.getConnection();
         String GruposNoActivos="select  ca.Denominacion as AnioEscolar ,G.Nombre as NombreGrupo ,M.Nombre as Asignatura ,N.Denominacion as NivelEducativo ,P.Usuario as Nombre_Profesor from grupos g,materias m ,niveles n ,profesores p, cursosacademicos ca where(g.MateriaId=M.MateriaId and g.NivelId =n.NivelId and g.ProfesorId =P.ProfesorId and g.CursoAcademicoId =ca.CursoAcademicoId  and ca.EsActivo =false and P.ProfesorId=? )";
         PreparedStatement preparedStatement=connection.prepareStatement(GruposNoActivos);
-        preparedStatement.setInt(1,logginController.profesores.getIdProfesor());
+        preparedStatement.setInt(1,profesores.getIdProfesor());
         ResultSet resultSet=preparedStatement.executeQuery();
         List<Grupos>GruposDesactivados=null;
         while(resultSet.next()){
