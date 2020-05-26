@@ -72,6 +72,7 @@ public class LogginController {
     @GetMapping("/logout")
     public String Cerrar_Sesion(HttpServletRequest request, HttpServletResponse response, Model model) {
         loginServices.Cerrar_Sesion(request, response, model);
+
         if(loginServices.Cerrar_Sesion(request, response, model).equals("Sesion Cerrada")) {
             System.out.println("Adios "+loginServices.getProfesores().getUsuarioProfesor());
             return "redirect:/";
