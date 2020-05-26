@@ -32,7 +32,7 @@ public class AlumnosServices {
         String Materias_alumno="select distinct M.Nombre,m.MateriaId,m.Nombre ,n.Denominacion,n.NivelId  from temas t,niveles n,profesores p,materias m where (t.NivelId =n.NivelId and p.ProfesorId =t.ProfesorId and m.EsActiva =true and P.ProfesorId=?)";
         PreparedStatement preparedStatement=connection.prepareStatement(Materias_alumno);
         preparedStatement.setInt(1,loginServices.getAlumnos().getIdAlumno());
-        System.out.println("Consulta preparada .El Id del alumno es "+loginServices.getAlumnos().getIdAlumno());
+        //System.out.println("Consulta preparada .El Id del alumno es "+loginServices.getAlumnos().getIdAlumno());
         return "panelalumnos";
     }
 }
