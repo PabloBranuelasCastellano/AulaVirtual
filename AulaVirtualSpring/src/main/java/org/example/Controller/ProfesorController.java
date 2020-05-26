@@ -42,7 +42,7 @@ public class ProfesorController {
     public String PanelProfesor(HttpServletRequest request, Model model)throws SQLException{
         return profesoresServices.PanelProfesor(request, model);
     }
-
+    /*
     public String MostrarGrupos(HttpServletRequest request,Model model)throws SQLException {
         connection=dataSource.getConnection();
         String VerGrupos="select g.GrupoId, ca.Denominacion as AnioEscolar ,G.Nombre as NombreGrupo ,M.Nombre as Asignatura ,N.Denominacion as NivelEducativo ,P.Usuario as Nombre_Profesor from grupos g,materias m ,niveles n ,profesores p, cursosacademicos ca where(g.MateriaId=M.MateriaId and g.NivelId =n.NivelId and g.ProfesorId =P.ProfesorId and g.CursoAcademicoId =ca.CursoAcademicoId  and ca.EsActivo =true and P.ProfesorId=?)";
@@ -74,7 +74,7 @@ public class ProfesorController {
 
 
         return "panelprofesores";
-    }
+    }*/
 
     @GetMapping("/VerAlumnos/{GrupoId}")
     public String AlumnosGrupos(HttpServletRequest request,Model model,@PathVariable int GrupoId)throws SQLException{
