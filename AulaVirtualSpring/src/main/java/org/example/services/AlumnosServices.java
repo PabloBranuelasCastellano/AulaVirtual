@@ -20,6 +20,11 @@ public class AlumnosServices {
 
     public  String PanelAlumnos(HttpServletRequest request, Model model)throws SQLException {
         alumnos=loginServices.getAlumnos();
+        return MateriasAlumno(request, model);
+    }
+
+    public String MateriasAlumno(HttpServletRequest request,Model model)throws SQLException{
+        connection=dataSource.getConnection();
         return "panelalumnos";
     }
 }
