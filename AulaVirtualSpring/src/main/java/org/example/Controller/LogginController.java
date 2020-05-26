@@ -64,7 +64,7 @@ public class LogginController {
         loginServices.Cerrar_Sesion(request, response, model);
 
         if(loginServices.Cerrar_Sesion(request, response, model).equals("Sesion Cerrada")) {
-            
+
             return "redirect:/";
         }
         return "Fallo al cerrar la sesion";
