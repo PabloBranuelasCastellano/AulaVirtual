@@ -59,22 +59,14 @@ public class LogginController {
 
     }
 
-
-
-
-
-
-
-
-
-
-
     @GetMapping("/logout")
     public String Cerrar_Sesion(HttpServletRequest request, HttpServletResponse response, Model model) {
         loginServices.Cerrar_Sesion(request, response, model);
-
+        System.out.println("Se va el profesor "+loginServices.getProfesores().getUsuarioProfesor());
+        System.out.println("Se va el alumno "+loginServices.getAlumnos().getUsuarioAlumno());
         if(loginServices.Cerrar_Sesion(request, response, model).equals("Sesion Cerrada")) {
             System.out.println("Adios "+loginServices.getProfesores().getUsuarioProfesor());
+            System.out.println("Adios "+loginServices.getAlumnos().getUsuarioAlumno());
             return "redirect:/";
         }
         return "Fallo al cerrar la sesion";
