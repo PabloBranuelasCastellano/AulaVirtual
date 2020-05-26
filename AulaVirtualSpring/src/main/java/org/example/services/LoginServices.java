@@ -26,6 +26,14 @@ public class LoginServices {
     Alumnos alumnos;
     String rol;
 
+    public Alumnos getAlumnos() {
+        return alumnos;
+    }
+
+    public void setAlumnos(Alumnos alumnos) {
+        this.alumnos = alumnos;
+    }
+
     public Profesores getProfesores() {
         return profesores;
     }
@@ -113,6 +121,8 @@ public class LoginServices {
         }
         profesores.setUsuarioProfesor(null);
         profesores.setIdProfesor(0);
+        alumnos.setUsuarioAlumno(null);
+        alumnos.setIdAlumno(0);
         return "Sesion Cerrada";
 
     }
