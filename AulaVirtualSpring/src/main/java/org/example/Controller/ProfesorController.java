@@ -26,7 +26,7 @@ public class ProfesorController {
 
 
 
-    
+
     @Autowired
     LoginServices loginServices;
     @Autowired
