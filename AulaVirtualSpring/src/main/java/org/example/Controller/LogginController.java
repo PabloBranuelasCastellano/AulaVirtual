@@ -71,21 +71,11 @@ public class LogginController {
 
     @GetMapping("/logout")
     public String Cerrar_Sesion(HttpServletRequest request, HttpServletResponse response, Model model) {
+        loginServices.Cerrar_Sesion(request, response, model);
+        if(loginServices.Cerrar_Sesion(request, response, model).equals("Sesion Cerrada")) {
 
-        Cookie[] cookies = request.getCookies();
-        HttpSession session=request.getSession();
-        model.asMap().clear();
-        session.removeAttribute("UsuarioConectado");
-        session.invalidate();
-        for (Cookie cookie : cookies) {
-            cookie.setMaxAge(0);
-            cookie.setValue(null);
-            cookie.setPath("/");
-
-            response.addCookie(cookie);
-
+            return "redirect:/";
         }
-        return "redirect:/";
-
+        return "Fallo al cerrar la sesion";
     }
 }
