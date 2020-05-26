@@ -4,6 +4,7 @@ import org.example.Entities.Grupos;
 import org.example.Entities.GruposAlumno;
 import org.example.Entities.Profesores;
 import org.example.services.LoginServices;
+import org.example.services.ProfesoresServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,14 +35,11 @@ public class ProfesorController {
     Connection connection;
     @Autowired
     LoginServices loginServices;
-
+    @Autowired
+    ProfesoresServices profesoresServices;
     @GetMapping("/homeProfesores")
-    public String PanelProfesor(HttpServletRequest request, Model model)throws SQLException{
-
-        profesores=loginServices.getProfesores();
-        /*System.out.println(profesores.getIdProfesor());
-        System.out.println(profesores.getUsuarioProfesor());*/
-        return MostrarGrupos(request, model);
+    public void PanelProfesor(HttpServletRequest request, Model model)throws SQLException{
+        profesoresServices.PanelProfesor(request, model);
     }
 
     public String MostrarGrupos(HttpServletRequest request,Model model)throws SQLException {
