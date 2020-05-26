@@ -119,10 +119,14 @@ public class LoginServices {
 
 
         }
-        profesores.setUsuarioProfesor(null);
-        profesores.setIdProfesor(0);
-        alumnos.setUsuarioAlumno(null);
-        alumnos.setIdAlumno(0);
+        if(rol.equals("Profesores")) {
+            profesores.setUsuarioProfesor(null);
+            profesores.setIdProfesor(0);
+        }
+        else {
+            alumnos.setUsuarioAlumno(null);
+            alumnos.setIdAlumno(0);
+        }
         return "Sesion Cerrada";
 
     }
