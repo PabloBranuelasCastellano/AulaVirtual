@@ -6,6 +6,7 @@ import org.example.Entities.Profesores;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.sql.DataSource;
@@ -95,4 +96,26 @@ public class ProfesoresServices {
         model.addAttribute("GruposDesactivados",GruposDesactivados);
         return "Grupos_no_activos";
     }
+
+    public String AlumnosGrupos(HttpServletRequest request,Model model,int GrupoId)throws SQLException{
+        //System.out.println("El id del grupo es "+GrupoId);
+        connection=dataSource.getConnection();
+        String Alumnos_Grupo="select a.AlumnoId ,a.Nombre,a.PrimerApellido ,a.SegundoApellido from alumnos a, gruposalumnos ga  ,grupos g  where (ga.GrupoId =g.GrupoId and ga.AlumnoId =a.AlumnoId and g.GrupoId=?) order by a.PrimerApellido asc";
+        PreparedStatement preparedStatement=connection.prepareStatement(Alumnos_Grupo);
+        preparedStatement.setInt(1,GrupoId);
+        ResultSet resultSet=preparedStatement.executeQuery();
+        List<GruposAlumno>gruposAlumnoList=null;
+        gruposAlumnoList=new ArrayList<>();
+        while(resultSet.next()){
+            gruposAlumno=new GruposAlumno();
+            gruposAlumno.setIdAlumno(resultSet.getInt(1));
+            gruposAlumno.setNombreAlumno(resultSet.getString(2));
+            gruposAlumno.setPrimerApellidoAlumno(resultSet.getString(3));
+            gruposAlumno.setSegundoApellidoAlumno(resultSet.getString(4));
+            gruposAlumnoList.add(gruposAlumno);
+        }
+        model.addAttribute("Lista_Alumnos",gruposAlumnoList);
+        return "Alumnos_Grupo";
+    }
+
 }
