@@ -8,6 +8,22 @@ public class GruposAlumno {
     private int MateriaId;
     private String MateriaNombre;
 
+    public int getMateriaId() {
+        return MateriaId;
+    }
+
+    public void setMateriaId(int materiaId) {
+        MateriaId = materiaId;
+    }
+
+    public String getMateriaNombre() {
+        return MateriaNombre;
+    }
+
+    public void setMateriaNombre(String materiaNombre) {
+        MateriaNombre = materiaNombre;
+    }
+
     public int getIdAlumno() {
         return IdAlumno;
     }
