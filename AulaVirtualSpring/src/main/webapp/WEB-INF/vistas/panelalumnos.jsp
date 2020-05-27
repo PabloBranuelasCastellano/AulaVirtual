@@ -41,22 +41,22 @@
 							<p class="card-text ">
                                 <div>
                                      <c:forEach var = "Ag" items="${Asignaturas_grupo}">
+                                      <div id='Grupos'>
                                         <label>
                                            Nombre de la Asignatura:${Ag.getMateriaNombre()}
                                         </label>
-                                        <div id='Grupos'>
 
-                                        </c:forEach>
+                                      </div>
+
+                                     </c:forEach>
                                 </div>
 							</p>
 
 						</div>
-						<p class="card-text bg-secondary"><a href="${pageContext.request.contextPath}/Gruposnoactivos"class="text-white"style="margin-left:40%;"><u>Ver grupos no activos</a></u></p>
-
-
 					</div>
 
 				</div>
+			
 			<div class="col-sm">
 				<div class="card text-white  mb-3" style="background-color:blue;max-width: 18rem;min-height:20rem;">
 					<div class="card-header">Mis Temarios</div>
