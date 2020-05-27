@@ -56,7 +56,7 @@
 					</div>
 
 				</div>
-			
+
 			<div class="col-sm">
 				<div class="card text-white  mb-3" style="background-color:blue;max-width: 18rem;min-height:20rem;">
 					<div class="card-header">Mis Temarios</div>
