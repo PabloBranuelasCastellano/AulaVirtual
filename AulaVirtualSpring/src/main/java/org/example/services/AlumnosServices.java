@@ -41,7 +41,9 @@ public class AlumnosServices {
         List<GruposAlumno> Materias_alumnos=new ArrayList<>();
         while(resultSet.next()){
             gruposAlumno=new GruposAlumno();
-            System.out.println(resultSet.getString(1));
+            //System.out.println(resultSet.getString(1));
+
+
         }
         return "panelalumnos";
     }
