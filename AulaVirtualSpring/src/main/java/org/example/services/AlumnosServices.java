@@ -38,7 +38,7 @@ public class AlumnosServices {
                 "inner join gruposalumnos ga on a.AlumnoId = ga.AlumnoId\n" +
                 "inner join grupos g on ga.GrupoId = g.GrupoId\n" +
                 "inner join materias m on g.MateriaId = m.MateriaId\n" +
-                "where a.AlumnoId = ?";
+                "where (a.AlumnoId = ? and m.EsActiva=true)";
         PreparedStatement preparedStatement=connection.prepareStatement(Materiasporalumno);
         preparedStatement.setInt(1,loginServices.getAlumnos().getIdAlumno());
         //System.out.println("Consulta preparada .El Id del alumno es "+loginServices.getAlumnos().getIdAlumno());
