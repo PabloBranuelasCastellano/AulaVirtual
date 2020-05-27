@@ -33,7 +33,12 @@ public class AlumnosServices {
 
     public String MateriasAlumno(HttpServletRequest request,Model model)throws SQLException{
         connection=dataSource.getConnection();
-        String Materiasporalumno="select distinct M.Nombre as Asignatura from grupos g,materias m ,alumnos a ,gruposalumnos g2 where(g.MateriaId=M.MateriaId and  g2.AlumnoId =a.AlumnoId  and a.AlumnoId =? )";
+        String Materiasporalumno="select m.Nombre, a.Usuario\n" +
+                "from alumnos a " +
+                "inner join gruposalumnos ga on a.AlumnoId = ga.AlumnoId\n" +
+                "inner join grupos g on ga.GrupoId = g.GrupoId\n" +
+                "inner join materias m on g.MateriaId = m.MateriaId\n" +
+                "where a.AlumnoId = ?";
         PreparedStatement preparedStatement=connection.prepareStatement(Materiasporalumno);
         preparedStatement.setInt(1,loginServices.getAlumnos().getIdAlumno());
         //System.out.println("Consulta preparada .El Id del alumno es "+loginServices.getAlumnos().getIdAlumno());
