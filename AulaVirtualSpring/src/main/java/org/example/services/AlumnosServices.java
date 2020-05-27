@@ -33,8 +33,8 @@ public class AlumnosServices {
 
     public String MateriasAlumno(HttpServletRequest request,Model model)throws SQLException{
         connection=dataSource.getConnection();
-        String Materias_alumno="select distinct M.Nombre as Asignatura from grupos g,materias m ,alumnos a ,gruposalumnos g2 where(g.MateriaId=M.MateriaId and  g2.AlumnoId =a.AlumnoId  and a.AlumnoId =? )";
-        PreparedStatement preparedStatement=connection.prepareStatement(Materias_alumno);
+        String Materiasporalumno="select distinct M.Nombre as Asignatura from grupos g,materias m ,alumnos a ,gruposalumnos g2 where(g.MateriaId=M.MateriaId and  g2.AlumnoId =a.AlumnoId  and a.AlumnoId =? )";
+        PreparedStatement preparedStatement=connection.prepareStatement(Materiasporalumno);
         preparedStatement.setInt(1,loginServices.getAlumnos().getIdAlumno());
         //System.out.println("Consulta preparada .El Id del alumno es "+loginServices.getAlumnos().getIdAlumno());
         ResultSet resultSet=preparedStatement.executeQuery();
@@ -42,9 +42,11 @@ public class AlumnosServices {
         while(resultSet.next()){
             gruposAlumno=new GruposAlumno();
             //System.out.println(resultSet.getString(1));
-
-
+            gruposAlumno.setMateriaNombre(resultSet.getString(1));
+            Materias_alumnos.add(gruposAlumno);
         }
+        model.addAttribute("Asignaturas_grupo",Materias_alumnos);
+        System.out.println("Ejecución completada correctamete");
         return "panelalumnos";
     }
 }
