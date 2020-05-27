@@ -73,7 +73,7 @@ public class ProfesoresServices {
 
         model.addAttribute("Grupos_Materia",gruposMateria);
 
-        System.out.println("LLegamos al final y funciona");
+        //System.out.println("LLegamos al final y funciona");
         return "panelprofesores";
     }
     public String VerGruposDesactivados(HttpServletRequest request,Model model)throws SQLException{
