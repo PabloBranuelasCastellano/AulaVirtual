@@ -5,6 +5,8 @@ public class GruposAlumno {
     private String nombreAlumno;
     private String primerApellidoAlumno;
     private String segundoApellidoAlumno;
+    private int MateriaId;
+    private String MateriaNombre;
 
     public int getIdAlumno() {
         return IdAlumno;
