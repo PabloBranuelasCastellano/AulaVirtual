@@ -82,7 +82,13 @@ public class ProfesoresServices {
         String VerMaterias="select distinct M.Nombre,t.MateriaId,m.Nombre ,n.Denominacion,n.NivelId  from temas t,niveles n,profesores p,materias m where (t.NivelId =n.NivelId and p.ProfesorId =t.ProfesorId and m.EsActiva =true and P.ProfesorId=?)";
         PreparedStatement preparedStatement=connection.prepareStatement(VerMaterias);
         preparedStatement.setInt(1,profesores.getIdProfesor());
-        System.out.println("Conexion establecida y consulta preparada");
+        ResultSet resultSet=preparedStatement.executeQuery();
+        while(resultSet.next()){
+            System.out.println("Nombre de la Asignatura "+resultSet.getString(1));
+            System.out.println("Tema Id "+resultSet.getString(2));
+            System.out.println("Nivel Educativo "+resultSet.getString(3));
+            System.out.println("Id del Nivel "+resultSet.getString(4));
+        }
         return "panelprofesores";
     }
     public String VerGruposDesactivados(HttpServletRequest request,Model model)throws SQLException{
