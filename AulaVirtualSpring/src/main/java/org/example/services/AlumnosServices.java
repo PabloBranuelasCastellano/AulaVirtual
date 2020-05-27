@@ -46,7 +46,7 @@ public class AlumnosServices {
             Materias_alumnos.add(gruposAlumno);
         }
         model.addAttribute("Asignaturas_grupo",Materias_alumnos);
-        System.out.println("Ejecución completada correctamete");
+        //System.out.println("Ejecución completada correctamete");
         return "panelalumnos";
     }
 }
