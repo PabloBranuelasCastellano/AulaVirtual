@@ -36,13 +36,13 @@
 		<div class="row">
 			<div class="col-sm">
 				<div class="card text-white bg-info mb-3" style="max-width: 18rem;min-height:20rem;">
-					<div class="card-header bg-success ">Mis Grupos</div>
+					<div class="card-header bg-success ">Mis Materias</div>
 						<div class="card-body bg-secondary">
 							<p class="card-text ">
                                 <div>
-                                     <c:forEach var = "g" items="${Grupos_Materia}">
+                                     <c:forEach var = "Ag" items="${Asignaturas_grupo}">
                                         <label>
-                                            Año:${g.getCursoAcademicoGrupo()}
+                                           Nombre de la Asignatura:${Ag.getMateriaNombre()}
                                         </label>
                                         <div id='Grupos'>
                                         <label>${g.getNombreGrupo()} &nbsp;&nbsp; ${g.getNivelGrupo()} <a href="${pageContext.request.contextPath}/VerAlumnos/${g.getIdGrupo()}"><img src='<c:url value="/estaticos/img/flecha.png" />' id='flecha' title='Ver Lista de Alumnos del Grupo'/></a></label>
