@@ -74,6 +74,15 @@ public class ProfesoresServices {
         model.addAttribute("Grupos_Materia",gruposMateria);
 
         //System.out.println("LLegamos al final y funciona");
+        return MateriasProfesor(request, model);
+    }
+
+    public String MateriasProfesor(HttpServletRequest request,Model model)throws SQLException{
+        connection=dataSource.getConnection();
+        String VerMaterias="select distinct M.Nombre,t.MateriaId,m.Nombre ,n.Denominacion,n.NivelId  from temas t,niveles n,profesores p,materias m where (t.NivelId =n.NivelId and p.ProfesorId =t.ProfesorId and m.EsActiva =true and P.ProfesorId=?)";
+        PreparedStatement preparedStatement=connection.prepareStatement(VerMaterias);
+        preparedStatement.setInt(1,profesores.getIdProfesor());
+        System.out.println("Conexion establecida y consulta preparada");
         return "panelprofesores";
     }
     public String VerGruposDesactivados(HttpServletRequest request,Model model)throws SQLException{
@@ -117,5 +126,5 @@ public class ProfesoresServices {
         model.addAttribute("Lista_Alumnos",gruposAlumnoList);
         return "Alumnos_Grupo";
     }
-    //"select distinct M.Nombre,t.MateriaId,m.Nombre ,n.Denominacion,n.NivelId  from temas t,niveles n,profesores p,materias m where (t.NivelId =n.NivelId and p.ProfesorId =t.ProfesorId and m.EsActiva =true and P.ProfesorId=$Id_Actual)";
+    //
 }
