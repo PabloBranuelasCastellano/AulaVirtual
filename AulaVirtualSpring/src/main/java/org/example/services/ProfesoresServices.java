@@ -117,5 +117,5 @@ public class ProfesoresServices {
         model.addAttribute("Lista_Alumnos",gruposAlumnoList);
         return "Alumnos_Grupo";
     }
-
+    //"select distinct M.Nombre,t.MateriaId,m.Nombre ,n.Denominacion,n.NivelId  from temas t,niveles n,profesores p,materias m where (t.NivelId =n.NivelId and p.ProfesorId =t.ProfesorId and m.EsActiva =true and P.ProfesorId=$Id_Actual)";
 }
