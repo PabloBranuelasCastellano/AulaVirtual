@@ -89,12 +89,7 @@
 					alert('No se ha podido agregar el tema');
 				</script>");
 			}
-			// echo("<P>Id del Profesor= $Id_Profesor</P>");
-			// echo("<p>Id del Nivel\r\n".$_POST['NivelActual']."</p>");
-			// echo("<p>Id de la Materia\r\n".$_POST['MateriaActual']."</p>");
-			// echo("<p>Nombre del Tema\r\n".$_POST['tema_Name']."</p>");
-			// echo("<p>Resumen del Tema".$_POST['tema_Resumen']."</p>");
-			// echo("Opcion Activada?\r\n".$_POST['activar_Tema']);
+			
 		}
 	?>
 </html>
