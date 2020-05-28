@@ -43,16 +43,16 @@
 			header("Location:index.php");
 		}
 		if(isset($_GET['Ocultar'])){
-			$Id_Tema=$_GET['Id_Activo'];
+			$Id_Materia=$_GET['Id_Activo'];
 			echo($Id_Tema);
-			$Cambiar_Estado="update materias set EsActiva=false where MateriaId=$Id_Tema";
+			$Cambiar_Estado="update materias set EsActiva=false where MateriaId=$Id_Materia";
 			$Desactivar=mysqli_query($conexion,$Cambiar_Estado);
 			header("Location:PanelProfesores.php");
 			
 		}
 		if(isset($_GET['Quitar'])){
-			$Id_Tema=$_GET['Id_Activo'];
-			$Eliminar_Tema="delete from materias where MateriaId=$Id_Tema";
+			$Id_Materia=$_GET['Id_Activo'];
+			$Eliminar_Tema="delete from materias where MateriaId=$Id_Materia";
 			$Quitar_Tema=mysqli_query($conexion,$Eliminar_Tema);
 			header("Location:PanelProfesores.php");
 			
@@ -68,7 +68,7 @@
 						<div class="card-body bg-secondary">
 							<p class="card-text ">
 							<?php
-								$VerGrupos="select g.GrupoId, ca.Denominacion as AnioEscolar ,G.Nombre as NombreGrupo ,M.Nombre as Asignatura ,N.Denominacion as NivelEducativo ,P.Usuario as Nombre_Profesor from grupos g,materias m ,niveles n ,profesores p, cursosacademicos ca where(g.MateriaId=M.MateriaId and g.NivelId =n.NivelId and g.ProfesorId =P.ProfesorId and g.CursoAcademicoId =ca.CursoAcademicoId  and ca.EsActivo =true and P.ProfesorId=$Id_Actual )";
+								$VerGrupos="select g.GrupoId, ca.Denominacion as AnioEscolar ,G.Nombre as NombreGrupo ,M.Nombre as Asignatura ,N.Denominacion as NivelEducativo ,P.Usuario as Nombre_Profesor from grupos g,materias m ,niveles n ,profesores p, cursosacademicos ca where(g.MateriaId=M.MateriaId and g.NivelId =n.NivelId and g.ProfesorId =P.ProfesorId and g.CursoAcademicoId =ca.CursoAcademicoId  and ca.EsActivo =true and m.EsActiva=true and P.ProfesorId=$Id_Actual )";
 								$Grupos=mysqli_query($conexion,$VerGrupos);
 								echo("<div>");
 								while($fila=mysqli_fetch_array($Grupos)){
@@ -94,7 +94,7 @@
 						<div class="card-body "style="background-color:#87CEFA;">
 							<p class="card-text " >
 							<?php
-								$VerMaterias="select g.GrupoId, ca.Denominacion as AnioEscolar ,G.Nombre as NombreGrupo ,M.Nombre as Asignatura,M.MateriaId ,N.Denominacion as NivelEducativo,n.NivelId ,P.Usuario as Nombre_Profesor from grupos g,materias m ,niveles n ,profesores p, cursosacademicos ca where(g.MateriaId=M.MateriaId and g.NivelId =n.NivelId and g.ProfesorId =P.ProfesorId and g.CursoAcademicoId =ca.CursoAcademicoId  and ca.EsActivo =true and P.ProfesorId=$Id_Actual)";
+								$VerMaterias="select g.GrupoId, ca.Denominacion as AnioEscolar ,G.Nombre as NombreGrupo ,M.Nombre as Asignatura,M.MateriaId ,N.Denominacion as NivelEducativo,n.NivelId ,P.Usuario as Nombre_Profesor from grupos g,materias m ,niveles n ,profesores p, cursosacademicos ca where(g.MateriaId=M.MateriaId and g.NivelId =n.NivelId and g.ProfesorId =P.ProfesorId and g.CursoAcademicoId =ca.CursoAcademicoId  and ca.EsActivo =true and m.EsActiva=true and P.ProfesorId=$Id_Actual)";
 								$Temario=mysqli_query($conexion,$VerMaterias);
 								
 								echo("<div>");
