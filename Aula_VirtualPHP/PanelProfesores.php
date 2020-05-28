@@ -44,7 +44,7 @@
 		}
 		if(isset($_GET['Ocultar'])){
 			$Id_Materia=$_GET['Id_Activo'];
-			echo($Id_Tema);
+			echo($Id_Materia);
 			$Cambiar_Estado="update materias set EsActiva=false where MateriaId=$Id_Materia";
 			$Desactivar=mysqli_query($conexion,$Cambiar_Estado);
 			header("Location:PanelProfesores.php");
@@ -109,7 +109,7 @@
 							?>
 							</p>
 						</div>
-						<p class="card-text" style="background-color:#87CEFA;"><a href="temas_no_activos.php" style="margin-left:40%;color:black;"><u>Ver temario no activo</a></u></p>
+						<p class="card-text" style="background-color:#87CEFA;"><a href="materias_no_activas.php" style="margin-left:40%;color:black;"><u>Ver temario no activo</a></u></p>
 					</div>	
 			</div>
 			<div class="col-sm">
