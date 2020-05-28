@@ -45,13 +45,18 @@
 					header("Location:PanelProfesores.php");
 				}
 				else{
-					$Buscar_Usuario="select * from Alumnos where (Email like'".$Email_Usuario."' and Password like '".$Clave_Usuario."'and EsActivo=true)";
+					$Email_Usuario=$_POST["Email_Acceso"];
+					$Clave_Usuario=md5($_POST["Clave_Acceso"]);
+				
+					$Buscar_Usuario="select * from Alumnos where Email like'$Email_Usuario' and Password like '$Clave_Usuario'and EsActivo=true";
 					$Comprobar=mysqli_query($conexion,$Buscar_Usuario);
 					$resultado=mysqli_fetch_array($Comprobar);
-					
 					if((int)$resultado==1){
-						$UsuarioConectado=($_SESSION["Nombre_Profesor"]=$resultado["Usuario"]);
-						echo("El usuario que se ha conectado ha sido: $UsuarioConectado");
+						$IdUsuario=($_SESSION["AlumnoId"]=$resultado["AlumnoId"]);
+						$UsuarioConectado=($_SESSION["Nombre_Alumno"]=$resultado["Usuario"]);
+						// echo("<p>El usuario que se ha conectado ha sido: $UsuarioConectado</p>
+						// <p>Su Id es $IdUsuario </p>");
+						header("Location:PanelAlumnos.php");
 					}
 					else{
 						echo("
