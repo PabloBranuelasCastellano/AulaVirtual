@@ -2,7 +2,10 @@
 	<?php
 		session_start();
 		include("conexion.php");
-		
+		$Ver_Dia="select curdate()";
+		 $Mostrar=mysqli_query($conexion,$Ver_Dia);
+		$fecha=mysqli_fetch_row($Mostrar);
+		$fecha=$fecha[0];
 		$Usuario_Actual=$_SESSION["Nombre_Profesor"];
 		$Id_Profesor=$_SESSION["ProfesorId"];
 		
@@ -73,11 +76,25 @@
 	<?php
 		
 		if(isset($_POST['Agregar'])){
-			echo("<p>Id del Nivel\r\n".$_POST['NivelActual']."</p>");
-			echo("<p>Id de la Materia\r\n".$_POST['MateriaActual']."</p>");
-			echo("<p>Nombre del Tema\r\n".$_POST['tema_Name']."</p>");
-			echo("<p>Resumen del Tema".$_POST['tema_Resumen']."</p>");
-			echo("Opcion Activada?\r\n".$_POST['activar_Tema']);
+			$Agregar_Tema="insert into temas values (null,'".$_POST['tema_Name']."','".$_POST['tema_Resumen']."',".$Id_Profesor.",".$_POST['MateriaActual'].",'".$_POST['NivelActual']."','".$fecha."',".$_POST['activar_Tema'].",".$_POST['tema_Number'].",".$_POST['tema_order'].")";
+			$Guardar_Tema=mysqli_query($conexion,$Agregar_Tema);
+			
+			if($Guardar_Tema){
+				echo("<script>
+					alert('Tema Creado correctamente');
+				</script>");
+			}
+			else{
+				echo("<script>
+					alert('No se ha podido agregar el tema');
+				</script>");
+			}
+			// echo("<P>Id del Profesor= $Id_Profesor</P>");
+			// echo("<p>Id del Nivel\r\n".$_POST['NivelActual']."</p>");
+			// echo("<p>Id de la Materia\r\n".$_POST['MateriaActual']."</p>");
+			// echo("<p>Nombre del Tema\r\n".$_POST['tema_Name']."</p>");
+			// echo("<p>Resumen del Tema".$_POST['tema_Resumen']."</p>");
+			// echo("Opcion Activada?\r\n".$_POST['activar_Tema']);
 		}
 	?>
 </html>
