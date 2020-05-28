@@ -52,11 +52,11 @@
 					echo("</table>");
 			}
 			else{
-				echo("No hay materias desactivadas");					
+				echo("<h2 style='text-align:center;'>No hay materias desactivadas</h2><br>");					
 				}
 					
 		?>
-		
+	<p><a class="btn btn-primary btn-lg btn-block" href="PanelProfesores.php" role="button">Atras</a>	</p>
 	</body>
 	<?php
 		if(isset($_POST["Cambiar"])){
