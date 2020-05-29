@@ -6,3 +6,5 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <html><meta charset='utf-8'>
+    <h2>Aqui crearemos los temas</h2>
+</html>
