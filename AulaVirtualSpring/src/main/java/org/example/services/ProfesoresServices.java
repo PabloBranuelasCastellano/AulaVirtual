@@ -4,6 +4,7 @@ import org.example.Entities.Grupos;
 import org.example.Entities.GruposAlumno;
 import org.example.Entities.Materias;
 import org.example.Entities.Profesores;
+import org.omg.Messaging.SYNC_WITH_TRANSPORT;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
@@ -155,11 +156,24 @@ public class ProfesoresServices {
         materias.setProfesorId(ProfesorId);
         return "NuevoTema";
     }
-    public String RegistrarTema(HttpServletRequest request,Model model){
-        System.out.println("Cargamos los datos del formulario");
+    public String RegistrarTema(HttpServletRequest request,Model model)throws SQLException{
         LocalDate localDate = LocalDate.now();
-        System.out.println(localDate.toString());
-        System.out.println("El Id de la Materia es "+materias.getMateriaId()+" el del Profesor es "+profesores.getIdProfesor()+" y el del nivel es "+materias.getNivelId());
+        connection=dataSource.getConnection();
+        String Agregar_Tema="insert into Temas values(null,?,?,?,?,?,?,?,?,?)";
+        PreparedStatement preparedStatement=connection.prepareStatement(Agregar_Tema);
+        preparedStatement.setString(1,request.getParameter("tema_Name"));
+        preparedStatement.setString(2,request.getParameter("tema_Resumen"));
+        preparedStatement.setInt(3,materias.getProfesorId());
+        preparedStatement.setInt(4,materias.getMateriaId());
+        preparedStatement.setInt(5,materias.getNivelId());
+        preparedStatement.setString(6,localDate.toString());
+        preparedStatement.setBoolean(7, Boolean.parseBoolean(request.getParameter("activar_Tema")));
+        preparedStatement.setInt(8, Integer.parseInt(request.getParameter("tema_Number")));
+        preparedStatement.setInt(9, Integer.parseInt(request.getParameter("tema_order")));
+        System.out.println("Cargamos los datos del formulario");
+
+        preparedStatement.execute();
+       
         return "NuevoTema";
     }
 }
