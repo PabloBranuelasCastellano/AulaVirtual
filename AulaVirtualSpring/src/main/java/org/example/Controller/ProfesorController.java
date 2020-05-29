@@ -56,7 +56,7 @@ public class ProfesorController {
         return profesoresServices.CrearTema(request, model, MateriaId, NivelId, ProfesorId);
     }
     @PostMapping("/NuevoTema")
-    public String RegistrarTema(HttpServletRequest request,Model model){
+    public String RegistrarTema(HttpServletRequest request,Model model) throws SQLException {
 
         return profesoresServices.RegistrarTema(request, model);
     }
