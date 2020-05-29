@@ -82,7 +82,7 @@ public class ProfesoresServices {
 
     public String MateriasProfesor(HttpServletRequest request,Model model)throws SQLException{
         connection=dataSource.getConnection();
-        String VerMaterias="select M.Nombre as Asignatura,M.MateriaId ,N.Denominacion as NivelEducativo ,n.NivelId,p.ProfesorId from grupos g,materias m ,niveles n ,profesores p, cursosacademicos ca where(g.MateriaId=M.MateriaId and g.NivelId =n.NivelId and g.ProfesorId =P.ProfesorId and g.CursoAcademicoId =ca.CursoAcademicoId  and ca.EsActivo =true and P.ProfesorId=?)";
+        String VerMaterias="select M.Nombre as Asignatura,M.MateriaId ,N.Denominacion as NivelEducativo ,n.NivelId,p.ProfesorId from grupos g,materias m ,niveles n ,profesores p, cursosacademicos ca where(g.MateriaId=M.MateriaId and g.NivelId =n.NivelId and g.ProfesorId =P.ProfesorId and g.CursoAcademicoId =ca.CursoAcademicoId  and ca.EsActivo =true  and P.ProfesorId=?)";
         PreparedStatement preparedStatement=connection.prepareStatement(VerMaterias);
         preparedStatement.setInt(1,profesores.getIdProfesor());
         ResultSet resultSet=preparedStatement.executeQuery();
