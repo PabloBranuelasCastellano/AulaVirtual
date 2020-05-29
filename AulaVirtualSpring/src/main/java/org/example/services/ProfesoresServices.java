@@ -15,6 +15,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -147,6 +148,8 @@ public class ProfesoresServices {
         return "Alumnos_Grupo";
     }
     public String CrearTema(HttpServletRequest request,Model model,int MateriaId,int NivelId,int ProfesorId){
+        LocalDate localDate = LocalDate.now();
+        System.out.println(localDate.toString());
         return "NuevoTema";
     }
 }
