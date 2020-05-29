@@ -147,9 +147,11 @@ public class ProfesoresServices {
         model.addAttribute("Lista_Alumnos",gruposAlumnoList);
         return "Alumnos_Grupo";
     }
-    public String CrearTema(HttpServletRequest request,Model model,int MateriaId,int NivelId,int ProfesorId){
+    public String CrearTema(HttpServletRequest request,Model model){
         LocalDate localDate = LocalDate.now();
         System.out.println(localDate.toString());
+        System.out.println(materias.getMateriaId()+""+profesores.getIdProfesor()+" "+materias.getNivelId());
         return "NuevoTema";
     }
+
 }
