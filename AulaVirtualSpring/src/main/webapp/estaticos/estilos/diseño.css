@@ -78,20 +78,21 @@
 #lapiz{
 	width:1.2rem;
 	height:1.2rem;
-	margin-left:10rem;
-	margin-top:-1.5rem;
+	margin-left:5rem;
+	margin-top:-0.5rem;
 }
 
 #ocultar{
 	width:1.2rem;
 	height:1.2rem;
-	margin-left:12rem;
+	margin-left:5rem;
+
 	margin-top:-1.5rem;
 }
 #papelera{
 	width:1.2rem;
 	height:1.2rem;
-	margin-left:14rem;
+	margin-left:20rem;
 	margin-top:-1.5rem;
 }
 
