@@ -64,7 +64,7 @@
                                     <div id='Grupos'>
 
                                         <p><a href="${pageContext.request.contextPath}/VerTemas/${MProfesor.getMateriaId()}" style="color:black;">Asignatura:${MProfesor.getNombreMateria()} </a></p>
-                                        <p style='margin-top:2rem;margin-left:-5rem;'><a href="${pageContext.request.contextPath}/NuevoTema}"><img src='<c:url value="/estaticos/img/lapiz.png" />' id='lapiz' title='Crear Tema'/></a> &nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/VerAlumnos/${g.getIdGrupo()}"><img src='<c:url value="/estaticos/img/ocultar.png" />' id='ocultar' title='Ocultar Materia'/></a> &nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/VerAlumnos/${g.getIdGrupo()}"><img src='<c:url value="/estaticos/img/papelera.png" />' id='papelera' title='Quitar Materia'/></a></p>
+                                        <p style='margin-top:2rem;margin-left:-5rem;'><a href="${pageContext.request.contextPath}/NuevoTema"><img src='<c:url value="/estaticos/img/lapiz.png" />' id='lapiz' title='Crear Tema'/></a> &nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/VerAlumnos/${g.getIdGrupo()}"><img src='<c:url value="/estaticos/img/ocultar.png" />' id='ocultar' title='Ocultar Materia'/></a> &nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/VerAlumnos/${g.getIdGrupo()}"><img src='<c:url value="/estaticos/img/papelera.png" />' id='papelera' title='Quitar Materia'/></a></p>
 
                                     </div>
                                 </c:forEach>
