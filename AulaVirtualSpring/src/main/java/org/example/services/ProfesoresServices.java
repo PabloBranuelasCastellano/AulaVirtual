@@ -2,6 +2,7 @@ package org.example.services;
 
 import org.example.Entities.Grupos;
 import org.example.Entities.GruposAlumno;
+import org.example.Entities.Materias;
 import org.example.Entities.Profesores;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,7 +25,7 @@ public class ProfesoresServices {
     Profesores profesores;
     Grupos grupos;
     GruposAlumno gruposAlumno;
-
+    Materias materias;
     @Autowired
     DataSource dataSource=null;
     Connection connection=null;
@@ -79,18 +80,31 @@ public class ProfesoresServices {
 
     public String MateriasProfesor(HttpServletRequest request,Model model)throws SQLException{
         connection=dataSource.getConnection();
-        String VerMaterias="select distinct M.Nombre,t.MateriaId,m.Nombre ,n.Denominacion,n.NivelId  from temas t,niveles n,profesores p,materias m where (t.NivelId =n.NivelId and p.ProfesorId =t.ProfesorId and m.EsActiva =true and P.ProfesorId=?)";
+        String VerMaterias="select M.Nombre as Asignatura,M.MateriaId ,N.Denominacion as NivelEducativo ,n.NivelId,p.ProfesorId from grupos g,materias m ,niveles n ,profesores p, cursosacademicos ca where(g.MateriaId=M.MateriaId and g.NivelId =n.NivelId and g.ProfesorId =P.ProfesorId and g.CursoAcademicoId =ca.CursoAcademicoId  and ca.EsActivo =true and P.ProfesorId=?)";
         PreparedStatement preparedStatement=connection.prepareStatement(VerMaterias);
         preparedStatement.setInt(1,profesores.getIdProfesor());
         ResultSet resultSet=preparedStatement.executeQuery();
+        List<Materias>Materias_Profesor=new ArrayList<>();
         while(resultSet.next()){
-            System.out.println("Nombre de la Asignatura "+resultSet.getString(1));
-            System.out.println("Tema Id "+resultSet.getString(2));
-            System.out.println("Nivel Educativo "+resultSet.getString(3));
-            System.out.println("Id del Nivel "+resultSet.getString(4));
+            materias=new Materias();
+            materias.setNombreMateria(resultSet.getString(1));
+            materias.setMateriaId(resultSet.getInt(2));
+            materias.setNivelId(resultSet.getInt(4));
+            materias.setProfesorId(resultSet.getInt(5));
+            //System.out.println("Nombre de la Asignatura "+resultSet.getString(1));
+            //System.out.println("Materia Id "+resultSet.getInt(2));
+            //System.out.println("Nivel Educativo "+resultSet.getString(3));
+            //System.out.println("Id del Nivel "+resultSet.getInt(4));
+            //System.out.println("Id del Profesor "+resultSet.getInt(5));
+            Materias_Profesor.add(materias);
+
         }
+        model.addAttribute("materiasprofesor",Materias_Profesor);
+        System.out.println("Materias agreadas a la lista y enviadas al modelo");
         return "panelprofesores";
     }
+
+
     public String VerGruposDesactivados(HttpServletRequest request,Model model)throws SQLException{
         connection=dataSource.getConnection();
         String GruposNoActivos="select  ca.Denominacion as AnioEscolar ,G.Nombre as NombreGrupo ,M.Nombre as Asignatura ,N.Denominacion as NivelEducativo ,P.Usuario as Nombre_Profesor from grupos g,materias m ,niveles n ,profesores p, cursosacademicos ca where(g.MateriaId=M.MateriaId and g.NivelId =n.NivelId and g.ProfesorId =P.ProfesorId and g.CursoAcademicoId =ca.CursoAcademicoId  and ca.EsActivo =false and P.ProfesorId=? )";
