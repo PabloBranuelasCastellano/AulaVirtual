@@ -48,14 +48,16 @@ public class ProfesorController {
         return profesoresServices.VerGruposDesactivados(request, model);
     }
 
-    @GetMapping("/NuevoTema/{MateriaId}/{NivelId}/{ProfesorId}")
-    public String CrearTema(HttpServletRequest request,Model model,@PathVariable int MateriaId,@PathVariable int NivelId,@PathVariable int ProfesorId){
-        System.out.println("El id de la Asignatura es "+MateriaId);
-        System.out.println("El id del nivel es  "+NivelId);
-        System.out.println("El id del Profesor es  "+ProfesorId);
-        return profesoresServices.CrearTema(request, model, MateriaId, NivelId, ProfesorId);
-    }
+    @GetMapping("/NuevoTema")
+    public String CrearTema(HttpServletRequest request,Model model){
 
+        return profesoresServices.CrearTema(request, model);
+    }
+    @PostMapping("/NuevoTema")
+    public String RegistrarTema(HttpServletRequest request,Model model){
+
+        return profesoresServices.CrearTema(request, model);
+    }
 
 
 
