@@ -6,7 +6,10 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <html><meta charset='utf-8'>
-    <h2>Aqui crearemos los temas</h2>
+    	<head>
+    		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    		<link rel="stylesheet" type="text/css" href="<c:url value="/estaticos/estilos/diseño.css"/>">
+    	</head>
     <body>
         <form action='${pageContext.request.contextPath}/NuevoTema' method='post' style='margin-left:10rem;'>
     		  <div class="form-group">
@@ -53,8 +56,7 @@
     			</div>
     			<br>
     			<br>
-    			<input type='hidden' name='MateriaActual'value=""/>
-    			<input type='hidden' name='NivelActual'value="<?php echo($_GET["Id_Nivel"]);?>"/>
+    			
     			<button type="submit" name="Agregar" 	class="btn btn-primary btn-lg btn-block" >Registrar Tema</button>
     		</form>
     	</body>
