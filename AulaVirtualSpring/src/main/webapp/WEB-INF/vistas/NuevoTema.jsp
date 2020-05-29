@@ -11,7 +11,7 @@
     		<link rel="stylesheet" type="text/css" href="<c:url value="/estaticos/estilos/diseño.css"/>">
     	</head>
     <body>
-        
+
         <form action='${pageContext.request.contextPath}/NuevoTema' method='post' style='margin-left:10rem;'>
     		  <div class="form-group">
     			<label >Titulo del Tema</label>
@@ -58,7 +58,10 @@
     			<br>
     			<br>
 
-    			<button type="submit" name="Agregar" 	class="btn btn-primary btn-lg btn-block" >Registrar Tema</button>
+    			<p><button type="submit" name="Agregar" 	class="btn btn-primary btn-lg" style='margin-left:10rem;width:20rem;'>Registrar Tema</button>
+    			&nbsp;&nbsp;
+
+    			<a class="btn btn-secondary btn-lg " href="${pageContext.request.contextPath}/homeProfesores" role="button" style="width:20rem;">Atras</a></p>
     		</form>
     	</body>
 </html>
