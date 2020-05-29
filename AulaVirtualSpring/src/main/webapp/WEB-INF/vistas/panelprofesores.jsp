@@ -60,9 +60,10 @@
 					<div class="card-header">Mis Temarios</div>
 						<div class="card-body "style="background-color:#87CEFA;">
 							<p class="card-text " >
-                                <c:forEach var = "MProfesor" items="${Grupos_Materia}">
+                                <c:forEach var = "MProfesor" items="${materiasprofesor}">
                                     <div id='Grupos'>
-                                        <label>Asignatura:${MProfesor.getNombreMateria()} <a href="${pageContext.request.contextPath}/VerTemas/${MProfesor.getMateriaId()}"><img src='<c:url value="/estaticos/img/lapiz.png" />' id='lapiz' title='Crear Tema'/></a> <a href="${pageContext.request.contextPath}/VerAlumnos/${g.getIdGrupo()}"><img src='<c:url value="/estaticos/img/ocultar.png" />' id='ocultar' title='Ocultar Materia'/></a> <a href="${pageContext.request.contextPath}/VerAlumnos/${g.getIdGrupo()}"><img src='<c:url value="/estaticos/img/papelera.png" />' id='flecha' title='Quitar Materia'/></a></label>
+                                        <p><a href="${pageContext.request.contextPath}/VerTemas/${MProfesor.getMateriaId()}" style="color:black;">Asignatura:${MProfesor.getNombreMateria()} </a></p>
+                                        <p style='margin-top:2rem;margin-left:-5rem;'><a href="${pageContext.request.contextPath}/CrearTemas/${MProfesor.getMateriaId()}"><img src='<c:url value="/estaticos/img/lapiz.png" />' id='lapiz' title='Crear Tema'/></a> <a href="${pageContext.request.contextPath}/VerAlumnos/${g.getIdGrupo()}"><img src='<c:url value="/estaticos/img/ocultar.png" />' id='ocultar' title='Ocultar Materia'/></a> <a href="${pageContext.request.contextPath}/VerAlumnos/${g.getIdGrupo()}"><img src='<c:url value="/estaticos/img/papelera.png" />' id='papelera' title='Quitar Materia'/></a></p>
 
                                     </div>
                                 </c:forEach>
