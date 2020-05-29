@@ -56,7 +56,7 @@
     			</div>
     			<br>
     			<br>
-    			
+
     			<button type="submit" name="Agregar" 	class="btn btn-primary btn-lg btn-block" >Registrar Tema</button>
     		</form>
     	</body>
