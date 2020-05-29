@@ -46,9 +46,7 @@
                                          <label> ${g.getNombreMateria()} </label>
                                      </div>
                                </c:forEach>
-
-
-						<p/>
+                        <p/>
 
 					</div>
 						<p class="card-text bg-secondary"><a href="${pageContext.request.contextPath}/Gruposnoactivos"class="text-white"style="margin-left:40%;"><u>Ver grupos no activos</a></u></p>
@@ -62,7 +60,12 @@
 					<div class="card-header">Mis Temarios</div>
 						<div class="card-body "style="background-color:#87CEFA;">
 							<p class="card-text " >
+                                <c:forEach var = "MProfesor" items="${Grupos_Materia}">
+                                    <div id='Grupos'>
+                                        <label>Asignatura:${MProfesor.getNombreMateria()} <a href="${pageContext.request.contextPath}/VerTemas/${MProfesor.getMateriaId()}"><img src='<c:url value="/estaticos/img/lapiz.png" />' id='lapiz' title='Crear Tema'/></a> <a href="${pageContext.request.contextPath}/VerAlumnos/${g.getIdGrupo()}"><img src='<c:url value="/estaticos/img/ocultar.png" />' id='ocultar' title='Ocultar Materia'/></a> <a href="${pageContext.request.contextPath}/VerAlumnos/${g.getIdGrupo()}"><img src='<c:url value="/estaticos/img/papelera.png" />' id='flecha' title='Quitar Materia'/></a></label>
 
+                                    </div>
+                                </c:forEach>
 							</p>
 						</div>
 						<p class="card-text" style="background-color:#87CEFA;"><a href="temas_no_activos.php" style="margin-left:40%;color:black;"><u>Ver temario no activo</a></u></p>
