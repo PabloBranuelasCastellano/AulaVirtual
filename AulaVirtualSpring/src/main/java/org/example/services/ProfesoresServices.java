@@ -146,5 +146,7 @@ public class ProfesoresServices {
         model.addAttribute("Lista_Alumnos",gruposAlumnoList);
         return "Alumnos_Grupo";
     }
-    //
+    public String CrearTema(HttpServletRequest request,Model model,int MateriaId,int NivelId,int ProfesorId){
+        return "NuevoTema";
+    }
 }
