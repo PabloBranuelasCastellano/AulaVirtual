@@ -148,15 +148,18 @@ public class ProfesoresServices {
         return "Alumnos_Grupo";
     }
     public String CrearTema(HttpServletRequest request,Model model,int MateriaId,int NivelId,int ProfesorId){
-        LocalDate localDate = LocalDate.now();
-        System.out.println(localDate.toString());
+
+
         materias.setMateriaId(MateriaId);
         materias.setNivelId(NivelId);
         materias.setProfesorId(ProfesorId);
         return "NuevoTema";
     }
     public String RegistrarTema(HttpServletRequest request,Model model){
-        System.out.println("El Id de la Materia es "+materias.getMateriaId()+"el del Profesor es "+profesores.getIdProfesor()+" y el del nivel es "+materias.getNivelId());
+        System.out.println("Cargamos los datos del formulario");
+        LocalDate localDate = LocalDate.now();
+        System.out.println(localDate.toString());
+        System.out.println("El Id de la Materia es "+materias.getMateriaId()+" el del Profesor es "+profesores.getIdProfesor()+" y el del nivel es "+materias.getNivelId());
         return "NuevoTema";
     }
 }
