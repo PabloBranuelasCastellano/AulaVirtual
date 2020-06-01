@@ -41,7 +41,7 @@
 								echo("<td>".$fila["Asignatura"]."</td>");
 								echo("<td>".$fila["NivelEducativo"]."</td>");
 								echo("<td>".$fila["Nombre_Profesor"]."</td>");
-								echo("<form action='temas_no_Activos.php' method='post'>");
+								echo("<form action='Materias_no_Activas.php' method='post'>");
 								echo("<td><input type='checkbox'value='true' name='Activar'/>Activar");
 								echo("<input type='hidden'value='".$fila["MateriaId"]."' name='MateriaId'/>");
 								echo("<br><br><p><input type='submit'value='Cambiar'name='Cambiar'></td>");
