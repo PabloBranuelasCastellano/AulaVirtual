@@ -6,7 +6,8 @@
 		$Usuario_Actual=$_SESSION["Nombre_Profesor"];
 		$Id_Profesor=$_SESSION["ProfesorId"];
 		$Id_Materia=$_GET["Id_Activo"];
-		// echo($Id_Profesor."&nbsp;&nbsp;".$Id_Materia);
+		// $Id_Materia=$_SESSION[$Id_Materia];
+		echo($Id_Profesor."&nbsp;&nbsp;El id de la Materia es ".$Id_Materia);
 		if($Usuario_Actual=="" or $Usuario_Actual==null){
 			header("Location:index.php");
 		}
@@ -36,11 +37,15 @@
 								<div class='collapse multi-collapse' id='Tema".strval($fila["TemaId"])."'>
 								  <div class='card card-body'>");
 								  
-									$Ver_Puntos="select pnt.Titulo,pnt.resumen,pnt.texto from puntos pnt,temas t,profesores p where(pnt.temaId=t.temaId and t.profesorId=p.profesorId and t.materiaId='$Id_Materia' and t.profesorId='$Id_Profesor' and pnt.TemaId='".$fila['TemaId']."')";
+									$Ver_Puntos="select pnt.PuntoId,pnt.Titulo,pnt.resumen,pnt.texto from puntos pnt,temas t,profesores p where(pnt.temaId=t.temaId and t.profesorId=p.profesorId and t.materiaId='$Id_Materia' and t.profesorId='$Id_Profesor' and pnt.TemaId='".$fila['TemaId']."')order by pnt.orden";
 									$Puntos=mysqli_query($conexion,$Ver_Puntos);
 									$nfilasPuntos=mysqli_num_rows($Puntos);
 									if($nfilasPuntos>0){
-										
+										while($filaPuntos=mysqli_fetch_array($Puntos)){
+											echo("<div class='bg-secondary' style='width:40%;text-align:center;'><h5>".$filaPuntos['Titulo']."</h5></div><a class='btn btn-primary' href='?OcultarPunto=true&Id_Activo=$Id_Materia&Id_Tema=".$fila['TemaId']."&PuntoId=".$filaPuntos['PuntoId']."' role='button' style='width:10%;margin-left:50%;margin-top:-3%;'>Ocultar Punto</a> <a class='btn btn-primary' href='?VisualizarPunto=true&Id_Activo=$Id_Materia&Id_Tema=".$fila['TemaId']."&PuntoId=".$filaPuntos['PuntoId']." 'role='button' style='width:10%;margin-left:70%;margin-top:-3%;'>Ver Punto</a>");
+											echo("<br><br>");
+											echo("<div>".$filaPuntos['texto']."</div>");
+										}
 									}
 									else{
 										echo("<p>Este tema no tiene ningún punto</p>");
@@ -56,5 +61,20 @@
 				echo("No hay temas activados");
 			}
 		?>
+	<?php
+	if(isset($_GET['OcultarPunto'])){
+		$Id_Materia=$_GET["Id_Activo"];
+		$Cambiar_Estado="update puntos set EsActivo=false where TemaId=".$_GET['Id_Tema']." and PuntoId=".$_GET['PuntoId'];
+		$Desactivar=mysqli_query($conexion,$Cambiar_Estado);
+		echo($_GET['Id_Tema']."&nbsp;&nbsp;".$_GET['PuntoId']);
+	}
+	
+	if(isset($_GET['VisualizarPunto'])){
+		$Id_Materia=$_GET["Id_Activo"];
+		$Cambiar_Estado="update puntos set EsActivo=true where TemaId=".$_GET['Id_Tema']." and PuntoId=".$_GET['PuntoId'];
+		$Desactivar=mysqli_query($conexion,$Cambiar_Estado);
+		echo($_GET['Id_Tema']."&nbsp;&nbsp;".$_GET['PuntoId']);
+	}
+	?>
 	</body>
 </html>
