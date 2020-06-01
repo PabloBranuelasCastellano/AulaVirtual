@@ -177,7 +177,8 @@ public class ProfesoresServices {
         return "NuevoTema";
     }
 
-    public String TemasProfesor(HttpServletRequest request,Model model){
+    public String TemasProfesor(HttpServletRequest request,Model model,int MateriaId){
+        System.out.println(MateriaId);
         return "VerTemas";
     }
 }
