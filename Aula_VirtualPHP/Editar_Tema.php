@@ -3,7 +3,7 @@
 		session_start();
 		include("conexion.php");
 		$Ver_Dia="select curdate()";
-		$Mostrar=mysqli_query($conexion,$Ver_Dia);
+		 $Mostrar=mysqli_query($conexion,$Ver_Dia);
 		$fecha=mysqli_fetch_row($Mostrar);
 		$fecha=$fecha[0];
 		$Usuario_Actual=$_SESSION["Nombre_Profesor"];
