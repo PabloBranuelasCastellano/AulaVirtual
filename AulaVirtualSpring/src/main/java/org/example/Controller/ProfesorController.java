@@ -61,9 +61,9 @@ public class ProfesorController {
         return profesoresServices.RegistrarTema(request, model);
     }
 
-    @GetMapping("/VerTemas")
-    public  String TemasProfesor(HttpServletRequest request,Model model){
-        return profesoresServices.TemasProfesor(request, model);
+    @GetMapping("/VerTemas/{MateriaId}")
+    public  String TemasProfesor(HttpServletRequest request,Model model,@PathVariable int MateriaId){
+        return profesoresServices.TemasProfesor(request, model,MateriaId);
     }
 
 
