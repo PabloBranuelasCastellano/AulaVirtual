@@ -176,4 +176,8 @@ public class ProfesoresServices {
        
         return "NuevoTema";
     }
+
+    public String TemasProfesor(HttpServletRequest request,Model model){
+        return "VerTemas";
+    }
 }
