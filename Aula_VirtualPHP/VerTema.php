@@ -29,14 +29,23 @@
 				echo("<ul class='list-group'>");
 				while($fila=mysqli_fetch_array($Temario)){
 					echo(
-						"<li class='list-group-item list-group-item-action list-group-item-primary'>".$fila['titulo']."<a class='btn btn-primary' data-toggle='collapse' href='#Tema".strval($fila["TemaId"])."' role='button' aria-expanded='false' aria-controls='multiCollapseExample1' style='margin-left:50%;'>Ver Tema</a><a class='btn btn-primary' data-toggle='collapse' href='#Tema".strval($fila["TemaId"])."' role='button' aria-expanded='false' aria-controls='multiCollapseExample1' style='margin-left:10%;'>Añadir Puntos</a>
+						"<li class='list-group-item list-group-item-action list-group-item-primary'>".$fila['titulo']."<a class='btn btn-primary' data-toggle='collapse' href='#Tema".strval($fila["TemaId"])."' role='button' aria-expanded='false' aria-controls='multiCollapseExample1' style='margin-left:50%;'>Ver Tema</a><a class='btn btn-primary' role='button' href='Agregarpunto.php?Id_Tema=".strval($fila["TemaId"])."' role='button' aria-expanded='false' aria-controls='multiCollapseExample1' style='margin-left:10%;'>Añadir Puntos</a>
 						</li>");
 					echo("<div class='row'>
 							  <div class='col'>
 								<div class='collapse multi-collapse' id='Tema".strval($fila["TemaId"])."'>
-								  <div class='card card-body'>
-									Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-								  </div>
+								  <div class='card card-body'>");
+								  
+									$Ver_Puntos="select pnt.Titulo,pnt.resumen,pnt.texto from puntos pnt,temas t,profesores p where(pnt.temaId=t.temaId and t.profesorId=p.profesorId and t.materiaId='$Id_Materia' and t.profesorId='$Id_Profesor' and pnt.TemaId='".$fila['TemaId']."')";
+									$Puntos=mysqli_query($conexion,$Ver_Puntos);
+									$nfilasPuntos=mysqli_num_rows($Puntos);
+									if($nfilasPuntos>0){
+										
+									}
+									else{
+										echo("<p>Este tema no tiene ningún punto</p>");
+									}
+								  echo("</div>
 								</div>
 							</div>
 						</div>");	
