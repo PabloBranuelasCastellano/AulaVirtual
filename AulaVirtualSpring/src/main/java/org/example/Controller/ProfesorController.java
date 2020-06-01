@@ -61,6 +61,11 @@ public class ProfesorController {
         return profesoresServices.RegistrarTema(request, model);
     }
 
+    @GetMapping("/VerTemas")
+    public  String TemasProfesor(HttpServletRequest request,Model model){
+        return profesoresServices.TemasProfesor(request, model);
+    }
+
 
 
 
