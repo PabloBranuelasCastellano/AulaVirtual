@@ -189,19 +189,20 @@ public class ProfesoresServices {
         while (resultSet.next()){
             temas=new Temas();
             temas.setTemaId(resultSet.getInt("TemaId"));
-            System.out.println("Id del Tema "+resultSet.getInt("TemaId"));
+            //System.out.println("Id del Tema "+resultSet.getInt("TemaId"));
             temas.setTituloTema(resultSet.getString("Titulo"));
-            System.out.println("Titulo del Tema "+resultSet.getString("Titulo"));
+            //System.out.println("Titulo del Tema "+resultSet.getString("Titulo"));
             temas.setProfesorId(resultSet.getInt("ProfesorId"));
-            System.out.println("Id del Profesor "+resultSet.getInt("ProfesorId"));
+            //System.out.println("Id del Profesor "+resultSet.getInt("ProfesorId"));
             temas.setNivelId(resultSet.getInt("NivelId"));
-            System.out.println("El id del Nivel es "+resultSet.getInt("NivelId"));
+            //System.out.println("El id del Nivel es "+resultSet.getInt("NivelId"));
             temas.setMateriaId(resultSet.getInt("MateriaId"));
-            System.out.println("El id de la Materia es "+resultSet.getInt("MateriaId"));
+            //System.out.println("El id de la Materia es "+resultSet.getInt("MateriaId"));
             temas.setTemaActivo(resultSet.getBoolean("EsActivo"));
-            System.out.println("Esta el tema activado? "+resultSet.getBoolean("EsActivo"));
+            //System.out.println("Esta el tema activado? "+resultSet.getBoolean("EsActivo"));
             temasList.add(temas);
             model.addAttribute("ListaTemas",temasList);
+            String Ver_Puntos="select pnt.PuntoId,pnt.Titulo,pnt.resumen,pnt.texto from puntos pnt,temas t,profesores p where(pnt.temaId=t.temaId and t.profesorId=p.profesorId and t.materiaId=? and t.profesorId=? and pnt.TemaId=?)order by pnt.orden";
         }
         return "Desplegar_Temas";
     }
