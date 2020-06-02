@@ -62,15 +62,11 @@ public class ProfesorController {
     }
 
     @GetMapping("/VerTemas/{MateriaId}")
-    public  String TemasProfesor(HttpServletRequest request,Model model,@PathVariable int MateriaId)throws SQLException{
-        return profesoresServices.TemasProfesor(request, model,MateriaId);
+    public String TemasProfesor(HttpServletRequest request,Model model,@PathVariable int MateriaId)throws SQLException{
+       return  profesoresServices.TemasProfesor(request, model, MateriaId);
     }
 
-    @GetMapping("/Temas/{IdTema}")
-    public String DesplegarTema(HttpServletRequest request,Model model,@PathVariable int IdTema){
-        System.out.println("El Id del tema es "+IdTema);
-        return null;
-    }
+
 
 
 
