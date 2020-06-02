@@ -202,6 +202,8 @@ public class ProfesoresServices {
             //System.out.println("Esta el tema activado? "+resultSet.getBoolean("EsActivo"));
             temasList.add(temas);
             model.addAttribute("ListaTemas",temasList);
+            return "Desplegar_Temas";
+            /*
             Connection connectionPuntos=dataSource.getConnection();
             String Ver_Puntos="select pnt.TemaId,pnt.PuntoId,pnt.Titulo,pnt.resumen,pnt.texto from puntos pnt,temas t,profesores p where(pnt.temaId=t.temaId and t.profesorId=p.profesorId and t.materiaId=? and t.profesorId=? and pnt.TemaId=?)order by pnt.orden";
             preparedStatement=connection.prepareStatement(Ver_Puntos);
@@ -216,8 +218,8 @@ public class ProfesoresServices {
                 System.out.println(resultSet2.getString("Resumen"));
                 System.out.println(resultSet2.getString("Texto"));
             }
-
+*/
         }
-        return "Desplegar_Temas";
+    return  null;
     }
 }
