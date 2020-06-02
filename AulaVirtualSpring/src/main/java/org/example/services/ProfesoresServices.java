@@ -201,7 +201,7 @@ public class ProfesoresServices {
             temas.setTemaActivo(resultSet.getBoolean("EsActivo"));
             System.out.println("Esta el tema activado? "+resultSet.getBoolean("EsActivo"));
             temasList.add(temas);
-            System.out.println("Cargamos los datos en la lista");
+            model.addAttribute("ListaTemas",temasList);
         }
         return "Desplegar_Temas";
     }
