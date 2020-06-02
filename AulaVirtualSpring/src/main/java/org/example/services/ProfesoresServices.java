@@ -182,7 +182,8 @@ public class ProfesoresServices {
         connection=dataSource.getConnection();
         String Ver_Temas="select distinct t.titulo,m.Nombre,t.TemaId,n.NivelId from temas t, profesores p ,niveles n,materias m where(t.materiaId=m.MateriaId and n.nivelId=t.nivelId and t.profesorId=? and t.materiaId=?)";
         PreparedStatement preparedStatement=connection.prepareStatement(Ver_Temas);
-        System.out.println("Preparamos la consulta");
+        preparedStatement.setInt(1,profesores.getIdProfesor());
+        preparedStatement.setInt(2,MateriaId);
         return "Desplegar_Temas";
     }
 }
