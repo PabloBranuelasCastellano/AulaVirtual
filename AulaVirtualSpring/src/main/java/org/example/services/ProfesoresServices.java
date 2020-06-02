@@ -208,6 +208,8 @@ public class ProfesoresServices {
             preparedStatement.setInt(2,temas.getProfesorId());
             preparedStatement.setInt(3,temas.getTemaId());
             System.out.println("EL id de la Materia es "+temas.getMateriaId()+" el Id del Profesor es "+temas.getProfesorId()+" y el Id del tema Es "+temas.getTemaId());
+            resultSet=preparedStatement.executeQuery();
+            System.out.println("Ejecutamos la consulta");
         }
         return "Desplegar_Temas";
     }
