@@ -177,8 +177,9 @@ public class ProfesoresServices {
         return "NuevoTema";
     }
 
-    public String TemasProfesor(HttpServletRequest request,Model model,int MateriaId){
-        System.out.println(MateriaId);
+    public String TemasProfesor(HttpServletRequest request,Model model,int MateriaId)throws SQLException{
+        connection=dataSource.getConnection();
+        System.out.println("Establecemos conexion");
         return "VerTemas";
     }
 }
