@@ -1,9 +1,6 @@
 package org.example.services;
 
-import org.example.Entities.Grupos;
-import org.example.Entities.GruposAlumno;
-import org.example.Entities.Materias;
-import org.example.Entities.Profesores;
+import org.example.Entities.*;
 import org.omg.Messaging.SYNC_WITH_TRANSPORT;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -184,7 +181,10 @@ public class ProfesoresServices {
         PreparedStatement preparedStatement=connection.prepareStatement(Ver_Temas);
         preparedStatement.setInt(1,profesores.getIdProfesor());
         preparedStatement.setInt(2,MateriaId);
-        System.out.println("Los valores introducidos son .Id profesor "+profesores.getIdProfesor()+" El Id de la Materia es "+MateriaId);
+        //System.out.println("Los valores introducidos son .Id profesor "+profesores.getIdProfesor()+" El Id de la Materia es "+MateriaId);
+        List<Temas>temasList=new ArrayList<>();
+        ResultSet resultSet=preparedStatement.executeQuery();
+        System.out.println("Creamos la lista y ejecutamos la consulta");
         return "VerTemas";
     }
 }
