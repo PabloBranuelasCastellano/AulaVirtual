@@ -180,7 +180,7 @@ public class ProfesoresServices {
 
     public String TemasProfesor(HttpServletRequest request,Model model,int MateriaId)throws SQLException{
         connection=dataSource.getConnection();
-        String Ver_Temas="select distinct t.MateriaId,t.profesorId,t.titulo,m.Nombre,t.TemaId,t.NivelId from temas t, profesores p ,niveles n,materias m where(t.materiaId=m.MateriaId and n.nivelId=t.nivelId and t.profesorId=? and t.materiaId=?)";
+        String Ver_Temas="select distinct t.MateriaId,t.profesorId,t.titulo,m.Nombre,t.TemaId,t.NivelId ,t.EsActivo from temas t, profesores p ,niveles n,materias m where(t.materiaId=m.MateriaId and n.nivelId=t.nivelId and t.profesorId=? and t.materiaId=?)";
         PreparedStatement preparedStatement=connection.prepareStatement(Ver_Temas);
         preparedStatement.setInt(1,profesores.getIdProfesor());
         preparedStatement.setInt(2,MateriaId);
@@ -198,6 +198,10 @@ public class ProfesoresServices {
             System.out.println("El id del Nivel es "+resultSet.getInt("NivelId"));
             temas.setMateriaId(resultSet.getInt("MateriaId"));
             System.out.println("El id de la Materia es "+resultSet.getInt("MateriaId"));
+            temas.setTemaActivo(resultSet.getBoolean("EsActivo"));
+            System.out.println("Esta el tema activado? "+resultSet.getBoolean("EsActivo"));
+            temasList.add(temas);
+            System.out.println("Cargamos los datos en la lista");
         }
         return "Desplegar_Temas";
     }
