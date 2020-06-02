@@ -207,7 +207,13 @@ public class ProfesoresServices {
 
     public String CargarPuntos(HttpServletRequest request,Model model) throws  SQLException{
         connection=dataSource.getConnection();
-        System.out.println("Establecemos la conexión");
+        //System.out.println("Establecemos la conexión");
+        String Ver_Puntos="select pnt.PuntoId,pnt.Titulo,pnt.resumen,pnt.texto from puntos pnt,temas t,profesores p where(pnt.temaId=t.temaId and t.profesorId=p.profesorId and t.materiaId='$Id_Materia' and t.profesorId=? and pnt.TemaId=?)order by pnt.orden";
+        PreparedStatement preparedStatement=connection.prepareStatement(Ver_Puntos);
+        preparedStatement.setInt(1,profesores.getIdProfesor());
+        preparedStatement.setInt(2,temas.getTemaId());
+        System.out.println("El Id del Profesor es"+profesores.getIdProfesor()+" el Id del Tema es "+temas.getTemaId());
+        System.out.println("Preparamos la consulta");
     return  "VerTemas";
     }
 }
