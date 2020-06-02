@@ -25,6 +25,7 @@ public class ProfesoresServices {
     Grupos grupos;
     GruposAlumno gruposAlumno;
     Materias materias;
+    Temas temas;
     @Autowired
     DataSource dataSource=null;
     Connection connection=null;
@@ -177,14 +178,23 @@ public class ProfesoresServices {
     public String TemasProfesor(HttpServletRequest request,Model model,int MateriaId)throws SQLException{
         connection=dataSource.getConnection();
         //System.out.println("Establecemos conexion");
-        String Ver_Temas="select distinct t.titulo,m.Nombre,t.TemaId,n.NivelId from temas t, profesores p ,niveles n,materias m where(t.materiaId=m.MateriaId and n.nivelId=t.nivelId and t.profesorId=? and t.materiaId=?)";
+        String Ver_Temas="select distinct t.titulo,m.Nombre,t.TemaId,n.NivelId,p.profesorId from temas t, profesores p ,niveles n,materias m where(t.materiaId=m.MateriaId and n.nivelId=t.nivelId and t.profesorId=? and t.materiaId=?)";
         PreparedStatement preparedStatement=connection.prepareStatement(Ver_Temas);
         preparedStatement.setInt(1,profesores.getIdProfesor());
         preparedStatement.setInt(2,MateriaId);
         //System.out.println("Los valores introducidos son .Id profesor "+profesores.getIdProfesor()+" El Id de la Materia es "+MateriaId);
         List<Temas>temasList=new ArrayList<>();
         ResultSet resultSet=preparedStatement.executeQuery();
-        System.out.println("Creamos la lista y ejecutamos la consulta");
+        //System.out.println("Creamos la lista y ejecutamos la consulta");
+        while(resultSet.next()){
+            temas=new Temas();
+            temas.setTemaId(resultSet.getInt("TemaId"));
+            System.out.println("Id del Tema "+resultSet.getInt("TemaId"));
+            temas.setTituloTema(resultSet.getString("Titulo"));
+            System.out.println("Titulo del Tema "+resultSet.getString("Titulo"));
+            temas.setProfesorId(resultSet.getInt("ProfesorId"));
+            System.out.println("El Id del Profesor es "+resultSet.getInt("ProfesorId"));
+        }
         return "VerTemas";
     }
 }
