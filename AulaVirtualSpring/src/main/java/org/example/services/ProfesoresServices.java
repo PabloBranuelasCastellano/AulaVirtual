@@ -203,17 +203,18 @@ public class ProfesoresServices {
             temasList.add(temas);
             model.addAttribute("ListaTemas",temasList);
             Connection connectionPuntos=dataSource.getConnection();
-            String Ver_Puntos="select pnt.PuntoId,pnt.Titulo,pnt.resumen,pnt.texto from puntos pnt,temas t,profesores p where(pnt.temaId=t.temaId and t.profesorId=p.profesorId and t.materiaId=? and t.profesorId=? and pnt.TemaId=?)order by pnt.orden";
+            String Ver_Puntos="select pnt.TemaId,pnt.PuntoId,pnt.Titulo,pnt.resumen,pnt.texto from puntos pnt,temas t,profesores p where(pnt.temaId=t.temaId and t.profesorId=p.profesorId and t.materiaId=? and t.profesorId=? and pnt.TemaId=?)order by pnt.orden";
             preparedStatement=connection.prepareStatement(Ver_Puntos);
             preparedStatement.setInt(1,temas.getMateriaId());
             preparedStatement.setInt(2,temas.getProfesorId());
             preparedStatement.setInt(3,temas.getTemaId());
             System.out.println("EL id de la Materia es "+temas.getMateriaId()+" el Id del Profesor es "+temas.getProfesorId()+" y el Id del tema Es "+temas.getTemaId());
-            resultSet=preparedStatement.executeQuery();
-            while(resultSet.next()){
-                System.out.println(resultSet.getString("Titulo"));
-                System.out.println(resultSet.getString("Resumen"));
-                System.out.println(resultSet.getString("Texto"));
+            ResultSet resultSet2=preparedStatement.executeQuery();
+            while(resultSet2.next()){
+                System.out.println("El id del tema es "+temasList.get(0) .getTemaId());
+                System.out.println(resultSet2.getString("Titulo"));
+                System.out.println(resultSet2.getString("Resumen"));
+                System.out.println(resultSet2.getString("Texto"));
             }
 
         }
