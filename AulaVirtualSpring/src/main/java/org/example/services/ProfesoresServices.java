@@ -100,7 +100,7 @@ public class ProfesoresServices {
 
         }
         model.addAttribute("materiasprofesor",Materias_Profesor);
-        System.out.println("Materias agreadas a la lista y enviadas al modelo");
+        //System.out.println("Materias agreadas a la lista y enviadas al modelo");
         return "panelprofesores";
     }
 
@@ -168,7 +168,7 @@ public class ProfesoresServices {
         preparedStatement.setBoolean(7, Boolean.parseBoolean(request.getParameter("activar_Tema")));
         preparedStatement.setInt(8, Integer.parseInt(request.getParameter("tema_Number")));
         preparedStatement.setInt(9, Integer.parseInt(request.getParameter("tema_order")));
-        System.out.println("Cargamos los datos del formulario");
+        //System.out.println("Cargamos los datos del formulario");
 
         preparedStatement.execute();
        
