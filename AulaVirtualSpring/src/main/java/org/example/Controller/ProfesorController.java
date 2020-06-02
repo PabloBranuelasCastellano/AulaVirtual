@@ -62,7 +62,7 @@ public class ProfesorController {
     }
 
     @GetMapping("/VerTemas/{MateriaId}")
-    public  String TemasProfesor(HttpServletRequest request,Model model,@PathVariable int MateriaId){
+    public  String TemasProfesor(HttpServletRequest request,Model model,@PathVariable int MateriaId)throws SQLException{
         return profesoresServices.TemasProfesor(request, model,MateriaId);
     }
 
