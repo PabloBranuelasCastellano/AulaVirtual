@@ -179,7 +179,12 @@ public class ProfesoresServices {
 
     public String TemasProfesor(HttpServletRequest request,Model model,int MateriaId)throws SQLException{
         connection=dataSource.getConnection();
-        System.out.println("Establecemos conexion");
+        //System.out.println("Establecemos conexion");
+        String Ver_Temas="select distinct t.titulo,m.Nombre,t.TemaId,n.NivelId from temas t, profesores p ,niveles n,materias m where(t.materiaId=m.MateriaId and n.nivelId=t.nivelId and t.profesorId=? and t.materiaId=?)";
+        PreparedStatement preparedStatement=connection.prepareStatement(Ver_Temas);
+        preparedStatement.setInt(1,profesores.getIdProfesor());
+        preparedStatement.setInt(2,MateriaId);
+        System.out.println("Los valores introducidos son .Id profesor "+profesores.getIdProfesor()+" El Id de la Materia es "+MateriaId);
         return "VerTemas";
     }
 }
