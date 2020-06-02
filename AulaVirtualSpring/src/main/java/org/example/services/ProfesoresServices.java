@@ -202,6 +202,11 @@ public class ProfesoresServices {
         }
         model.addAttribute("ListaTemas",temasList);
         //System.out.println("Añadidos los temas a la lista y pasados al model");
-        return "VerTemas";
+        return CargarPuntos(request, model);
+    }
+
+    public String CargarPuntos(HttpServletRequest request,Model model) throws  SQLException{
+        System.out.println("Aqui se mostrarán los puntos");
+    return  "VerTemas";
     }
 }
