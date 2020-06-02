@@ -178,7 +178,11 @@ public class ProfesoresServices {
         return "NuevoTema";
     }
 
-    public String TemasProfesor(HttpServletRequest request,Model model,int MateriaId){
+    public String TemasProfesor(HttpServletRequest request,Model model,int MateriaId)throws SQLException{
+        connection=dataSource.getConnection();
+        String Ver_Temas="select distinct t.titulo,m.Nombre,t.TemaId,n.NivelId from temas t, profesores p ,niveles n,materias m where(t.materiaId=m.MateriaId and n.nivelId=t.nivelId and t.profesorId=? and t.materiaId=?)";
+        PreparedStatement preparedStatement=connection.prepareStatement(Ver_Temas);
+        System.out.println("Preparamos la consulta");
         return "Desplegar_Temas";
     }
 }
