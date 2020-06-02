@@ -13,6 +13,16 @@
     		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     	</head>
     <body>
-        <h2>Aqui cargaremos los temas</h2>
+        <c:choose>
+            <c:when test="${ListaTemas.size() gt 0}">
+                <ul class='list-group'>
+                    <c:forEach var = "ListTemas" items="${ListaTemas}">
+                        <p>${ListTemas.getTituloTema()}</p>
+                    </c:forEach>
+            </c:when>
+            <c:otherwise>
+                <h1>No hay temas para mostrar</h1>
+            </c:otherwise>
+        </c:choose>
     </body>
 </html>
