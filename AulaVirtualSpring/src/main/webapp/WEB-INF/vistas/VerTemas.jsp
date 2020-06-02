@@ -17,9 +17,11 @@
             <c:when test="${ListaTemas.size() gt 0}">
                 <ul class='list-group'>
                     <c:forEach var = "ListTemas" items="${ListaTemas}">
-                        <p>${ListTemas.getTituloTema()}</p>
+                        <li class='list-group-item list-group-item-action list-group-item-primary'>${ListTemas.getTituloTema()}<a class='btn btn-primary' data-toggle='collapse' href='#Tema".strval($fila["TemaId"])."' role='button' aria-expanded='false' aria-controls='multiCollapseExample1' style='margin-left:10%;'>Ver Tema</a>&nbsp;&nbsp;<a class='btn btn-primary' role='button' href='Agregarpunto.php?Id_Tema=".strval($fila["TemaId"])."' role='button' aria-expanded='false' aria-controls='multiCollapseExample1' style='margin-left:30%;'>Añadir Puntos</a> &nbsp;&nbsp;<a class='btn btn-primary' href='?VisualizarTema=true&Id_Activo=$Id_Materia&Id_Tema=".$fila['TemaId']."&ProfesorId=".$Id_Profesor."&NivelId=".$fila['NivelId']."' role='button' style='width:10%;margin-left:40%;margin-top:-3%;'>Activar Tema</a><a class='btn btn-primary' href='?OcultarTema=true&&Id_Activo=$Id_Materia&Id_Tema=".$fila['TemaId']."&ProfesorId=".$Id_Profesor."&NivelId=".$fila['NivelId']."' role='button' style='width:15%;margin-left:80%;margin-top:-3%;'>Desactivar Tema</a>
                     </c:forEach>
+                </ul>
             </c:when>
+
             <c:otherwise>
                 <h1>No hay temas para mostrar</h1>
             </c:otherwise>
