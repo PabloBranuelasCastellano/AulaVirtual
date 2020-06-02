@@ -178,7 +178,7 @@ public class ProfesoresServices {
     public String TemasProfesor(HttpServletRequest request,Model model,int MateriaId)throws SQLException{
         connection=dataSource.getConnection();
         //System.out.println("Establecemos conexion");
-        String Ver_Temas="select distinct t.titulo,m.Nombre,t.TemaId,n.NivelId,p.profesorId from temas t, profesores p ,niveles n,materias m where(t.materiaId=m.MateriaId and n.nivelId=t.nivelId and t.profesorId=? and t.materiaId=?)";
+        String Ver_Temas="select distinct t.titulo,m.Nombre,t.TemaId,n.NivelId,t.profesorId,t.MateriaId from temas t, profesores p ,niveles n,materias m where(t.materiaId=m.MateriaId and n.nivelId=t.nivelId and t.profesorId=? and t.materiaId=?)";
         PreparedStatement preparedStatement=connection.prepareStatement(Ver_Temas);
         preparedStatement.setInt(1,profesores.getIdProfesor());
         preparedStatement.setInt(2,MateriaId);
@@ -189,12 +189,19 @@ public class ProfesoresServices {
         while(resultSet.next()){
             temas=new Temas();
             temas.setTemaId(resultSet.getInt("TemaId"));
-            System.out.println("Id del Tema "+resultSet.getInt("TemaId"));
+            //System.out.println("Id del Tema "+resultSet.getInt("TemaId"));
             temas.setTituloTema(resultSet.getString("Titulo"));
-            System.out.println("Titulo del Tema "+resultSet.getString("Titulo"));
+            //System.out.println("Titulo del Tema "+resultSet.getString("Titulo"));
             temas.setProfesorId(resultSet.getInt("ProfesorId"));
-            System.out.println("El Id del Profesor es "+resultSet.getInt("ProfesorId"));
+            //System.out.println("El Id del Profesor es "+resultSet.getInt("ProfesorId"));
+            temas.setMateriaId(resultSet.getInt("MateriaId"));
+            //System.out.println("El id de la Materia es "+resultSet.getInt("MateriaId"));
+            temas.setNivelId(resultSet.getInt("NivelId"));
+            //System.out.println("El Id del Nivel es "+resultSet.getInt("NivelId"));
+            temasList.add(temas);
         }
+        model.addAttribute("ListaTemas",temasList);
+        //System.out.println("Añadidos los temas a la lista y pasados al model");
         return "VerTemas";
     }
 }
