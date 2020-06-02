@@ -206,7 +206,8 @@ public class ProfesoresServices {
     }
 
     public String CargarPuntos(HttpServletRequest request,Model model) throws  SQLException{
-        System.out.println("Aqui se mostrarán los puntos");
+        connection=dataSource.getConnection();
+        System.out.println("Establecemos la conexión");
     return  "VerTemas";
     }
 }
