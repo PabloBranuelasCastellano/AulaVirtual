@@ -67,7 +67,7 @@ public class ProfesorController {
     }
 
     @GetMapping("/Puntos_Tema/{IdTema}")
-    public String Puntos_Tema(HttpServletRequest request,Model model,@PathVariable int IdTema){
+    public String Puntos_Tema(HttpServletRequest request,Model model,@PathVariable int IdTema) throws  SQLException{
         return profesoresServices.Puntos_Tema(request, model, IdTema);
     }
 
