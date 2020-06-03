@@ -213,7 +213,7 @@ public class ProfesoresServices {
             PreparedStatement preparedStatement=connection.prepareStatement(Ver_Puntos);
             preparedStatement.setInt(1,temas.getMateriaId());
             preparedStatement.setInt(2,temas.getProfesorId());
-            preparedStatement.setInt(3,temas.getTemaId());
+            preparedStatement.setInt(3,TemaId);
             System.out.println("EL id de la Materia es "+temas.getMateriaId()+" el Id del Profesor es "+temas.getProfesorId()+" y el Id del tema Es "+temas.getTemaId());
             ResultSet resultSet=preparedStatement.executeQuery();
             while(resultSet.next()){
