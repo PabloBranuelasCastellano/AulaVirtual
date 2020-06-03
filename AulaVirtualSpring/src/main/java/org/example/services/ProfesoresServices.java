@@ -222,4 +222,7 @@ public class ProfesoresServices {
         }
         return "Desplegar_Temas";
     }
+    public String Puntos_Tema(HttpServletRequest request,Model model,int TemaId){
+        return "Desplegar_Temas";
+    }
 }
