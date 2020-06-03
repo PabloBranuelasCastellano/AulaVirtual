@@ -66,6 +66,11 @@ public class ProfesorController {
        return  profesoresServices.TemasProfesor(request, model, MateriaId);
     }
 
+    @GetMapping("/Puntos_Tema/{IdTema}")
+    public String Puntos_Tema(HttpServletRequest request,Model model,@PathVariable int IdTema){
+        return profesoresServices.Puntos_Tema(request, model, IdTema);
+    }
+
 
 
 
