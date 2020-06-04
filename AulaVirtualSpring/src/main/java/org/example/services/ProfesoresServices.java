@@ -278,6 +278,8 @@ public class ProfesoresServices {
         temas.setTemaId(TemaId);
         return "NuevoPunto";
     }
-
+    public String RegistrarPunto(HttpServletRequest request,Model model) throws  SQLException {
+        return "NuevoPunto";
+    }
 
 }
