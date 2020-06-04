@@ -22,6 +22,7 @@
                     <div id="TextoPunto">
                         <p>${PointTemas.getTextoPunto()}</p>
                     </div>
+                    <br>
                 </c:forEach>
             </c:when>
             <c:otherwise>
