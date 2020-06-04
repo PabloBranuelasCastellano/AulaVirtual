@@ -103,7 +103,7 @@ public class LoginServices {
 
     public String Cerrar_Sesion(HttpServletRequest request, HttpServletResponse response, Model model) {
 
-        Cookie[] cookies = request.getCookies();
+
         HttpSession session =request.getSession();
         model.asMap().clear();
         session.removeAttribute("UsuarioConectado");
@@ -111,14 +111,18 @@ public class LoginServices {
         session.invalidate();
 
 
-        for (Cookie cookie : cookies) {
-            cookie.setMaxAge(0);
-            cookie.setValue(null);
-            cookie.setPath("/");
-            response.resetBuffer();
-            response.reset();
+        Cookie cookie = null;
+        Cookie[] cookies = request.getCookies();
 
+        if( cookies != null ) {
+            for (int i = 0; i < cookies.length; i++) {
+                cookie = cookies[i];
+                cookie.setMaxAge(0);
+                response.addCookie(cookie);
+                System.out.print("Deleted cookie: " +
+                        cookie.getName( ) + "<br/>");
 
+            }
         }
         if(rol.equals("Profesores")) {
             profesores.setUsuarioProfesor(null);
