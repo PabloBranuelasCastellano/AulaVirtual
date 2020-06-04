@@ -4,12 +4,8 @@
     <head>
         <meta charset="utf-8">
     </head>
-
-    <c:if test="${Fallo==null}">
-        <script>
-            alert("Usuario o contraseña incorrectas");
-            location.href="${pageContext.request.contextPath}/";
-
-        </script>
-    </c:if>
+    <script>
+    alert("Usuario o contraseña incorrectas");
+       location.href="${pageContext.request.contextPath}/";
+    </script>
 </html>
