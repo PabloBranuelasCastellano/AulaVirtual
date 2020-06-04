@@ -15,7 +15,7 @@
     	</head>
 
 	<body>
-		<form action='${pageContext.request.contextPath}/AgregarPunto' method='post' style='margin-left:10rem;'>
+		<form action='${pageContext.request.contextPath}/AgregarPuntos' method='post' style='margin-left:10rem;'>
 		  <div class="form-group">
 			<label >Titulo del Punto</label>
 			<input type="text" class="form-control" name="point_Name">
@@ -65,7 +65,7 @@
 			<br>
 			<br>
 
-			
+
 			<button type="submit" name="Agregar" 	class="btn btn-primary btn-lg btn-block" >Registrar Punto</button>
 		</form>
 	</body>
