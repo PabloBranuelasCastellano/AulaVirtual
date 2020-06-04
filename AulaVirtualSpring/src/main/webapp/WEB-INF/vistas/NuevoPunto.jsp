@@ -65,28 +65,10 @@
 			<br>
 			<br>
 
-			<input type='hidden' name='TemaActual'value="<?php echo($_GET["Id_Tema"]);?>"/>
+			
 			<button type="submit" name="Agregar" 	class="btn btn-primary btn-lg btn-block" >Registrar Punto</button>
 		</form>
 	</body>
 
-	<?php
 
-		if(isset($_POST['Agregar'])){
-			$Agregar_Punto="insert into puntos values (null,".$_POST['TemaActual'].",'".$_POST['point_Name']."','".$_POST['point_Resumen']."','".$_POST['point_text']."',".$_POST['activar_Punto'].",".$_POST['point_Number'].",".$_POST['point_order'].")";
-			$Guardar_Punto=mysqli_query($conexion,$Agregar_Punto);
-
-			if($Guardar_Punto){
-				echo("<script>
-					alert('Punto Creado correctamente');
-				</script>");
-			}
-			else{
-				echo("<script>
-					alert('No se ha podido agregar el punto');
-				</script>");
-			}
-
-		}
-	?>
 </html>
