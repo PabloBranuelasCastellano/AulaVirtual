@@ -80,8 +80,7 @@ public class ProfesorController {
             System.out.println("El tema ha sido activado");
         }
         else{
-            model.addAttribute("Estado_Tema",profesoresServices.isActivado());
-            return "Errores";
+            System.out.println("El tema ha sido desactivado");
         }
         return profesoresServices.TemasProfesor(request, model, MateriaId);
     }
