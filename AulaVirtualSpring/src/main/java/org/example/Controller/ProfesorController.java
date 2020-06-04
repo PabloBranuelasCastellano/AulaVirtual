@@ -88,4 +88,9 @@ public class ProfesorController {
     public String NuevoPunto(HttpServletRequest request,Model model,@PathVariable int TemaId){
         return profesoresServices.CrearPunto(request, model, TemaId);
     }
+
+    @PostMapping("/AgregarPuntos")
+    public String CrearPunto(HttpServletRequest request,Model model) throws  SQLException{
+        return profesoresServices.RegistrarPunto(request, model);
+    }
 }
