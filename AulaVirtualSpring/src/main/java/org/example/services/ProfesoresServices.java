@@ -30,6 +30,15 @@ public class ProfesoresServices {
     @Autowired
     DataSource dataSource = null;
     Connection connection = null;
+    private boolean Activado;
+
+    public boolean isActivado() {
+        return Activado;
+    }
+
+    public void setActivado(boolean activado) {
+        Activado = activado;
+    }
 
     public String PanelProfesor(HttpServletRequest request, Model model) throws SQLException {
 
@@ -250,6 +259,7 @@ public class ProfesoresServices {
         System.out.println("Establecemos conexion y preparamos la consulta");
         preparedStatement.executeUpdate();
         temas.setTemaActivo(false);
-        return temas.isTemaActivo();
+        setActivado(false);
+        return isActivado();
     }
 }
