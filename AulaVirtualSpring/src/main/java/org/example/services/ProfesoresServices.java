@@ -279,6 +279,7 @@ public class ProfesoresServices {
         return "NuevoPunto";
     }
     public String RegistrarPunto(HttpServletRequest request,Model model) throws  SQLException {
+        System.out.println(temas.getTemaId());
         return "NuevoPunto";
     }
 
