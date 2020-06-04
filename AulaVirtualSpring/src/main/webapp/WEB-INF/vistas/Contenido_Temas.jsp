@@ -18,6 +18,10 @@
             <c:when test="${PuntosTema.size() gt 0}">
                 <c:forEach var = "PointTemas" items="${PuntosTema}">
                     <div id="EncabezadoPuntos"><h1>${PointTemas.getTituloPunto()}</h1></div>
+                    <br>
+                    <div id="TextoPunto">
+                        <p>${PointTemas.getTextoPunto()}</p>
+                    </div>
                 </c:forEach>
             </c:when>
             <c:otherwise>
