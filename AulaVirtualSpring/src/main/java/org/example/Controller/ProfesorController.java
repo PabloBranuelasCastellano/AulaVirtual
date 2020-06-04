@@ -74,14 +74,7 @@ public class ProfesorController {
 
     @GetMapping("/VisualizarTema/{MateriaId}/{TemaId}/{ProfesorId}/{NivelId}")
     public String ActivarTema(HttpServletRequest request, Model model, @PathVariable int MateriaId, @PathVariable int TemaId, @PathVariable int ProfesorId, @PathVariable int NivelId) throws SQLException {
-        profesoresServices.ActivarTema(request, model, MateriaId, TemaId, ProfesorId, NivelId);
-        System.out.println(profesoresServices.isActivado());
-        if(profesoresServices.isActivado()){
-            System.out.println("El tema ha sido activado");
-        }
-        else{
-            System.out.println("El tema ha sido desactivado");
-        }
-        return profesoresServices.TemasProfesor(request, model, MateriaId);
+        return profesoresServices.ActivarTema(request, model, MateriaId, TemaId, ProfesorId, NivelId);
+
     }
 }
