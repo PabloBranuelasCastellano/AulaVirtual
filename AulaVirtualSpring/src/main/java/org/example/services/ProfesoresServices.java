@@ -290,7 +290,6 @@ public class ProfesoresServices {
         preparedStatement.setInt(6, Integer.parseInt(request.getParameter("point_Number")));
         preparedStatement.setBoolean(7, Boolean.parseBoolean(request.getParameter("activar_Punto")));
         preparedStatement.execute();
-        System.out.println("Hacemos la inserción");
 
         return "NuevoPunto";
     }
