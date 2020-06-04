@@ -100,6 +100,13 @@
     padding-top:1rem;
 
 }
+
+#EncabezadoPuntos{
+    text-align:center;
+    width:50%;
+    height:30%;
+    background-color:Aquamarine;
+}
 a:link, a:visited, a:active {
     text-decoration:none;
 	
