@@ -110,7 +110,6 @@ public class LoginServices {
 
         session.invalidate();
 
-
         Cookie cookie = null;
         Cookie[] cookies = request.getCookies();
 
