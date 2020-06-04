@@ -16,7 +16,7 @@
         <c:choose>
             <c:when test="${PuntosTema.size() gt 0}">
                 <c:forEach var = "PointTemas" items="${PuntosTema}">
-                    <div><h1>${PointTemas.getTituloPunto()}</h1></div>
+                    <div id="EncabezadoPuntos"><h1>${PointTemas.getTituloPunto()}</h1></div>
                 </c:forEach>
             </c:when>
             <c:otherwise>
