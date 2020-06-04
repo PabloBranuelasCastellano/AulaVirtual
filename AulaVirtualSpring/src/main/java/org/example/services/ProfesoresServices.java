@@ -273,4 +273,11 @@ public class ProfesoresServices {
         preparedStatement.executeUpdate();
         return "redirect:/VerTemas/"+MateriaId;
     }
+
+    public String CrearPunto(HttpServletRequest request,Model model,int TemaId){
+        temas.setTemaId(TemaId);
+        return "NuevoPunto";
+    }
+
+
 }
