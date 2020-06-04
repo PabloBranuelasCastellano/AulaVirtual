@@ -6,6 +6,7 @@ public class PuntosTema {
     private String TituloPunto;
     private String ResumenPunto;
     private String TextoPunto;
+    private boolean PuntoActivo;
 
     public int getIdPunto() {
         return IdPunto;
@@ -45,5 +46,13 @@ public class PuntosTema {
 
     public void setTextoPunto(String textoPunto) {
         TextoPunto = textoPunto;
+    }
+
+    public boolean isPuntoActivo() {
+        return PuntoActivo;
+    }
+
+    public void setPuntoActivo(boolean puntoActivo) {
+        PuntoActivo = puntoActivo;
     }
 }
