@@ -220,7 +220,7 @@ public class ProfesoresServices {
 
     public String Puntos_Tema(HttpServletRequest request, Model model, int TemaId) throws SQLException {
         connection = dataSource.getConnection();
-        String Ver_Puntos = "select pnt.TemaId,pnt.PuntoId,pnt.Titulo,pnt.resumen,pnt.texto,pnt.EsActivo from puntos pnt,temas t,profesores p where(pnt.temaId=t.temaId and t.profesorId=p.profesorId and t.materiaId=? and t.profesorId=? and pnt.TemaId=?)order by pnt.orden";
+        String Ver_Puntos = "select pnt.TemaId,pnt.PuntoId,pnt.Titulo,pnt.resumen,pnt.texto,pnt.EsActivo from puntos pnt,temas t,profesores p where(pnt.temaId=t.temaId and t.profesorId=p.profesorId and t.materiaId=? and t.profesorId=? and pnt.TemaId=?)order by pnt.orden asc";
         PreparedStatement preparedStatement = connection.prepareStatement(Ver_Puntos);
         preparedStatement.setInt(1, temas.getMateriaId());
         preparedStatement.setInt(2, temas.getProfesorId());
