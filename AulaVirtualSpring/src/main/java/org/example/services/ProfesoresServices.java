@@ -285,6 +285,12 @@ public class ProfesoresServices {
         preparedStatement.setInt(1,temas.getTemaId());
         preparedStatement.setString(2,request.getParameter("point_Name"));
         preparedStatement.setString(3,request.getParameter("point_Resumen"));
+        preparedStatement.setString(4,request.getParameter("point_text"));
+        preparedStatement.setInt(5, Integer.parseInt(request.getParameter("point_order")));
+        preparedStatement.setInt(6, Integer.parseInt(request.getParameter("point_Number")));
+        preparedStatement.setBoolean(7, Boolean.parseBoolean(request.getParameter("activar_Punto")));
+        preparedStatement.execute();
+        System.out.println("Hacemos la inserción");
 
         return "NuevoPunto";
     }
