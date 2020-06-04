@@ -43,6 +43,7 @@ public class LogginController {
     public String ComprobarUsuario(HttpServletRequest request, Model model) throws SQLException {
             loginServices.ComprobarUsuario(request,model);
             if(loginServices.getRol()==null) {
+                model.addAttribute("Fallo",loginServices.getRol());
                 return "Errores";
 
             }
