@@ -15,6 +15,8 @@
     <body>
         <c:choose>
             <c:when test="${Puntos.size() gt 0}">
+                <c:forEach var = "PointTemas" items="${PuntosTema}">
+                </c:forEach>
             </c:when>
             <c:otherwise>
                 <h1>Este tema no tiene puntos activados</h1>
