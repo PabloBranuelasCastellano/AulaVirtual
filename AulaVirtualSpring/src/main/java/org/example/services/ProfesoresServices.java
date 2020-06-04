@@ -239,7 +239,16 @@ public class ProfesoresServices {
         return "Contenido_Temas";
     }
 
-    public String ActivarTema(HttpServletRequest request, Model model, int MateriaId, int TemaId, int ProfesorId, int Nivelid) throws SQLException {
-        return "Desplegar_Temas";
+    public String ActivarTema(HttpServletRequest request, Model model, int MateriaId, int TemaId, int ProfesorId, int NivelId) throws SQLException {
+        connection=dataSource.getConnection();
+        String Cambiar_Estado="update temas t set EsActivo=false where (TemaId=? and profesorId=? and NivelId=? and MateriaId=?)";
+        PreparedStatement preparedStatement=connection.prepareStatement(Cambiar_Estado);
+        preparedStatement.setInt(1,TemaId);
+        preparedStatement.setInt(2,ProfesorId);
+        preparedStatement.setInt(3,NivelId);
+        preparedStatement.setInt(4,MateriaId);
+        System.out.println("Establecemos conexion y preparamos la consulta");
+        preparedStatement.executeUpdate();
+        return TemasProfesor(request, model, MateriaId);
     }
 }
