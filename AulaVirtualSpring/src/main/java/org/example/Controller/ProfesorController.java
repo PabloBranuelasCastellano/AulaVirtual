@@ -77,4 +77,10 @@ public class ProfesorController {
         return profesoresServices.ActivarTema(request, model, MateriaId, TemaId, ProfesorId, NivelId);
 
     }
+
+    @GetMapping("/OcultarTema/{MateriaId}/{TemaId}/{ProfesorId}/{NivelId}")
+    public String DesactivarTema(HttpServletRequest request, Model model, @PathVariable int MateriaId, @PathVariable int TemaId, @PathVariable int ProfesorId, @PathVariable int NivelId) throws SQLException {
+        return profesoresServices.DesactivarTema(request, model, MateriaId, TemaId, ProfesorId, NivelId);
+
+    }
 }
