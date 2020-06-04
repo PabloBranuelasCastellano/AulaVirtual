@@ -14,7 +14,11 @@
     	</head>
     <body>
         <c:choose>
-            <c:when test="${ListaTemas.size() gt 0}">
+            <c:when test="${Puntos.size() gt 0}">
+            </c:when>
+            <c:otherwise>
+                <h1>Este tema no tiene puntos activados</h1>
+            </c:otherwise>
         </c:choose>
     </body>
 </html>
