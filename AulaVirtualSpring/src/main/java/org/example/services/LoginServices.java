@@ -104,11 +104,12 @@ public class LoginServices {
     public String Cerrar_Sesion(HttpServletRequest request, HttpServletResponse response, Model model) {
 
         Cookie[] cookies = request.getCookies();
-        HttpSession session = request.getSession();
+        HttpSession session =null;
         model.asMap().clear();
-        session.removeAttribute("UsuarioConectado");
-
+        session.removeAttribute(String.valueOf(profesores));
+        session=request.getSession(false);
         session.invalidate();
+
 
         for (Cookie cookie : cookies) {
             cookie.setMaxAge(0);
