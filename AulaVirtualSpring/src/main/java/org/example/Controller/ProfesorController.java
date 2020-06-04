@@ -86,6 +86,6 @@ public class ProfesorController {
 
     @GetMapping("/AgregarPunto/{TemaId}")
     public String NuevoPunto(HttpServletRequest request,Model model,@PathVariable int TemaId){
-        return null;
+        return profesoresServices.CrearPunto(request, model, TemaId);
     }
 }
