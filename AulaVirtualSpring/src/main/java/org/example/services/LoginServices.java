@@ -106,7 +106,7 @@ public class LoginServices {
         Cookie[] cookies = request.getCookies();
         HttpSession session =request.getSession();
         model.asMap().clear();
-        //session.removeAttribute(profesores.);
+        session.removeAttribute("UsuarioConectado");
 
         session.invalidate();
 
