@@ -25,59 +25,53 @@ import java.util.List;
 public class ProfesorController {
 
 
-
-
     @Autowired
     LoginServices loginServices;
     @Autowired
     ProfesoresServices profesoresServices;
 
     @GetMapping("/homeProfesores")
-    public String PanelProfesor(HttpServletRequest request, Model model)throws SQLException{
+    public String PanelProfesor(HttpServletRequest request, Model model) throws SQLException {
         return profesoresServices.PanelProfesor(request, model);
     }
 
 
     @GetMapping("/VerAlumnos/{GrupoId}")
-    public String AlumnosGrupos(HttpServletRequest request,Model model,@PathVariable int GrupoId)throws SQLException{
+    public String AlumnosGrupos(HttpServletRequest request, Model model, @PathVariable int GrupoId) throws SQLException {
         return profesoresServices.AlumnosGrupos(request, model, GrupoId);
     }
 
     @GetMapping("/Gruposnoactivos")
-    public String VerGruposDesactivados(HttpServletRequest request,Model model)throws SQLException{
+    public String VerGruposDesactivados(HttpServletRequest request, Model model) throws SQLException {
         return profesoresServices.VerGruposDesactivados(request, model);
     }
 
     @GetMapping("/NuevoTema/{MateriaId}/{NivelId}/{ProfesorId}")
-    public String CrearTema(HttpServletRequest request,Model model,@PathVariable int MateriaId,@PathVariable int NivelId,@PathVariable int ProfesorId){
-        System.out.println("El id de la Asignatura es "+MateriaId);
-        System.out.println("El id del nivel es  "+NivelId);
-        System.out.println("El id del Profesor es  "+ProfesorId);
+    public String CrearTema(HttpServletRequest request, Model model, @PathVariable int MateriaId, @PathVariable int NivelId, @PathVariable int ProfesorId) {
+        System.out.println("El id de la Asignatura es " + MateriaId);
+        System.out.println("El id del nivel es  " + NivelId);
+        System.out.println("El id del Profesor es  " + ProfesorId);
         return profesoresServices.CrearTema(request, model, MateriaId, NivelId, ProfesorId);
     }
+
     @PostMapping("/NuevoTema")
-    public String RegistrarTema(HttpServletRequest request,Model model) throws SQLException {
+    public String RegistrarTema(HttpServletRequest request, Model model) throws SQLException {
 
         return profesoresServices.RegistrarTema(request, model);
     }
 
     @GetMapping("/VerTemas/{MateriaId}")
-    public String TemasProfesor(HttpServletRequest request,Model model,@PathVariable int MateriaId)throws SQLException{
-       return  profesoresServices.TemasProfesor(request, model, MateriaId);
+    public String TemasProfesor(HttpServletRequest request, Model model, @PathVariable int MateriaId) throws SQLException {
+        return profesoresServices.TemasProfesor(request, model, MateriaId);
     }
 
     @GetMapping("/Puntos_Tema/{IdTema}")
-    public String Puntos_Tema(HttpServletRequest request,Model model,@PathVariable int IdTema) throws  SQLException{
+    public String Puntos_Tema(HttpServletRequest request, Model model, @PathVariable int IdTema) throws SQLException {
         return profesoresServices.Puntos_Tema(request, model, IdTema);
     }
 
-
-
-
-
-
-
-
-
-
+    @GetMapping("/VisualizarTema/{MateriaId}/{TemaId}/{ProfesorId}/{NivelId}")
+    public String ActivarTema(HttpServletRequest request, Model model, @PathVariable int MateriaId, @PathVariable int TemaId, @PathVariable int ProfesorId, @PathVariable int Nivelid) throws SQLException {
+        return profesoresServices.ActivarTema(request, model, MateriaId, TemaId, ProfesorId, Nivelid);
+    }
 }
