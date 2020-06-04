@@ -71,7 +71,7 @@ public class ProfesorController {
     }
 
     @GetMapping("/VisualizarTema/{MateriaId}/{TemaId}/{ProfesorId}/{NivelId}")
-    public String ActivarTema(HttpServletRequest request, Model model, @PathVariable int MateriaId, @PathVariable int TemaId, @PathVariable int ProfesorId, @PathVariable int Nivelid) throws SQLException {
-        return profesoresServices.ActivarTema(request, model, MateriaId, TemaId, ProfesorId, Nivelid);
+    public String ActivarTema(HttpServletRequest request, Model model, @PathVariable int MateriaId, @PathVariable int TemaId, @PathVariable int ProfesorId, @PathVariable int NivelId) throws SQLException {
+        return profesoresServices.ActivarTema(request, model, MateriaId, TemaId, ProfesorId, NivelId);
     }
 }
