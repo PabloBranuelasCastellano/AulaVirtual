@@ -3,6 +3,7 @@ package org.example.Controller;
 import org.example.Entities.Grupos;
 import org.example.Entities.GruposAlumno;
 import org.example.Entities.Profesores;
+import org.example.Entities.Temas;
 import org.example.services.LoginServices;
 import org.example.services.ProfesoresServices;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,7 @@ public class ProfesorController {
     LoginServices loginServices;
     @Autowired
     ProfesoresServices profesoresServices;
+    Temas temas;
 
     @GetMapping("/homeProfesores")
     public String PanelProfesor(HttpServletRequest request, Model model) throws SQLException {
@@ -72,6 +74,10 @@ public class ProfesorController {
 
     @GetMapping("/VisualizarTema/{MateriaId}/{TemaId}/{ProfesorId}/{NivelId}")
     public String ActivarTema(HttpServletRequest request, Model model, @PathVariable int MateriaId, @PathVariable int TemaId, @PathVariable int ProfesorId, @PathVariable int NivelId) throws SQLException {
-        return profesoresServices.ActivarTema(request, model, MateriaId, TemaId, ProfesorId, NivelId);
+        profesoresServices.ActivarTema(request, model, MateriaId, TemaId, ProfesorId, NivelId);
+        if(temas.isTemaActivo()==true){
+            System.out.println("El tema ha sido activado");
+        }
+        return profesoresServices.TemasProfesor(request, model, MateriaId);
     }
 }
