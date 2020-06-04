@@ -232,7 +232,7 @@ public class ProfesoresServices {
                 puntosTemaList.add(puntosTema);
                 System.out.println("Guardamos los datos cogidos y los enviamos al model");
             }
-            model.addAttribute("Puntos",puntosTemaList);
+            model.addAttribute("PuntosTema",puntosTemaList);
 
         return "Contenido_Temas";
     }
