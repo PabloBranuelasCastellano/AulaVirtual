@@ -256,7 +256,7 @@ public class ProfesoresServices {
         preparedStatement.setInt(2,ProfesorId);
         preparedStatement.setInt(3,NivelId);
         preparedStatement.setInt(4,MateriaId);
-        System.out.println("Establecemos conexion y preparamos la consulta");
+        //System.out.println("Establecemos conexion y preparamos la consulta");
         preparedStatement.executeUpdate();
         return "redirect:/VerTemas/"+MateriaId;
     }
