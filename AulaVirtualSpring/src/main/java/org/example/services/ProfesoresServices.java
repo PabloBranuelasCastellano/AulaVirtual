@@ -279,7 +279,13 @@ public class ProfesoresServices {
         return "NuevoPunto";
     }
     public String RegistrarPunto(HttpServletRequest request,Model model) throws  SQLException {
-        System.out.println(temas.getTemaId());
+        connection=dataSource.getConnection();
+        String Agregar_Punto="insert into puntos values (null,?,?,?,?,?,?,?)";
+        PreparedStatement preparedStatement=connection.prepareStatement(Agregar_Punto);
+        preparedStatement.setInt(1,temas.getTemaId());
+        preparedStatement.setString(2,request.getParameter("point_Name"));
+        System.out.println("El id del tema es "+temas.getTemaId());
+        System.out.println("El Titulo del punto es  "+request.getParameter("point_Name"));
         return "NuevoPunto";
     }
 
