@@ -284,8 +284,8 @@ public class ProfesoresServices {
         PreparedStatement preparedStatement=connection.prepareStatement(Agregar_Punto);
         preparedStatement.setInt(1,temas.getTemaId());
         preparedStatement.setString(2,request.getParameter("point_Name"));
-        System.out.println("El id del tema es "+temas.getTemaId());
-        System.out.println("El Titulo del punto es  "+request.getParameter("point_Name"));
+        preparedStatement.setString(3,request.getParameter("point_Resumen"));
+
         return "NuevoPunto";
     }
 
