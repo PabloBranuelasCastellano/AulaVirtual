@@ -83,4 +83,9 @@ public class ProfesorController {
         return profesoresServices.DesactivarTema(request, model, MateriaId, TemaId, ProfesorId, NivelId);
 
     }
+
+    @GetMapping("/AgregarPunto/{TemaId}")
+    public String NuevoPunto(HttpServletRequest request,Model model,@PathVariable int TemaId){
+        return null;
+    }
 }
