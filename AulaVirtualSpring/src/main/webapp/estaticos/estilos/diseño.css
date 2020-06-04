@@ -106,6 +106,13 @@
     height:10%;
     background-color:Aquamarine;
 }
+
+#TextoPunto{
+    font-family:Arial;
+    font-size:120%;
+
+
+}
 a:link, a:visited, a:active {
     text-decoration:none;
 	
