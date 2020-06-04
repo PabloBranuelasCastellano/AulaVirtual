@@ -24,7 +24,7 @@
                      </script>
                  </c:if>
 			    <label id="UsuarioProfesor">${UsuarioConectado.getUsuarioProfesor()}</label>
-
+                    <br>
 					<a href="${pageContext.request.contextPath}/logout" class="text-danger" >Cerrar Sesión</a>
 				</div>
 			</li>
