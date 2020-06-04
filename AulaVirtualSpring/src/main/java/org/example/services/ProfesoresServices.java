@@ -250,7 +250,7 @@ public class ProfesoresServices {
 
     public String ActivarTema(HttpServletRequest request, Model model, int MateriaId, int TemaId, int ProfesorId, int NivelId) throws SQLException {
         connection=dataSource.getConnection();
-        String Cambiar_Estado="update temas t set EsActivo=false where (TemaId=? and profesorId=? and NivelId=? and MateriaId=?)";
+        String Cambiar_Estado="update temas t set EsActivo=true where (TemaId=? and profesorId=? and NivelId=? and MateriaId=?)";
         PreparedStatement preparedStatement=connection.prepareStatement(Cambiar_Estado);
         preparedStatement.setInt(1,TemaId);
         preparedStatement.setInt(2,ProfesorId);
