@@ -223,6 +223,6 @@ public class ProfesoresServices {
                 System.out.println(resultSet.getString("Texto"));
             }
 
-        return "Desplegar_Temas";
+        return "Contenido_Temas";
     }
 }
