@@ -232,6 +232,7 @@ public class ProfesoresServices {
             puntosTema = new PuntosTema();
 
             System.out.println("El id del tema es " + temas.getTemaId());
+            puntosTema.setIdPunto(resultSet.getInt("PuntoId"));
             puntosTema.setTemaId(resultSet.getInt("TemaId"));
             System.out.println(resultSet.getString("Titulo"));
             puntosTema.setTituloPunto(resultSet.getString("Titulo"));
