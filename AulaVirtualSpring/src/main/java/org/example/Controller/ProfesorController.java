@@ -95,7 +95,7 @@ public class ProfesorController {
     }
 
     @GetMapping("OcultarPunto/{TemaId}/{PuntoId}")
-    public String OcultarPunto(HttpServletRequest request,Model model,@PathVariable int TemaId,@PathVariable int PuntoId){
+    public String OcultarPunto(HttpServletRequest request,Model model,@PathVariable int TemaId,@PathVariable int PuntoId)throws SQLException{
         return profesoresServices.OcultarPunto(request, model, TemaId, PuntoId);
     }
 }
