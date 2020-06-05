@@ -295,7 +295,11 @@ public class ProfesoresServices {
         return "NuevoPunto";
     }
 
-    public String OcultarPunto(HttpServletRequest request,Model model,int TemaId,int PuntoId){
+    public String OcultarPunto(HttpServletRequest request,Model model,int TemaId,int PuntoId) throws  SQLException{
+        connection=dataSource.getConnection();
+        String Cambiar_Estado="update puntos set EsActivo=false where TemaId=? and PuntoId=?";
+        PreparedStatement preparedStatement=connection.prepareStatement(Cambiar_Estado);
+        System.out.println("Establecemos la conexion y preparamos la consulta");
         return "redirect:/Puntos_Tema/"+TemaId;
     }
 
