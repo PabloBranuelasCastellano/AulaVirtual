@@ -19,7 +19,7 @@
 	<body>
 		<?php
 			// $VerTemas="select t.TemaId,t.Titulo ,n.Denominacion from materias m,temas t,niveles n,profesores p where (t.NivelId =n.NivelId and p.ProfesorId =t.ProfesorId and m.EsActiva=false and P.ProfesorId=$Id_Actual )";
-			$VerMaterias="select g.GrupoId, ca.Denominacion as AnioEscolar ,G.Nombre as NombreGrupo ,M.Nombre as Asignatura,M.MateriaId ,N.Denominacion as NivelEducativo,n.NivelId ,P.Usuario as Nombre_Profesor from grupos g,materias m ,niveles n ,profesores p, cursosacademicos ca where(g.MateriaId=M.MateriaId and g.NivelId =n.NivelId and g.ProfesorId =P.ProfesorId and g.CursoAcademicoId =ca.CursoAcademicoId  and ca.EsActivo =true and m.EsActiva=false and P.ProfesorId=$Id_Actual)";
+			$VerMaterias="select g.GrupoId, ca.Denominacion as AnioEscolar ,G.Nombre as NombreGrupo ,M.Nombre as Asignatura,M.MateriaId ,N.Denominacion as NivelEducativo,n.NivelId ,P.Usuario as Nombre_Profesor from grupos g,materias m ,niveles n ,profesores p, cursosacademicos ca where(g.MateriaId=M.MateriaId and g.NivelId =n.NivelId and g.ProfesorId =P.ProfesorId and g.CursoAcademicoId =ca.CursoAcademicoId  and ca.EsActivo =false  and P.ProfesorId=$Id_Actual)";
 			$Materias=mysqli_query($conexion,$VerMaterias);
 			$nfilas=mysqli_num_rows($Materias);
 			if($nfilas>0){
@@ -27,6 +27,7 @@
 					echo("<thead>");
 						echo("<tr class='bg-primary'>");
 							echo("<th scope='col'>Id de la Materia</th>");
+							echo("<th scope='col'>Curso Academico</th>");
 							echo("<th scope='col'>Asignatura</th>");
 							echo("<th scope='col'>Nivel Educativo</th>");
 							echo("<th scope='col'>Profesor que lo imparte</th>");
@@ -38,6 +39,7 @@
 					while($fila=mysqli_fetch_array($Materias)){
 						echo("<tr>");
 								echo("<td>".$fila["MateriaId"]."</td>");
+								echo("<td>".$fila["AnioEscolar"]."</td>");
 								echo("<td>".$fila["Asignatura"]."</td>");
 								echo("<td>".$fila["NivelEducativo"]."</td>");
 								echo("<td>".$fila["Nombre_Profesor"]."</td>");
