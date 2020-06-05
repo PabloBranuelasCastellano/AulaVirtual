@@ -311,7 +311,7 @@ public class ProfesoresServices {
         preparedStatement.setInt(1,TemaId);
         preparedStatement.setInt(2,PuntoId);
         preparedStatement.executeUpdate();
-        System.out.println("Ejecutamos la actualización");
+        //System.out.println("Ejecutamos la actualización");
         return "redirect:/Puntos_Tema/"+TemaId;
     }
 }
