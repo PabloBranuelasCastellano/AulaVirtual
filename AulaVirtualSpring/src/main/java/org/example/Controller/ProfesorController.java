@@ -102,6 +102,6 @@ public class ProfesorController {
 
     @GetMapping("VisualizarPunto/{TemaId}/{PuntoId}")
     public String VisualizarPunto(HttpServletRequest request,Model model,@PathVariable int TemaId,@PathVariable int PuntoId)throws SQLException{
-        return null;
+        return profesoresServices.VisualizarPunto(request, model, TemaId, PuntoId);
     }
 }
