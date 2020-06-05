@@ -33,17 +33,19 @@
     </body>
 
     <script>
+        function ActivarTema(){
+                ${ListTemas.getMateriaId()};
+                var xhttp = new XMLHttpRequest();
+                  xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        alert("El tema es visible para el alumno");
 
-    </script>
-    function ActivarTema(){
-        var xhttp = new XMLHttpRequest();
-          xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                alert("El tema es visible para el alumno");
+                    }
+                  };
+                  xhttp.open("GET", href="${pageContext.request.contextPath}/VisualizarTema/${ListTemas.getMateriaId()}/${ListTemas.getTemaId()}/${ListTemas.getProfesorId()}/${ListTemas.getNivelId()}", true);
+                  xhttp.send();
+                }
             }
-          };
-          xhttp.open("GET", "${pageContext.request.contextPath}/VisualizarTema/${ListTemas.getMateriaId()}/${ListTemas.getTemaId()}/${ListTemas.getProfesorId()}/${ListTemas.getNivelId()}", true);
-          xhttp.send();
-        }
-    }
+    </script>
+
 </html>
