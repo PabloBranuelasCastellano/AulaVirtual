@@ -17,7 +17,7 @@
         <c:choose>
             <c:when test="${PuntosTema.size() gt 0}">
                 <c:forEach var = "PointTemas" items="${PuntosTema}">
-                    <div id="EncabezadoPuntos"><h1>${PointTemas.getTituloPunto()}</h1></div>
+                    <div id="EncabezadoPuntos"><h1>${PointTemas.getTituloPunto()}</h1><a class='btn btn-primary' href='OcultarPunto/${PointTemas.getTemaId()}/${PointTemas.getIdPunto()}' role='button' style='width:20%;margin-left:80%;margin-top:-3%;'>Desactivar Punto Alumnos</a><a class='btn btn-primary' href='VisualizarPuntos/${PointTemas.getTemaId()}/${PointTemas.getIdPunto()}' role='button' style='width:20%;margin-right:80%;margin-top:-3%;'>Activar Punto Alumnos</a></div>
                     <br>
                     <div id="TextoPunto">
                         <p>${PointTemas.getTextoPunto()}</p>
