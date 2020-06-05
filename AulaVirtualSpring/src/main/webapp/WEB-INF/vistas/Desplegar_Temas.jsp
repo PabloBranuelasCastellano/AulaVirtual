@@ -19,7 +19,7 @@
                 <ul class='list-group'>
                     <c:forEach var = "ListTemas" items="${ListaTemas}">
 
-                        <li class='list-group-item list-group-item-action list-group-item-primary'>${ListTemas.getTituloTema()}<a class='btn btn-primary'  href='${pageContext.request.contextPath}/Puntos_Tema/${ListTemas.getTemaId()}' role='button'  style='margin-left:10%;'>Ver Tema</a>&nbsp;&nbsp;<a class='btn btn-primary' role='button' href='${pageContext.request.contextPath}/AgregarPunto/${ListTemas.getTemaId()}' role='button' aria-expanded='false' aria-controls='multiCollapseExample1' style='margin-left:30%;'>Añadir Puntos</a> &nbsp;&nbsp;<a class='btn btn-primary' onclick="ActivarTema()" role='button' style='width:20%;margin-left:35%;margin-top:-3%;'>Activar Tema Alumnos</a><a class='btn btn-primary' href='${pageContext.request.contextPath}/OcultarTema/${ListTemas.getMateriaId()}/${ListTemas.getTemaId()}/${ListTemas.getProfesorId()}/${ListTemas.getNivelId()}' role='button' style='width:20%;margin-left:75%;margin-top:-3%;'>Desactivar Tema Alumnos</a>
+                        <li class='list-group-item list-group-item-action list-group-item-primary'>${ListTemas.getTituloTema()}<a class='btn btn-primary'  href='${pageContext.request.contextPath}/Puntos_Tema/${ListTemas.getTemaId()}' role='button'  style='margin-left:10%;'>Ver Tema</a>&nbsp;&nbsp;<a class='btn btn-primary' role='button' href='${pageContext.request.contextPath}/AgregarPunto/${ListTemas.getTemaId()}' role='button' aria-expanded='false' aria-controls='multiCollapseExample1' style='margin-left:30%;'>Añadir Puntos</a> &nbsp;&nbsp;<a class='btn btn-primary' href='${pageContext.request.contextPath}/VisualizarTema/${ListTemas.getMateriaId()}/${ListTemas.getTemaId()}/${ListTemas.getProfesorId()}/${ListTemas.getNivelId()}' role='button' style='width:20%;margin-left:35%;margin-top:-3%;'>Activar Tema Alumnos</a><a class='btn btn-primary' href='${pageContext.request.contextPath}/OcultarTema/${ListTemas.getMateriaId()}/${ListTemas.getTemaId()}/${ListTemas.getProfesorId()}/${ListTemas.getNivelId()}' role='button' style='width:20%;margin-left:75%;margin-top:-3%;'>Desactivar Tema Alumnos</a>
                         </li>
 
                     </c:forEach>
@@ -31,21 +31,4 @@
             </c:otherwise>
         </c:choose>
     </body>
-
-    <script>
-        function ActivarTema(){
-                ${ListTemas.getMateriaId()};
-                var xhttp = new XMLHttpRequest();
-                  xhttp.onreadystatechange = function() {
-                    if (this.readyState == 4 && this.status == 200) {
-                        alert("El tema es visible para el alumno");
-
-                    }
-                  };
-                  xhttp.open("GET", href="${pageContext.request.contextPath}/VisualizarTema/${ListTemas.getMateriaId()}/${ListTemas.getTemaId()}/${ListTemas.getProfesorId()}/${ListTemas.getNivelId()}", true);
-                  xhttp.send();
-                }
-            }
-    </script>
-
 </html>
