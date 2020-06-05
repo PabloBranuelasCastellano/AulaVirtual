@@ -299,11 +299,9 @@ public class ProfesoresServices {
         connection=dataSource.getConnection();
         String Cambiar_Estado="update puntos set EsActivo=false where TemaId=? and PuntoId=?";
         PreparedStatement preparedStatement=connection.prepareStatement(Cambiar_Estado);
-        //System.out.println("Establecemos la conexion y preparamos la consulta");
         preparedStatement.setInt(1,TemaId);
         preparedStatement.setInt(2,PuntoId);
         preparedStatement.executeUpdate();
-        System.out.println("Realizamos la actualización");
         return "redirect:/Puntos_Tema/"+TemaId;
     }
 
