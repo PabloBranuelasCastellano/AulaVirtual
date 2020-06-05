@@ -96,6 +96,6 @@ public class ProfesorController {
 
     @GetMapping("OcultarPunto/{TemaId}/{PuntoId}")
     public String OcultarPunto(HttpServletRequest request,Model model,@PathVariable int TemaId,@PathVariable int PuntoId){
-        return "Contenido_Temas";
+        return profesoresServices.OcultarPunto(request, model, TemaId, PuntoId);
     }
 }
