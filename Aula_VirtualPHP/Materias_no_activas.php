@@ -19,7 +19,7 @@
 	<body>
 		<?php
 			// $VerTemas="select t.TemaId,t.Titulo ,n.Denominacion from materias m,temas t,niveles n,profesores p where (t.NivelId =n.NivelId and p.ProfesorId =t.ProfesorId and m.EsActiva=false and P.ProfesorId=$Id_Actual )";
-			$VerMaterias="select g.GrupoId, ca.Denominacion as AnioEscolar ,G.Nombre as NombreGrupo ,M.Nombre as Asignatura,M.MateriaId ,N.Denominacion as NivelEducativo,n.NivelId ,P.Usuario as Nombre_Profesor from grupos g,materias m ,niveles n ,profesores p, cursosacademicos ca where(g.MateriaId=M.MateriaId and g.NivelId =n.NivelId and g.ProfesorId =P.ProfesorId and g.CursoAcademicoId =ca.CursoAcademicoId  and ca.EsActivo =false  and P.ProfesorId=$Id_Actual)";
+			$VerMaterias="select g.GrupoId, ca.Denominacion as AnioEscolar ,G.Nombre as NombreGrupo ,M.Nombre as Asignatura,M.MateriaId ,N.Denominacion as NivelEducativo,n.NivelId ,P.Usuario as Nombre_Profesor from grupos g,materias m ,niveles n ,profesores p, cursosacademicos ca where(g.MateriaId=M.MateriaId and g.NivelId =n.NivelId and g.ProfesorId =P.ProfesorId and g.CursoAcademicoId =ca.CursoAcademicoId  and ca.EsActivo =false  and m.EsActiva=false and P.ProfesorId=$Id_Actual)";
 			$Materias=mysqli_query($conexion,$VerMaterias);
 			$nfilas=mysqli_num_rows($Materias);
 			if($nfilas>0){
@@ -62,9 +62,11 @@
 	</body>
 	<?php
 		if(isset($_POST["Cambiar"])){
+			
 			if(isset($_POST['Activar'])){
 				$Id_Materia=$_POST['MateriaId'];
 				// echo($Id_Materia);
+				// echo($_POST['Activar']);
 				$Cambiar_Estado="update materias set EsActiva=true where MateriaId=$Id_Materia";
 				$Desactivar=mysqli_query($conexion,$Cambiar_Estado);
 				// echo("Vas a activar la materia".$_POST['Activar']);
