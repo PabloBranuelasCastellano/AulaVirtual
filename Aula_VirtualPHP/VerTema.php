@@ -37,7 +37,7 @@
 								<div class='collapse multi-collapse' id='Tema".strval($fila["TemaId"])."'>
 								  <div class='card card-body'>");
 								  
-									$Ver_Puntos="select pnt.PuntoId,pnt.Titulo,pnt.resumen,pnt.texto from puntos pnt,temas t,profesores p where(pnt.temaId=t.temaId and t.profesorId=p.profesorId and t.materiaId='$Id_Materia' and t.profesorId='$Id_Profesor' and pnt.TemaId='".$fila['TemaId']."')order by pnt.orden";
+									$Ver_Puntos="select pnt.PuntoId,pnt.Titulo,pnt.resumen,pnt.texto from puntos pnt,temas t,profesores p where(pnt.temaId=t.temaId and t.profesorId=p.profesorId and t.materiaId='$Id_Materia' and t.profesorId='$Id_Profesor' and pnt.TemaId='".$fila['TemaId']."')order by pnt.orden asc";
 									$Puntos=mysqli_query($conexion,$Ver_Puntos);
 									$nfilasPuntos=mysqli_num_rows($Puntos);
 									if($nfilasPuntos>0){
