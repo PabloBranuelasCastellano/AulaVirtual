@@ -95,12 +95,12 @@ public class ProfesorController {
         return profesoresServices.RegistrarPunto(request, model);
     }
 
-    @PutMapping("OcultarPunto/{TemaId}/{PuntoId}")
+    @GetMapping("OcultarPunto/{TemaId}/{PuntoId}")
     public String OcultarPunto(HttpServletRequest request,Model model,@PathVariable int TemaId,@PathVariable int PuntoId)throws SQLException{
         return profesoresServices.OcultarPunto(request, model, TemaId, PuntoId);
     }
 
-    @PutMapping("VisualizarPunto/{TemaId}/{PuntoId}")
+    @GetMapping("VisualizarPunto/{TemaId}/{PuntoId}")
     public String VisualizarPunto(HttpServletRequest request,Model model,@PathVariable int TemaId,@PathVariable int PuntoId)throws SQLException{
         return null;
     }
