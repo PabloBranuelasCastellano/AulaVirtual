@@ -225,7 +225,7 @@ public class ProfesoresServices {
         preparedStatement.setInt(1, temas.getMateriaId());
         preparedStatement.setInt(2, temas.getProfesorId());
         preparedStatement.setInt(3, TemaId);
-        System.out.println("EL id de la Materia es " + temas.getMateriaId() + " el Id del Profesor es " + temas.getProfesorId() + " y el Id del tema Es " + temas.getTemaId());
+        //System.out.println("EL id de la Materia es " + temas.getMateriaId() + " el Id del Profesor es " + temas.getProfesorId() + " y el Id del tema Es " + temas.getTemaId());
         ResultSet resultSet = preparedStatement.executeQuery();
         List<PuntosTema> puntosTemaList = new ArrayList<>();
         while (resultSet.next()) {
@@ -299,7 +299,11 @@ public class ProfesoresServices {
         connection=dataSource.getConnection();
         String Cambiar_Estado="update puntos set EsActivo=false where TemaId=? and PuntoId=?";
         PreparedStatement preparedStatement=connection.prepareStatement(Cambiar_Estado);
-        System.out.println("Establecemos la conexion y preparamos la consulta");
+        //System.out.println("Establecemos la conexion y preparamos la consulta");
+        preparedStatement.setInt(1,TemaId);
+        preparedStatement.setInt(2,PuntoId);
+        preparedStatement.executeUpdate();
+        System.out.println("Realizamos la actualización");
         return "redirect:/Puntos_Tema/"+TemaId;
     }
 
