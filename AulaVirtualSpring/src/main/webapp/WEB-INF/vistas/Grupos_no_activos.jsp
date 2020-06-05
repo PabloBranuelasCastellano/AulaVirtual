@@ -40,7 +40,7 @@
                 </table>
             </c:when>
             <c:otherwise>
-                <p>NO hay ningun grupo desactivado</p>
+                <h1>NO hay ningun grupo desactivado</h1>
             </c:otherwise>
         </c:choose>
     </body>
