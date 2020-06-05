@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.sql.DataSource;
@@ -94,8 +95,13 @@ public class ProfesorController {
         return profesoresServices.RegistrarPunto(request, model);
     }
 
-    @GetMapping("OcultarPunto/{TemaId}/{PuntoId}")
+    @PutMapping("OcultarPunto/{TemaId}/{PuntoId}")
     public String OcultarPunto(HttpServletRequest request,Model model,@PathVariable int TemaId,@PathVariable int PuntoId)throws SQLException{
         return profesoresServices.OcultarPunto(request, model, TemaId, PuntoId);
+    }
+
+    @PutMapping("VisualizarPunto/{TemaId}/{PuntoId}")
+    public String VisualizarPunto(HttpServletRequest request,Model model,@PathVariable int TemaId,@PathVariable int PuntoId)throws SQLException{
+        return null;
     }
 }
