@@ -100,8 +100,9 @@
 								echo("<div>");
 								while($fila=mysqli_fetch_array($Temario)){
 									echo("<p style='color:black;'><a href='VerTema.php?Id_Activo=".$fila["MateriaId"]."'style='color:black;'>Asignatura:".$fila["Asignatura"]."</p></a><p style='color:black;'>".$fila["NivelEducativo"]."</p>");
-									echo("<a href='Editar_Tema.php?Id_Materia=".$fila["MateriaId"]."&Id_Nivel=".$fila["NivelId"]."'><img src='Estilos/lapiz.png' id='lapiz' title='Editar Tema'/></a><a href='?Ocultar=true&Id_Activo=".$fila["MateriaId"]."'><img src='Estilos/ocultar.png' id='ocultar' title='Ocultar Tema'/></a>
-									<a href='?Quitar=true&Id_Activo=".$fila["MateriaId"]."&Nivel_Id=".$fila["NivelId"]."'><img src='Estilos/papelera.png' id='papelera' title='Eliminar Tema'/></a>");
+									echo("<a href='Editar_Tema.php?Id_Materia=".$fila["MateriaId"]."&Id_Nivel=".$fila["NivelId"]."'><img src='Estilos/lapiz.png' id='lapiz' title='Editar Tema'/>");
+									echo("</a><a href='?Ocultar=true&Id_Activo=".$fila["MateriaId"]."'><img src='Estilos/ocultar.png' id='ocultar' title='Ocultar Tema'/></a>");
+									echo("<a href='?Quitar=true&Id_Activo=".$fila["MateriaId"]."&Nivel_Id=".$fila["NivelId"]."'><img src='Estilos/papelera.png' id='papelera' title='Eliminar Tema'/></a>");
 								}
 								echo("<a href='Agregar_Tema.php'style='color:red;'>Añadir nuevo temario</a>");
 								
