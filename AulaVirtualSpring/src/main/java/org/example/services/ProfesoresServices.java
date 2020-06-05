@@ -304,5 +304,14 @@ public class ProfesoresServices {
         preparedStatement.executeUpdate();
         return "redirect:/Puntos_Tema/"+TemaId;
     }
-
+    public String VisualizarPunto(HttpServletRequest request,Model model,int TemaId,int PuntoId)throws SQLException{
+        connection=dataSource.getConnection();
+        String Cambiar_Estado="update puntos set EsActivo=true where TemaId=? and PuntoId=?";
+        PreparedStatement preparedStatement=connection.prepareStatement(Cambiar_Estado);
+        preparedStatement.setInt(1,TemaId);
+        preparedStatement.setInt(2,PuntoId);
+        preparedStatement.executeUpdate();
+        System.out.println("Ejecutamos la actualización");
+        return "redirect:/Puntos_Tema/"+TemaId;
+    }
 }
