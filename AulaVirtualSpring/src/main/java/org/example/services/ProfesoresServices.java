@@ -295,4 +295,8 @@ public class ProfesoresServices {
         return "NuevoPunto";
     }
 
+    public String OcultarPunto(HttpServletRequest request,Model model,int TemaId,int PuntoId){
+        return "redirect:/Puntos_Tema/"+TemaId;
+    }
+
 }
