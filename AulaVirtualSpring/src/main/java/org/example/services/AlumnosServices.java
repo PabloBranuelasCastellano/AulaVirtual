@@ -76,7 +76,7 @@ public class AlumnosServices {
             materias.setNombreMateria(resultSet.getString("Nombre"));
             materias.setNivelId(resultSet.getInt("NivelId"));
             materias.setProfesorId(resultSet.getInt("ProfesorId"));
-            System.out.println("El id del nivel educativo es "+resultSet.getInt("NivelId"));
+            //System.out.println("El id del nivel educativo es "+resultSet.getInt("NivelId"));
             materiasList.add(materias);
         }
         model.addAttribute("MateriaAlumno",materiasList);
