@@ -32,4 +32,8 @@ public class AlumnosController {
     public String TemasAlumnos(HttpServletRequest request, Model model, @PathVariable int ProfesorId,@PathVariable int MateriaId,@PathVariable int NivelId) throws SQLException {
         return alumnosServices.TemasAlumnos(request, model, ProfesorId,MateriaId,NivelId);
     }
+    @GetMapping("/Puntos_TemaAlumnos/{IdTema}")
+    public String Puntos_Tema(HttpServletRequest request, Model model, @PathVariable int IdTema) throws SQLException {
+        return alumnosServices.Puntos_Tema(request, model, IdTema);
+    }
 }
