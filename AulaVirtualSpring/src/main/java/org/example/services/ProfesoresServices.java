@@ -188,7 +188,7 @@ public class ProfesoresServices {
         return "NuevoTema";
     }
 
-    public String TemasProfesor(HttpServletRequest request, Model model, int MateriaId) throws SQLException {
+    public String TemasProfesor(HttpServletRequest request, Model model, int ProfesorId,int MateriaId,int NivelId) throws SQLException {
         connection = dataSource.getConnection();
         String Ver_Temas = "select distinct t.MateriaId,t.profesorId,t.titulo,m.Nombre,t.TemaId,t.NivelId ,t.EsActivo from temas t, profesores p ,niveles n,materias m where(t.materiaId=m.MateriaId and n.nivelId=t.nivelId and t.profesorId=? and t.materiaId=?)";
         PreparedStatement preparedStatement = connection.prepareStatement(Ver_Temas);
