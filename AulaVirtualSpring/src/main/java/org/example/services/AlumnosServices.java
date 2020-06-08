@@ -71,7 +71,7 @@ public class AlumnosServices {
         while (resultSet.next()){
             materias=new Materias();
             materias.setMateriaId(resultSet.getInt("MateriaId"));
-            materias.setNombreMateria(gruposAlumno.getMateriaNombre());
+            materias.setNombreMateria(resultSet.getString("Nombre"));
             materias.setNivelId(resultSet.getInt("NivelId"));
             materias.setProfesorId(resultSet.getInt("ProfesorId"));
             System.out.println("El id del nivel educativo es "+resultSet.getInt("NivelId"));
