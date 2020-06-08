@@ -15,6 +15,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 
 @Service
 public class LoginServices {
@@ -52,7 +53,7 @@ public class LoginServices {
 
     public String ComprobarUsuario(HttpServletRequest request, Model model) throws SQLException {
 
-
+        LocalDate localDate = LocalDate.now();
         String Email_Usuario = request.getParameter("Email_Acceso");
         String Clave_Usuario = request.getParameter("Clave_Acceso");
         connection = dataSource.getConnection();
@@ -71,6 +72,11 @@ public class LoginServices {
             session.setAttribute("UsuarioConectado", profesores);
             rol = "Profesores";
             setRol(rol);
+            System.out.println("Fecha Actual "+localDate);
+            String Actualizar_Curso="update cursosacademicos set EsActivo=false where FechaFin <(select current_Date())";
+            preparedStatement=connection.prepareStatement(Actualizar_Curso);
+            preparedStatement.executeUpdate();
+            System.out.println("Curso Actualizado");
             return rol;
         } else {
             Email_Usuario = request.getParameter("Email_Acceso");
