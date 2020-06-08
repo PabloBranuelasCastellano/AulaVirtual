@@ -28,10 +28,10 @@ public class AlumnosServices {
     Connection connection=null;
     public  String PanelAlumnos(HttpServletRequest request, Model model)throws SQLException {
         alumnos=loginServices.getAlumnos();
-        return MateriasAlumno(request, model);
+        return GruposAlumno(request, model);
     }
 
-    public String MateriasAlumno(HttpServletRequest request,Model model)throws SQLException{
+    public String GruposAlumno(HttpServletRequest request,Model model)throws SQLException{
         connection=dataSource.getConnection();
         String Materiasporalumno="select m.Nombre, a.Usuario,g.profesorId,g.NivelId,g.materiaId\n" +
                 "from alumnos a " +
@@ -43,16 +43,19 @@ public class AlumnosServices {
         preparedStatement.setInt(1,loginServices.getAlumnos().getIdAlumno());
         //System.out.println("Consulta preparada .El Id del alumno es "+loginServices.getAlumnos().getIdAlumno());
         ResultSet resultSet=preparedStatement.executeQuery();
-        List<GruposAlumno> Materias_alumnos=new ArrayList<>();
+        List<GruposAlumno> gruposAlumnoList=new ArrayList<>();
         while(resultSet.next()){
             gruposAlumno=new GruposAlumno();
             //System.out.println(resultSet.getString(1));
             gruposAlumno.setMateriaNombre(resultSet.getString(1));
-            Materias_alumnos.add(gruposAlumno);
+            gruposAlumnoList.add(gruposAlumno);
         }
-        model.addAttribute("Asignaturas_grupo",Materias_alumnos);
+        model.addAttribute("Asignaturas_grupo",gruposAlumnoList);
         //System.out.println("Ejecución completada correctamete");
-        return "panelalumnos";
+        return  MateriasAlumnos(request, model);
     }
 
+    public String MateriasAlumnos(HttpServletRequest request, Model model) throws SQLException{
+        return "panelalumnos";
+    }
 }
