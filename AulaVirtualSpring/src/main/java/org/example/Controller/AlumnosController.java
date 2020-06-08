@@ -22,4 +22,8 @@ public class AlumnosController {
        return alumnosServices.PanelAlumnos(request, model);
     }
 
+    public String MateriasAlumnos(HttpServletRequest request,Model model)throws SQLException{
+        return alumnosServices.MateriasAlumnos(request,model);
+    }
+
 }
