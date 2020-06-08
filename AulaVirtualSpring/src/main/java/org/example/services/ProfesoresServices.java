@@ -98,11 +98,10 @@ public class ProfesoresServices {
         List<Materias> Materias_Profesor = new ArrayList<>();
         while (resultSet.next()) {
             materias = new Materias();
-            materias.setMateriaId(resultSet.getInt(1));
-            materias.setNombreMateria(resultSet.getString(2));
-            materias.setMateriaId(resultSet.getInt(4));
-            materias.setNivelId(resultSet.getInt(5));
-            materias.setProfesorId(resultSet.getInt(6));
+            materias.setMateriaId(resultSet.getInt("MateriaId"));
+            materias.setNombreMateria(resultSet.getString("Asignatura"));
+            materias.setNivelId(resultSet.getInt("NivelId"));
+            materias.setProfesorId(resultSet.getInt("ProfesorId"));
             //System.out.println("Nombre de la Asignatura "+resultSet.getString(1));
             //System.out.println("Materia Id "+resultSet.getInt(2));
             //System.out.println("Nivel Educativo "+resultSet.getString(3));
