@@ -35,6 +35,11 @@
 .card-text .card-body{
 	font-family:Verdana;
 	font-size:120%;
+
+}
+.card{
+    height:20px;
+    overflow: visible;
 }
 
 #Imagen{
@@ -87,17 +92,18 @@
 	height:1.2rem;
 	margin-left:5rem;
 
-	margin-top:-1.5rem;
+	margin-top:-1.2rem;
 }
 #papelera{
 	width:1.2rem;
 	height:1.2rem;
-	margin-left:20rem;
+	margin-left:18rem;
 	margin-top:-1.5rem;
 }
 
 #Grupos{
     padding-top:1rem;
+
 
 }
 
