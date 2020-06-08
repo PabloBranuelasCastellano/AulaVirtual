@@ -19,7 +19,7 @@
                 <ul class='list-group'>
                     <c:forEach var = "ListTemas" items="${ListaTemas}">
 
-                        <li class='list-group-item list-group-item-action list-group-item-primary'>${ListTemas.getTituloTema()}<a  href='${pageContext.request.contextPath}/Puntos_TemaAlumnos/${ListTemas.getTemaId()}'  class="btn btn-primary btn-lg active"  role='button'  aria-pressed="true" style='margin-left:30%; width:30%;padding-top:2%;'>Ver Tema</a>
+                        <li class='list-group-item list-group-item-action list-group-item-primary'>${ListTemas.getTituloTema()}<a  href='${pageContext.request.contextPath}/Puntos_TemaAlumnos/${ListTemas.getTemaId()}'  class="btn btn-primary btn-lg active"  role='button'  aria-pressed="true" style='margin-left:30%; width:30%;'>Ver Tema</a>
                         </li>
 
                     </c:forEach>
