@@ -63,9 +63,9 @@ public class ProfesorController {
         return profesoresServices.RegistrarTema(request, model);
     }
 
-    @GetMapping("/VerTemas/{MateriaId}")
-    public String TemasProfesor(HttpServletRequest request, Model model, @PathVariable int MateriaId) throws SQLException {
-        return profesoresServices.TemasProfesor(request, model, MateriaId);
+    @GetMapping("/VerTemas/{ProfesorId}/{MateriaId}/{NivelId}")
+    public String TemasProfesor(HttpServletRequest request, Model model,@PathVariable int ProfesorId, @PathVariable int MateriaId,@PathVariable int NivelId) throws SQLException {
+        return profesoresServices.TemasProfesor(request, model, ProfesorId,MateriaId,NivelId);
     }
 
     @GetMapping("/Puntos_Tema/{IdTema}")
