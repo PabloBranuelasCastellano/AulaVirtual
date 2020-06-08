@@ -35,7 +35,7 @@ public class AlumnosServices {
     public String GruposAlumno(HttpServletRequest request,Model model)throws SQLException{
         connection=dataSource.getConnection();
         String Materiasporalumno="select m.Nombre, a.Usuario,g.profesorId,g.NivelId,g.materiaId\n" +
-                "from alumnos a " +
+        "from alumnos a " +
                 "inner join gruposalumnos ga on a.AlumnoId = ga.AlumnoId\n" +
                 "inner join grupos g on ga.GrupoId = g.GrupoId\n" +
                 "inner join materias m on g.MateriaId = m.MateriaId\n" +
@@ -71,7 +71,10 @@ public class AlumnosServices {
         while (resultSet.next()){
             materias=new Materias();
             materias.setMateriaId(resultSet.getInt("MateriaId"));
-            System.out.println("El id de la Materia es "+resultSet.getInt("MateriaId"));
+            materias.setNombreMateria(gruposAlumno.getMateriaNombre());
+            materias.setNivelId(resultSet.getInt("NivelId"));
+            materias.setProfesorId(resultSet.getInt("ProfesorId"));
+            System.out.println("El id del nivel educativo es "+resultSet.getInt("NivelId"));
             materiasList.add(materias);
         }
         model.addAttribute("MateriaAlumno",materiasList);
