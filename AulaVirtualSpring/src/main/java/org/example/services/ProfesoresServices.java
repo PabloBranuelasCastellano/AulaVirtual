@@ -260,7 +260,7 @@ public class ProfesoresServices {
         preparedStatement.setInt(4,MateriaId);
         //System.out.println("Establecemos conexion y preparamos la consulta");
         preparedStatement.executeUpdate();
-        return "redirect:/VerTemas/"+MateriaId;
+        return "redirect:/VerTemas/"+MateriaId+"/"+ProfesorId+"/"+NivelId;
     }
 
     public String DesactivarTema(HttpServletRequest request, Model model, int MateriaId, int TemaId, int ProfesorId, int NivelId) throws SQLException {
@@ -273,7 +273,7 @@ public class ProfesoresServices {
         preparedStatement.setInt(4,MateriaId);
         //System.out.println("Establecemos conexion y preparamos la consulta");
         preparedStatement.executeUpdate();
-        return "redirect:/VerTemas/"+MateriaId;
+        return "redirect:/VerTemas/"+MateriaId+"/"+ProfesorId+"/"+NivelId;
     }
 
     public String CrearPunto(HttpServletRequest request,Model model,int TemaId){
