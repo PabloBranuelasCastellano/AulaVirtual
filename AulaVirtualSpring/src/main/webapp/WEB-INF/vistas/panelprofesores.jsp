@@ -36,13 +36,13 @@
 <body>
 	<div class="container">
 		<div class="row">
-			<div class="col-sm">
-				<div class="card text-white bg-info mb-3" style="max-width: 18rem;min-height:20rem;">
+			<div class="col-sm " >
+				<div class="card text-white bg-info mb-3 " style="max-width: 18rem;min-height:20rem;">
 					<div class="card-header bg-success ">Mis Grupos</div>
 						<div class="card-body bg-secondary ">
-							<p class="card-text overflow-auto">
+							<p class="card-text ">
                                <c:forEach var = "g" items="${Grupos_Materia}">
-                                     <div id='Grupos' class="overflow-auto">
+                                     <div id='Grupos' >
                                         <label>Año:${g.getCursoAcademicoGrupo()}</label>
                                         <label>${g.getNombreGrupo()} &nbsp;&nbsp; ${g.getNivelGrupo()} <a href="${pageContext.request.contextPath}/VerAlumnos/${g.getIdGrupo()}"><img src='<c:url value="/estaticos/img/flecha.png" />' id='flecha' title='Ver Lista de Alumnos del Grupo'/></a></label>
                                          <label> ${g.getNombreMateria()} </label>
@@ -58,9 +58,9 @@
 
 			</div>
 			<div class="col-sm">
-				<div class="card text-white  mb-3" style="background-color:blue;max-width: 18rem;min-height:20rem;">
+				<div class="card text-white  mb-3 " style="background-color:blue;max-width: 18rem;min-height:20rem;">
 					<div class="card-header">Mis Temarios</div>
-						<div class="card-body overflow-auto" style="background-color:#87CEFA;">
+						<div class="card-body " style="background-color:#87CEFA;">
 							<p class="card-text " >
                                 <c:forEach var = "MProfesor" items="${materiasprofesor}">
                                     <div id='Grupos' >
