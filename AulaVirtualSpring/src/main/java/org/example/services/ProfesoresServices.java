@@ -194,6 +194,7 @@ public class ProfesoresServices {
         PreparedStatement preparedStatement = connection.prepareStatement(Ver_Temas);
         preparedStatement.setInt(1, profesores.getIdProfesor());
         preparedStatement.setInt(2, MateriaId);
+
         ResultSet resultSet = preparedStatement.executeQuery();
         List<Temas> temasList = new ArrayList<>();
         while (resultSet.next()) {
