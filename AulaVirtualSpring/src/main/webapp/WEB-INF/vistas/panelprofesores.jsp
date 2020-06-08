@@ -39,8 +39,8 @@
 			<div class="col-sm">
 				<div class="card text-white bg-info mb-3" style="max-width: 18rem;min-height:20rem;">
 					<div class="card-header bg-success ">Mis Grupos</div>
-						<div class="card-body bg-secondary">
-							<p class="card-text ">
+						<div class="card-body bg-secondary ">
+							<p class="card-text overflow-auto">
                                <c:forEach var = "g" items="${Grupos_Materia}">
                                      <div id='Grupos' class="overflow-auto">
                                         <label>Año:${g.getCursoAcademicoGrupo()}</label>
@@ -60,10 +60,10 @@
 			<div class="col-sm">
 				<div class="card text-white  mb-3" style="background-color:blue;max-width: 18rem;min-height:20rem;">
 					<div class="card-header">Mis Temarios</div>
-						<div class="card-body "style="background-color:#87CEFA;">
+						<div class="card-body overflow-auto" style="background-color:#87CEFA;">
 							<p class="card-text " >
                                 <c:forEach var = "MProfesor" items="${materiasprofesor}">
-                                    <div id='Grupos' class="overflow-auto">
+                                    <div id='Grupos' >
 
                                         <p><a href="${pageContext.request.contextPath}/VerTemas/${MProfesor.getMateriaId()}" style="color:black;">Asignatura:${MProfesor.getNombreMateria()} </a></p>
                                         <p style='margin-top:2rem;margin-left:-5rem;'><a href="${pageContext.request.contextPath}/NuevoTema/${MProfesor.getMateriaId()}/${MProfesor.getNivelId()}/${MProfesor.getProfesorId()}"><img src='<c:url value="/estaticos/img/lapiz.png" />' id='lapiz' title='Crear Tema'/></a> &nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/VerAlumnos/${g.getIdGrupo()}"><img src='<c:url value="/estaticos/img/ocultar.png" />' id='ocultar' title='Ocultar Materia'/></a> &nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/VerAlumnos/${g.getIdGrupo()}"><img src='<c:url value="/estaticos/img/papelera.png" />' id='papelera' title='Quitar Materia'/></a></p>
