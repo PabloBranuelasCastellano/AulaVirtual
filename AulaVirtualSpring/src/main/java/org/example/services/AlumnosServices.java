@@ -109,6 +109,6 @@ public class AlumnosServices {
 
 
         }
-        return "Desplegar_Temas";
+        return "Desplegar_TemasAlumnos";
     }
 }
