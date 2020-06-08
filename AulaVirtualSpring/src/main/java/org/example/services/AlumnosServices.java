@@ -70,6 +70,9 @@ public class AlumnosServices {
         List<Materias>materiasList=new ArrayList<>();
         while (resultSet.next()){
             materias=new Materias();
+            materias.setMateriaId(resultSet.getInt("MateriaId"));
+            System.out.println("El id de la Materia es "+resultSet.getInt("MateriaId"));
+            materiasList.add(materias);
         }
         model.addAttribute("MateriaAlumno",materiasList);
         return "panelalumnos";
