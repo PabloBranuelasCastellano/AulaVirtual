@@ -133,7 +133,7 @@ public class LoginServices {
             profesores.setUsuarioProfesor(null);
             profesores.setIdProfesor(0);
         }
-        else {
+        else if(rol.equals("Alumnos")) {
             alumnos.setUsuarioAlumno(null);
             alumnos.setIdAlumno(0);
         }
