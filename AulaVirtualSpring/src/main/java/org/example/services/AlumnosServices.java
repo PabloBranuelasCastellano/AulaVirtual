@@ -33,7 +33,7 @@ public class AlumnosServices {
 
     public String MateriasAlumno(HttpServletRequest request,Model model)throws SQLException{
         connection=dataSource.getConnection();
-        String Materiasporalumno="select m.Nombre, a.Usuario\n" +
+        String Materiasporalumno="select m.Nombre, a.Usuario,g.profesorId,g.NivelId,g.materiaId\n" +
                 "from alumnos a " +
                 "inner join gruposalumnos ga on a.AlumnoId = ga.AlumnoId\n" +
                 "inner join grupos g on ga.GrupoId = g.GrupoId\n" +
@@ -54,4 +54,5 @@ public class AlumnosServices {
         //System.out.println("Ejecución completada correctamete");
         return "panelalumnos";
     }
+
 }
