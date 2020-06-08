@@ -91,7 +91,7 @@ public class ProfesoresServices {
 
     public String MateriasProfesor(HttpServletRequest request, Model model) throws SQLException {
         connection = dataSource.getConnection();
-        String VerMaterias = "select distinct M.MateriaId, M.Nombre as Asignatura,M.MateriaId ,N.Denominacion as NivelEducativo ,n.NivelId,p.ProfesorId from grupos g,materias m ,niveles n ,profesores p, cursosacademicos ca where(g.MateriaId=M.MateriaId and g.NivelId =n.NivelId and g.ProfesorId =P.ProfesorId and g.CursoAcademicoId =ca.CursoAcademicoId  and ca.EsActivo =true  and P.ProfesorId=?)";
+        String VerMaterias = "select distinct M.MateriaId,M.Nombre as Asignatura,N.Denominacion as NivelEducativo ,n.NivelId,p.ProfesorId from grupos g,materias m ,niveles n ,profesores p, cursosacademicos ca where(g.MateriaId=M.MateriaId and g.NivelId =n.NivelId and g.ProfesorId =P.ProfesorId and g.CursoAcademicoId =ca.CursoAcademicoId  and ca.EsActivo =true  and P.ProfesorId=?)";
         PreparedStatement preparedStatement = connection.prepareStatement(VerMaterias);
         preparedStatement.setInt(1, profesores.getIdProfesor());
         ResultSet resultSet = preparedStatement.executeQuery();
@@ -101,7 +101,7 @@ public class ProfesoresServices {
             materias.setMateriaId(resultSet.getInt(1));
             materias.setNombreMateria(resultSet.getString(2));
             materias.setMateriaId(resultSet.getInt(4));
-            materias.setNivelId(resultSet.getInt(5);
+            materias.setNivelId(resultSet.getInt(5));
             materias.setProfesorId(resultSet.getInt(6));
             //System.out.println("Nombre de la Asignatura "+resultSet.getString(1));
             //System.out.println("Materia Id "+resultSet.getInt(2));
