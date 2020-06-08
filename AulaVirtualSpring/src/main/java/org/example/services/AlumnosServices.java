@@ -2,6 +2,7 @@ package org.example.services;
 
 import org.example.Entities.Alumnos;
 import org.example.Entities.GruposAlumno;
+import org.example.Entities.Materias;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
@@ -22,7 +23,7 @@ public class AlumnosServices {
 
     Alumnos alumnos;
     GruposAlumno gruposAlumno;
-
+    Materias materias;
     @Autowired
     DataSource dataSource=null;
     Connection connection=null;
@@ -65,7 +66,12 @@ public class AlumnosServices {
                 "where (a.AlumnoId = ? and m.EsActiva=true)";
         PreparedStatement preparedStatement=connection.prepareStatement(Materias_Alumnos);
         preparedStatement.setInt(1,loginServices.getAlumnos().getIdAlumno());
-        System.out.println("Preparamos la consulta para ejecutarla");
+        ResultSet resultSet=preparedStatement.executeQuery();
+        List<Materias>materiasList=new ArrayList<>();
+        while (resultSet.next()){
+            materias=new Materias();
+        }
+        model.addAttribute("MateriaAlumno",materiasList);
         return "panelalumnos";
     }
 }
