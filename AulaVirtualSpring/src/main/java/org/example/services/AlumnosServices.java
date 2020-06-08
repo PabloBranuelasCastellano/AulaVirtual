@@ -56,6 +56,16 @@ public class AlumnosServices {
     }
 
     public String MateriasAlumnos(HttpServletRequest request, Model model) throws SQLException{
+        connection=dataSource.getConnection();
+        String Materias_Alumnos="select m.Nombre, a.Usuario,g.profesorId,g.NivelId,g.materiaId\n" +
+                "from alumnos a " +
+                "inner join gruposalumnos ga on a.AlumnoId = ga.AlumnoId\n" +
+                "inner join grupos g on ga.GrupoId = g.GrupoId\n" +
+                "inner join materias m on g.MateriaId = m.MateriaId\n" +
+                "where (a.AlumnoId = ? and m.EsActiva=true)";
+        PreparedStatement preparedStatement=connection.prepareStatement(Materias_Alumnos);
+        preparedStatement.setInt(1,loginServices.getAlumnos().getIdAlumno());
+        System.out.println("Preparamos la consulta para ejecutarla");
         return "panelalumnos";
     }
 }
