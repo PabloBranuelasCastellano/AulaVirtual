@@ -62,7 +62,11 @@
 					<div class="card-header">Mis Temarios</div>
 						<div class="card-body "style="background-color:#87CEFA;">
 							<p class="card-text " >
-
+                                <c:forEach var = "MAlumnos" items="${MateriaAlumno}">
+                                    <div id='Grupos' >
+                                    <p><a href="${pageContext.request.contextPath}/VerTemasAlumnos/${MAlumnos.getMateriaId()}" style="color:black;">Asignatura:${MAlumnos.getNombreMateria()} </a></p>
+                                    </div>
+                                </c:forEach>
 							</p>
 						</div>
 
