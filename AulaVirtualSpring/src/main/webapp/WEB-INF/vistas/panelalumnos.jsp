@@ -65,7 +65,7 @@
 
 							</p>
 						</div>
-						<p class="card-text" style="background-color:#87CEFA;"><a href="temas_no_activos.php" style="margin-left:40%;color:black;"><u>Ver temario no activo</a></u></p>
+						
 					</div>
 			</div>
 			<div class="col-sm">
