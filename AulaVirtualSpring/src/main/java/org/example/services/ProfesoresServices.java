@@ -211,45 +211,34 @@ public class ProfesoresServices {
             temas.setMateriaId(resultSet.getInt("MateriaId"));
             //System.out.println("El id de la Materia es "+resultSet.getInt("MateriaId"));
             temas.setTemaActivo(resultSet.getBoolean("EsActivo"));
-            //System.out.println("Esta el tema activado? "+resultSet.getBoolean("EsActivo"));
+            }
+
             temasList.add(temas);
             model.addAttribute("ListaTemas", temasList);
-
-
+            return "Desplegar_Temas";
         }
-        return "Desplegar_Temas";
-    }
-
-    public String Puntos_Tema(HttpServletRequest request, Model model, int TemaId) throws SQLException {
-        connection = dataSource.getConnection();
-        String Ver_Puntos = "select pnt.TemaId,pnt.PuntoId,pnt.Titulo,pnt.resumen,pnt.texto,pnt.EsActivo from puntos pnt,temas t,profesores p where(pnt.temaId=t.temaId and t.profesorId=p.profesorId and t.materiaId=? and t.profesorId=? and pnt.TemaId=?)order by pnt.orden asc";
-        PreparedStatement preparedStatement = connection.prepareStatement(Ver_Puntos);
-        preparedStatement.setInt(1, temas.getMateriaId());
-        preparedStatement.setInt(2, temas.getProfesorId());
-        preparedStatement.setInt(3, TemaId);
-        //System.out.println("EL id de la Materia es " + temas.getMateriaId() + " el Id del Profesor es " + temas.getProfesorId() + " y el Id del tema Es " + temas.getTemaId());
-        ResultSet resultSet = preparedStatement.executeQuery();
-        List<PuntosTema> puntosTemaList = new ArrayList<>();
-        while (resultSet.next()) {
-            puntosTema = new PuntosTema();
-
-            //System.out.println("El id del tema es " + temas.getTemaId());
-            puntosTema.setIdPunto(resultSet.getInt("PuntoId"));
-            puntosTema.setTemaId(resultSet.getInt("TemaId"));
-            //System.out.println(resultSet.getString("Titulo"));
-            puntosTema.setTituloPunto(resultSet.getString("Titulo"));
-            //System.out.println(resultSet.getString("Resumen"));
-            puntosTema.setResumenPunto(resultSet.getString("Resumen"));
-            //System.out.println(resultSet.getString("Texto"));
-            puntosTema.setTextoPunto(resultSet.getString("Texto"));
-            puntosTema.setPuntoActivo(resultSet.getBoolean("EsActivo"));
-            puntosTemaList.add(puntosTema);
-            //System.out.println("Guardamos los datos cogidos y los enviamos al model");
+        public String Puntos_Tema(HttpServletRequest request, Model model, int TemaId) throws SQLException {
+               connection = dataSource.getConnection();
+               String Ver_Puntos = "select pnt.TemaId,pnt.PuntoId,pnt.Titulo,pnt.resumen,pnt.texto,pnt.EsActivo from puntos pnt,temas t,profesores p where(pnt.temaId=t.temaId and t.profesorId=p.profesorId and t.materiaId=? and t.profesorId=? and pnt.TemaId=?)order by pnt.orden asc";
+               PreparedStatement preparedStatement = connection.prepareStatement(Ver_Puntos);
+               preparedStatement.setInt(1, temas.getMateriaId());
+               preparedStatement.setInt(2, temas.getProfesorId());
+               preparedStatement.setInt(3, TemaId);
+               ResultSet resultSet = preparedStatement.executeQuery();
+               List<PuntosTema> puntosTemaList = new ArrayList<>();
+               while (resultSet.next()) {
+                   puntosTema = new PuntosTema();
+                   puntosTema.setIdPunto(resultSet.getInt("PuntoId"));
+                   puntosTema.setTemaId(resultSet.getInt("TemaId"));
+                   puntosTema.setTituloPunto(resultSet.getString("Titulo"));
+                   puntosTema.setResumenPunto(resultSet.getString("Resumen"));
+                    puntosTema.setTextoPunto(resultSet.getString("Texto"));
+                    puntosTema.setPuntoActivo(resultSet.getBoolean("EsActivo"));
+                    puntosTemaList.add(puntosTema);
+               }
+               model.addAttribute("PuntosTema", puntosTemaList);
+               return "Contenido_Temas";
         }
-        model.addAttribute("PuntosTema", puntosTemaList);
-
-        return "Contenido_Temas";
-    }
 
     public String ActivarTema(HttpServletRequest request, Model model, int MateriaId, int TemaId, int ProfesorId, int NivelId) throws SQLException {
         connection=dataSource.getConnection();
