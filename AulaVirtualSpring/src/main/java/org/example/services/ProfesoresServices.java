@@ -310,4 +310,9 @@ public class ProfesoresServices {
     public String CrearCuestionario(HttpServletRequest request,Model model){
         return "Cuestionario";
     }
+
+    public String DatosCuestionario(HttpServletRequest request,Model model)throws SQLException{
+        System.out.println("El id del profesor es "+profesores.getIdProfesor());
+        return "Cuestionario";
+    }
 }
