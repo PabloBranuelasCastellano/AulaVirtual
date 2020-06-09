@@ -81,7 +81,7 @@
 					<div class="card-body" style="background-color:#FFA07A;">
 
 					</div>
-					<p class="card-text" style="background-color:#FFA07A;"><a href="${pageContext.request.contextPath}/NuevoCuestionario" style="margin-left:30%;color:black;"><u>Crear Nuevo cuestionario</a></u></p>
+					<p class="card-text" style="background-color:#FFA07A;"><a href="${pageContext.request.contextPath}/NuevoCuestionario/" style="margin-left:30%;color:black;"><u>Crear Nuevo cuestionario</a></u></p>
 				</div>
 
 			</div>
