@@ -211,9 +211,10 @@ public class ProfesoresServices {
             temas.setMateriaId(resultSet.getInt("MateriaId"));
             //System.out.println("El id de la Materia es "+resultSet.getInt("MateriaId"));
             temas.setTemaActivo(resultSet.getBoolean("EsActivo"));
+            temasList.add(temas);
             }
 
-            temasList.add(temas);
+
             model.addAttribute("ListaTemas", temasList);
             return "Desplegar_Temas";
         }
