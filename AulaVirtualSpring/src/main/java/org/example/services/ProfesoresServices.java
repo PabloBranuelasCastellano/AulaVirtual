@@ -1,11 +1,10 @@
 package org.example.services;
 
 import org.example.Entities.*;
-import org.omg.Messaging.SYNC_WITH_TRANSPORT;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.sql.DataSource;
@@ -40,7 +39,7 @@ public class ProfesoresServices {
         Activado = activado;
     }
 
-    public String PanelProfesor(HttpServletRequest request, Model model) throws SQLException {
+    public ModelAndView PanelProfesor(HttpServletRequest request, Model model) throws SQLException {
 
         profesores = loginServices.getProfesores();
         /*System.out.println(profesores.getIdProfesor());
@@ -48,7 +47,7 @@ public class ProfesoresServices {
         return MostrarGrupos(request, model);
     }
 
-    public String MostrarGrupos(HttpServletRequest request, Model model) throws SQLException {
+    public ModelAndView MostrarGrupos(HttpServletRequest request, Model model) throws SQLException {
         connection = dataSource.getConnection();
 
         String VerGrupos = "select g.GrupoId, ca.Denominacion as AnioEscolar ,G.Nombre as NombreGrupo ,M.Nombre as Asignatura ,N.Denominacion as NivelEducativo ,P.Usuario as Nombre_Profesor from grupos g,materias m ,niveles n ,profesores p, cursosacademicos ca where(g.MateriaId=M.MateriaId and g.NivelId =n.NivelId and g.ProfesorId =P.ProfesorId and g.CursoAcademicoId =ca.CursoAcademicoId  and ca.EsActivo =true and P.ProfesorId=?)";
@@ -89,7 +88,7 @@ public class ProfesoresServices {
         return MateriasProfesor(request, model);
     }
 
-    public String MateriasProfesor(HttpServletRequest request, Model model) throws SQLException {
+    public ModelAndView MateriasProfesor(HttpServletRequest request, Model model) throws SQLException {
         connection = dataSource.getConnection();
         String VerMaterias = "select distinct M.MateriaId,M.Nombre as Asignatura,N.Denominacion as NivelEducativo ,n.NivelId,p.ProfesorId from grupos g,materias m ,niveles n ,profesores p, cursosacademicos ca where(g.MateriaId=M.MateriaId and g.NivelId =n.NivelId and g.ProfesorId =P.ProfesorId and g.CursoAcademicoId =ca.CursoAcademicoId  and ca.EsActivo =true  and P.ProfesorId=?)";
         PreparedStatement preparedStatement = connection.prepareStatement(VerMaterias);
@@ -112,11 +111,15 @@ public class ProfesoresServices {
         }
         model.addAttribute("materiasprofesor", Materias_Profesor);
         //System.out.println("Materias agreadas a la lista y enviadas al modelo");
-        return "panelprofesores";
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("panelprofesores");
+        return modelAndView;
+
     }
 
 
-    public String VerGruposDesactivados(HttpServletRequest request, Model model) throws SQLException {
+    public ModelAndView VerGruposDesactivados(HttpServletRequest request, Model model) throws SQLException {
+        ModelAndView modelAndView = new ModelAndView();
         connection = dataSource.getConnection();
         String GruposNoActivos = "select  ca.Denominacion as AnioEscolar ,G.Nombre as NombreGrupo ,M.Nombre as Asignatura ,N.Denominacion as NivelEducativo ,P.Usuario as Nombre_Profesor from grupos g,materias m ,niveles n ,profesores p, cursosacademicos ca where(g.MateriaId=M.MateriaId and g.NivelId =n.NivelId and g.ProfesorId =P.ProfesorId and g.CursoAcademicoId =ca.CursoAcademicoId  and ca.EsActivo =false and P.ProfesorId=? )";
         PreparedStatement preparedStatement = connection.prepareStatement(GruposNoActivos);
@@ -134,11 +137,14 @@ public class ProfesoresServices {
 
         }
         model.addAttribute("GruposDesactivados", GruposDesactivados);
-        return "Grupos_no_activos";
+        modelAndView.setViewName("Grupos_no_activos");
+        return modelAndView;
+
     }
 
-    public String AlumnosGrupos(HttpServletRequest request, Model model, int GrupoId) throws SQLException {
+    public ModelAndView AlumnosGrupos(HttpServletRequest request, Model model, int GrupoId) throws SQLException {
         //System.out.println("El id del grupo es "+GrupoId);
+        ModelAndView modelAndView=new ModelAndView();
         connection = dataSource.getConnection();
         String Alumnos_Grupo = "select a.AlumnoId ,a.Nombre,a.PrimerApellido ,a.SegundoApellido from alumnos a, gruposalumnos ga  ,grupos g  where (ga.GrupoId =g.GrupoId and ga.AlumnoId =a.AlumnoId and g.GrupoId=?) order by a.PrimerApellido asc";
         PreparedStatement preparedStatement = connection.prepareStatement(Alumnos_Grupo);
@@ -155,20 +161,24 @@ public class ProfesoresServices {
             gruposAlumnoList.add(gruposAlumno);
         }
         model.addAttribute("Lista_Alumnos", gruposAlumnoList);
-        return "Alumnos_Grupo";
+        modelAndView.setViewName("Alumnos_Grupo");
+        return modelAndView;
+        //return "Alumnos_Grupo";
     }
 
-    public String CrearTema(HttpServletRequest request, Model model, int MateriaId, int NivelId, int ProfesorId) {
-
+    public ModelAndView CrearTema(HttpServletRequest request, Model model, int MateriaId, int NivelId, int ProfesorId) {
+        ModelAndView modelAndView=new ModelAndView();
 
         materias.setMateriaId(MateriaId);
         materias.setNivelId(NivelId);
         materias.setProfesorId(ProfesorId);
-        return "NuevoTema";
+        modelAndView.setViewName("NuevoTema");
+        return modelAndView;
     }
 
-    public String RegistrarTema(HttpServletRequest request, Model model) throws SQLException {
+    public ModelAndView RegistrarTema(HttpServletRequest request, Model model) throws SQLException {
         LocalDate localDate = LocalDate.now();
+        ModelAndView modelAndView=new ModelAndView();
         connection = dataSource.getConnection();
         String Agregar_Tema = "insert into Temas values(null,?,?,?,?,?,?,?,?,?)";
         PreparedStatement preparedStatement = connection.prepareStatement(Agregar_Tema);
@@ -184,11 +194,12 @@ public class ProfesoresServices {
         //System.out.println("Cargamos los datos del formulario");
 
         preparedStatement.execute();
-
-        return "NuevoTema";
+        modelAndView.setViewName("NuevoTema");
+        return modelAndView;
     }
 
-    public String TemasProfesor(HttpServletRequest request, Model model, int ProfesorId,int MateriaId,int NivelId) throws SQLException {
+    public ModelAndView TemasProfesor(HttpServletRequest request, Model model, int ProfesorId, int MateriaId, int NivelId) throws SQLException {
+        ModelAndView modelAndView=new ModelAndView();
         connection = dataSource.getConnection();
         String Ver_Temas = "select distinct t.MateriaId,t.profesorId,t.titulo,m.Nombre,t.TemaId,t.NivelId ,t.EsActivo from temas t, profesores p ,niveles n,materias m where(t.materiaId=m.MateriaId and n.nivelId=t.nivelId and t.profesorId=? and t.materiaId=? and t.NivelId=?)";
         PreparedStatement preparedStatement = connection.prepareStatement(Ver_Temas);
@@ -216,9 +227,11 @@ public class ProfesoresServices {
 
 
             model.addAttribute("ListaTemas", temasList);
-            return "Desplegar_Temas";
+            modelAndView.setViewName("Desplegar_Temas");
+            return modelAndView;
         }
-        public String Puntos_Tema(HttpServletRequest request, Model model, int TemaId) throws SQLException {
+        public ModelAndView Puntos_Tema(HttpServletRequest request, Model model, int TemaId) throws SQLException {
+                ModelAndView modelAndView=new ModelAndView();
                connection = dataSource.getConnection();
                String Ver_Puntos = "select pnt.TemaId,pnt.PuntoId,pnt.Titulo,pnt.resumen,pnt.texto,pnt.EsActivo from puntos pnt,temas t,profesores p where(pnt.temaId=t.temaId and t.profesorId=p.profesorId and t.materiaId=? and t.profesorId=? and pnt.TemaId=?)order by pnt.orden asc";
                PreparedStatement preparedStatement = connection.prepareStatement(Ver_Puntos);
@@ -238,10 +251,12 @@ public class ProfesoresServices {
                     puntosTemaList.add(puntosTema);
                }
                model.addAttribute("PuntosTema", puntosTemaList);
-               return "Contenido_Temas";
+               modelAndView.setViewName("Contenido_Temas");
+               return modelAndView;
         }
 
-    public String ActivarTema(HttpServletRequest request, Model model, int MateriaId, int TemaId, int ProfesorId, int NivelId) throws SQLException {
+    public ModelAndView ActivarTema(HttpServletRequest request, Model model, int MateriaId, int TemaId, int ProfesorId, int NivelId) throws SQLException {
+        ModelAndView modelAndView=new ModelAndView();
         connection=dataSource.getConnection();
         String Cambiar_Estado="update temas t set EsActivo=true where (TemaId=? and profesorId=? and NivelId=? and MateriaId=?)";
         PreparedStatement preparedStatement=connection.prepareStatement(Cambiar_Estado);
@@ -251,10 +266,12 @@ public class ProfesoresServices {
         preparedStatement.setInt(4,MateriaId);
         //System.out.println("Establecemos conexion y preparamos la consulta");
         preparedStatement.executeUpdate();
-        return "redirect:/VerTemas/"+MateriaId+"/"+ProfesorId+"/"+NivelId;
+        modelAndView.setViewName("redirect:/VerTemas/"+MateriaId+"/"+ProfesorId+"/"+NivelId);
+        return modelAndView;
     }
 
-    public String DesactivarTema(HttpServletRequest request, Model model, int MateriaId, int TemaId, int ProfesorId, int NivelId) throws SQLException {
+    public ModelAndView DesactivarTema(HttpServletRequest request, Model model, int MateriaId, int TemaId, int ProfesorId, int NivelId) throws SQLException {
+        ModelAndView modelAndView=new ModelAndView();
         connection=dataSource.getConnection();
         String Cambiar_Estado="update temas t set EsActivo=false where (TemaId=? and profesorId=? and NivelId=? and MateriaId=?)";
         PreparedStatement preparedStatement=connection.prepareStatement(Cambiar_Estado);
@@ -264,14 +281,18 @@ public class ProfesoresServices {
         preparedStatement.setInt(4,MateriaId);
         //System.out.println("Establecemos conexion y preparamos la consulta");
         preparedStatement.executeUpdate();
-        return "redirect:/VerTemas/"+MateriaId+"/"+ProfesorId+"/"+NivelId;
+        modelAndView.setViewName("redirect:/VerTemas/"+MateriaId+"/"+ProfesorId+"/"+NivelId);
+        return modelAndView;
     }
 
-    public String CrearPunto(HttpServletRequest request,Model model,int TemaId){
+    public ModelAndView CrearPunto(HttpServletRequest request, Model model, int TemaId){
         temas.setTemaId(TemaId);
-        return "NuevoPunto";
+        ModelAndView modelAndView=new ModelAndView();
+        modelAndView.setViewName("NuevoPunto");
+        return modelAndView;
     }
-    public String RegistrarPunto(HttpServletRequest request,Model model) throws  SQLException {
+    public ModelAndView RegistrarPunto(HttpServletRequest request, Model model) throws  SQLException {
+        ModelAndView modelAndView=new ModelAndView();
         connection=dataSource.getConnection();
         String Agregar_Punto="insert into puntos values (null,?,?,?,?,?,?,?)";
         PreparedStatement preparedStatement=connection.prepareStatement(Agregar_Punto);
@@ -283,36 +304,44 @@ public class ProfesoresServices {
         preparedStatement.setInt(6, Integer.parseInt(request.getParameter("point_Number")));
         preparedStatement.setBoolean(7, Boolean.parseBoolean(request.getParameter("activar_Punto")));
         preparedStatement.execute();
-
-        return "NuevoPunto";
+        modelAndView.setViewName("NuevoPunto");
+        return modelAndView;
     }
 
-    public String OcultarPunto(HttpServletRequest request,Model model,int TemaId,int PuntoId) throws  SQLException{
+    public ModelAndView OcultarPunto(HttpServletRequest request, Model model, int TemaId, int PuntoId) throws  SQLException{
         connection=dataSource.getConnection();
+        ModelAndView modelAndView=new ModelAndView();
         String Cambiar_Estado="update puntos set EsActivo=false where TemaId=? and PuntoId=?";
         PreparedStatement preparedStatement=connection.prepareStatement(Cambiar_Estado);
         preparedStatement.setInt(1,TemaId);
         preparedStatement.setInt(2,PuntoId);
         preparedStatement.executeUpdate();
-        return "redirect:/Puntos_Tema/"+TemaId;
+        modelAndView.setViewName("redirect:/Puntos_Tema/"+TemaId);
+        return modelAndView;
     }
-    public String VisualizarPunto(HttpServletRequest request,Model model,int TemaId,int PuntoId)throws SQLException{
+    public ModelAndView VisualizarPunto(HttpServletRequest request, Model model, int TemaId, int PuntoId)throws SQLException{
         connection=dataSource.getConnection();
+        ModelAndView modelAndView=new ModelAndView();
         String Cambiar_Estado="update puntos set EsActivo=true where TemaId=? and PuntoId=?";
         PreparedStatement preparedStatement=connection.prepareStatement(Cambiar_Estado);
         preparedStatement.setInt(1,TemaId);
         preparedStatement.setInt(2,PuntoId);
         preparedStatement.executeUpdate();
         //System.out.println("Ejecutamos la actualización");
-        return "redirect:/Puntos_Tema/"+TemaId;
+        modelAndView.setViewName("redirect:/Puntos_Tema/"+TemaId);
+        return modelAndView;
     }
 
-    public String CrearCuestionario(HttpServletRequest request,Model model){
-        return "Cuestionario";
+    public ModelAndView CrearCuestionario(HttpServletRequest request, Model model){
+        ModelAndView modelAndView=new ModelAndView();
+        modelAndView.setViewName("Cuestionario");
+        return modelAndView;
     }
 
-    public String DatosCuestionario(HttpServletRequest request,Model model)throws SQLException{
+    public ModelAndView DatosCuestionario(HttpServletRequest request, Model model)throws SQLException{
+        ModelAndView modelAndView=new ModelAndView();
         System.out.println("El id del profesor es "+profesores.getIdProfesor());
-        return "Cuestionario";
+        modelAndView.setViewName("Cuestionario");
+        return modelAndView;
     }
 }
