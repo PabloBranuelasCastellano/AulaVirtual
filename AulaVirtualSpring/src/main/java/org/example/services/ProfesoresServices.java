@@ -39,7 +39,7 @@ public class ProfesoresServices {
         Activado = activado;
     }
 
-    public ModelAndView PanelProfesor(HttpServletRequest request, Model model) throws SQLException {
+    public String PanelProfesor(HttpServletRequest request, Model model) throws SQLException {
 
         profesores = loginServices.getProfesores();
         /*System.out.println(profesores.getIdProfesor());
@@ -118,7 +118,7 @@ public class ProfesoresServices {
     }
 
 
-    public ModelAndView VerGruposDesactivados(HttpServletRequest request, Model model) throws SQLException {
+    public String VerGruposDesactivados(HttpServletRequest request, Model model) throws SQLException {
         ModelAndView modelAndView = new ModelAndView();
         connection = dataSource.getConnection();
         String GruposNoActivos = "select  ca.Denominacion as AnioEscolar ,G.Nombre as NombreGrupo ,M.Nombre as Asignatura ,N.Denominacion as NivelEducativo ,P.Usuario as Nombre_Profesor from grupos g,materias m ,niveles n ,profesores p, cursosacademicos ca where(g.MateriaId=M.MateriaId and g.NivelId =n.NivelId and g.ProfesorId =P.ProfesorId and g.CursoAcademicoId =ca.CursoAcademicoId  and ca.EsActivo =false and P.ProfesorId=? )";
@@ -142,7 +142,7 @@ public class ProfesoresServices {
 
     }
 
-    public ModelAndView AlumnosGrupos(HttpServletRequest request, Model model, int GrupoId) throws SQLException {
+    public String AlumnosGrupos(HttpServletRequest request, Model model, int GrupoId) throws SQLException {
         //System.out.println("El id del grupo es "+GrupoId);
         ModelAndView modelAndView=new ModelAndView();
         connection = dataSource.getConnection();
@@ -166,7 +166,7 @@ public class ProfesoresServices {
         //return "Alumnos_Grupo";
     }
 
-    public ModelAndView CrearTema(HttpServletRequest request, Model model, int MateriaId, int NivelId, int ProfesorId) {
+    public String CrearTema(HttpServletRequest request, Model model, int MateriaId, int NivelId, int ProfesorId) {
         ModelAndView modelAndView=new ModelAndView();
 
         materias.setMateriaId(MateriaId);
@@ -176,7 +176,7 @@ public class ProfesoresServices {
         return modelAndView;
     }
 
-    public ModelAndView RegistrarTema(HttpServletRequest request, Model model) throws SQLException {
+    public String RegistrarTema(HttpServletRequest request, Model model) throws SQLException {
         LocalDate localDate = LocalDate.now();
         ModelAndView modelAndView=new ModelAndView();
         connection = dataSource.getConnection();
@@ -198,7 +198,7 @@ public class ProfesoresServices {
         return modelAndView;
     }
 
-    public ModelAndView TemasProfesor(HttpServletRequest request, Model model, int ProfesorId, int MateriaId, int NivelId) throws SQLException {
+    public String TemasProfesor(HttpServletRequest request, Model model, int ProfesorId, int MateriaId, int NivelId) throws SQLException {
         ModelAndView modelAndView=new ModelAndView();
         connection = dataSource.getConnection();
         String Ver_Temas = "select distinct t.MateriaId,t.profesorId,t.titulo,m.Nombre,t.TemaId,t.NivelId ,t.EsActivo from temas t, profesores p ,niveles n,materias m where(t.materiaId=m.MateriaId and n.nivelId=t.nivelId and t.profesorId=? and t.materiaId=? and t.NivelId=?)";
@@ -230,7 +230,7 @@ public class ProfesoresServices {
             modelAndView.setViewName("Desplegar_Temas");
             return modelAndView;
         }
-        public ModelAndView Puntos_Tema(HttpServletRequest request, Model model, int TemaId) throws SQLException {
+        public String Puntos_Tema(HttpServletRequest request, Model model, int TemaId) throws SQLException {
                 ModelAndView modelAndView=new ModelAndView();
                connection = dataSource.getConnection();
                String Ver_Puntos = "select pnt.TemaId,pnt.PuntoId,pnt.Titulo,pnt.resumen,pnt.texto,pnt.EsActivo from puntos pnt,temas t,profesores p where(pnt.temaId=t.temaId and t.profesorId=p.profesorId and t.materiaId=? and t.profesorId=? and pnt.TemaId=?)order by pnt.orden asc";
@@ -255,7 +255,7 @@ public class ProfesoresServices {
                return modelAndView;
         }
 
-    public ModelAndView ActivarTema(HttpServletRequest request, Model model, int MateriaId, int TemaId, int ProfesorId, int NivelId) throws SQLException {
+    public String ActivarTema(HttpServletRequest request, Model model, int MateriaId, int TemaId, int ProfesorId, int NivelId) throws SQLException {
         ModelAndView modelAndView=new ModelAndView();
         connection=dataSource.getConnection();
         String Cambiar_Estado="update temas t set EsActivo=true where (TemaId=? and profesorId=? and NivelId=? and MateriaId=?)";
@@ -270,7 +270,7 @@ public class ProfesoresServices {
         return modelAndView;
     }
 
-    public ModelAndView DesactivarTema(HttpServletRequest request, Model model, int MateriaId, int TemaId, int ProfesorId, int NivelId) throws SQLException {
+    public String DesactivarTema(HttpServletRequest request, Model model, int MateriaId, int TemaId, int ProfesorId, int NivelId) throws SQLException {
         ModelAndView modelAndView=new ModelAndView();
         connection=dataSource.getConnection();
         String Cambiar_Estado="update temas t set EsActivo=false where (TemaId=? and profesorId=? and NivelId=? and MateriaId=?)";
@@ -285,13 +285,13 @@ public class ProfesoresServices {
         return modelAndView;
     }
 
-    public ModelAndView CrearPunto(HttpServletRequest request, Model model, int TemaId){
+    public String CrearPunto(HttpServletRequest request, Model model, int TemaId){
         temas.setTemaId(TemaId);
         ModelAndView modelAndView=new ModelAndView();
         modelAndView.setViewName("NuevoPunto");
         return modelAndView;
     }
-    public ModelAndView RegistrarPunto(HttpServletRequest request, Model model) throws  SQLException {
+    public String RegistrarPunto(HttpServletRequest request, Model model) throws  SQLException {
         ModelAndView modelAndView=new ModelAndView();
         connection=dataSource.getConnection();
         String Agregar_Punto="insert into puntos values (null,?,?,?,?,?,?,?)";
@@ -308,7 +308,7 @@ public class ProfesoresServices {
         return modelAndView;
     }
 
-    public ModelAndView OcultarPunto(HttpServletRequest request, Model model, int TemaId, int PuntoId) throws  SQLException{
+    public String OcultarPunto(HttpServletRequest request, Model model, int TemaId, int PuntoId) throws  SQLException{
         connection=dataSource.getConnection();
         ModelAndView modelAndView=new ModelAndView();
         String Cambiar_Estado="update puntos set EsActivo=false where TemaId=? and PuntoId=?";
@@ -319,7 +319,7 @@ public class ProfesoresServices {
         modelAndView.setViewName("redirect:/Puntos_Tema/"+TemaId);
         return modelAndView;
     }
-    public ModelAndView VisualizarPunto(HttpServletRequest request, Model model, int TemaId, int PuntoId)throws SQLException{
+    public String VisualizarPunto(HttpServletRequest request, Model model, int TemaId, int PuntoId)throws SQLException{
         connection=dataSource.getConnection();
         ModelAndView modelAndView=new ModelAndView();
         String Cambiar_Estado="update puntos set EsActivo=true where TemaId=? and PuntoId=?";
@@ -332,13 +332,13 @@ public class ProfesoresServices {
         return modelAndView;
     }
 
-    public ModelAndView CrearCuestionario(HttpServletRequest request, Model model){
+    public String CrearCuestionario(HttpServletRequest request, Model model){
         ModelAndView modelAndView=new ModelAndView();
         modelAndView.setViewName("Cuestionario");
         return modelAndView;
     }
 
-    public ModelAndView DatosCuestionario(HttpServletRequest request, Model model)throws SQLException{
+    public String DatosCuestionario(HttpServletRequest request, Model model)throws SQLException{
         ModelAndView modelAndView=new ModelAndView();
         System.out.println("El id del profesor es "+profesores.getIdProfesor());
         modelAndView.setViewName("Cuestionario");
