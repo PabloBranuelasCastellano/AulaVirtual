@@ -16,7 +16,7 @@
 
 	<body>
 	    <form action="${pageContext.request.contextPath}/AgregarCuestionario/" method='post'>
-	    <p><button type="submit" name="Agregar" 	class="btn btn-primary btn-lg" style='margin-left:10rem;width:20rem;'>RegistrarCuestioario</button>
+	    <p><button type="submit" name="Agregar" 	class="btn btn-primary btn-lg" style='margin-left:10rem;width:20rem;'>Registrar Cuestionario/button>
 	    &nbsp;&nbsp;
 
             			<a class="btn btn-secondary btn-lg " href="${pageContext.request.contextPath}/homeProfesores" role="button" style="width:20rem;">Atras</a></p>
