@@ -7,7 +7,11 @@ import org.hibernate.validator.constraints.Email;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -32,10 +36,12 @@ public class LogginController {
     String Clave_Usuario;
 
     @GetMapping("/")
-    @ResponseBody
-    public String InicioSesion(HttpServletRequest request, Model model) {
 
-        return "Login";
+    public ModelAndView InicioSesion(HttpServletRequest request, Model model) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("Login");
+        return modelAndView;
+
     }
 
     @PostMapping("/Comprobar")
