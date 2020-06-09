@@ -1,8 +1,6 @@
 package org.example.Entities;
 
-import javax.persistence.Entity;
 
-@Entity
 public class Grupos {
     private  int idGrupo;
     private  String NombreMateria;
