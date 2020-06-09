@@ -79,9 +79,11 @@
 				<div class="card text-white  mb-3" style="background-color:#778899;max-width: 18rem;min-height:20rem;">
 					<div class="card-header">Mis Cuestionarios</div>
 					<div class="card-body" style="background-color:#FFA07A;">
-						<p class="card-text text-dark">Info card title</p>
+
 					</div>
+					<a href="${pageContext.request.contextPath}/Nuevo_Formulario/" class="card-text text-dark" style="background-color:#778899;">Crear nuevo Cuestionario</p>
 				</div>
+
 			</div>
 		</div>
 	</div>
