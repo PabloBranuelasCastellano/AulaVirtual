@@ -81,7 +81,7 @@
 					<div class="card-body" style="background-color:#FFA07A;">
 
 					</div>
-					<a href="${pageContext.request.contextPath}/Nuevo_Formulario/" class="card-text text-dark" style="background-color:#FFA07A;">Crear nuevo Cuestionario</p>
+					<p class="card-text" style="background-color:#FFA07A;"><a href="NuevoCuestionario" style="margin-left:30%;color:black;"><u>Crear Nuevo cuestionario</a></u></p>
 				</div>
 
 			</div>
