@@ -61,7 +61,6 @@ public class LoginServices {
         PreparedStatement preparedStatement = connection.prepareStatement(Profesor);
         preparedStatement.setString(1, Email_Usuario);
         preparedStatement.setString(2, Clave_Usuario);
-
         ResultSet resultSet;
         resultSet = preparedStatement.executeQuery();
         if (resultSet.next()) {
@@ -72,11 +71,10 @@ public class LoginServices {
             session.setAttribute("UsuarioConectado", profesores);
             rol = "Profesores";
             setRol(rol);
-            System.out.println("Fecha Actual "+localDate);
             String Actualizar_Curso="update cursosacademicos set EsActivo=false where FechaFin <(select current_Date())";
             preparedStatement=connection.prepareStatement(Actualizar_Curso);
             preparedStatement.executeUpdate();
-            System.out.println("Curso Actualizado");
+            //System.out.println("Curso Actualizado");
             return rol;
         } else {
             Email_Usuario = request.getParameter("Email_Acceso");
