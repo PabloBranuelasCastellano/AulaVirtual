@@ -42,16 +42,13 @@ public class ProfesoresServices {
     public String PanelProfesor(HttpServletRequest request, Model model) throws SQLException {
 
         profesores = loginServices.getProfesores();
-        /*System.out.println(profesores.getIdProfesor());
-        System.out.println(profesores.getUsuarioProfesor());*/
         return MostrarGrupos(request, model);
     }
 
     public String MostrarGrupos(HttpServletRequest request, Model model) throws SQLException {
+
         connection = dataSource.getConnection();
-
         String VerGrupos = "select g.GrupoId, ca.Denominacion as AnioEscolar ,G.Nombre as NombreGrupo ,M.Nombre as Asignatura ,N.Denominacion as NivelEducativo ,P.Usuario as Nombre_Profesor from grupos g,materias m ,niveles n ,profesores p, cursosacademicos ca where(g.MateriaId=M.MateriaId and g.NivelId =n.NivelId and g.ProfesorId =P.ProfesorId and g.CursoAcademicoId =ca.CursoAcademicoId  and ca.EsActivo =true and P.ProfesorId=?)";
-
         PreparedStatement preparedStatement = connection.prepareStatement(VerGrupos);
         preparedStatement.setInt(1, profesores.getIdProfesor());
         //System.out.println("Consulta preparada");
@@ -79,16 +76,12 @@ public class ProfesoresServices {
             gruposMateria.add(grupos);
 
         }
-        //System.out.println("Recorremos el bucle .guardamos los valores");
-
-
         model.addAttribute("Grupos_Materia", gruposMateria);
-
-        //System.out.println("LLegamos al final y funciona");
         return MateriasProfesor(request, model);
     }
 
     public String MateriasProfesor(HttpServletRequest request, Model model) throws SQLException {
+
         connection = dataSource.getConnection();
         String VerMaterias = "select distinct M.MateriaId,M.Nombre as Asignatura,N.Denominacion as NivelEducativo ,n.NivelId,p.ProfesorId from grupos g,materias m ,niveles n ,profesores p, cursosacademicos ca where(g.MateriaId=M.MateriaId and g.NivelId =n.NivelId and g.ProfesorId =P.ProfesorId and g.CursoAcademicoId =ca.CursoAcademicoId  and ca.EsActivo =true  and P.ProfesorId=?)";
         PreparedStatement preparedStatement = connection.prepareStatement(VerMaterias);
@@ -110,8 +103,6 @@ public class ProfesoresServices {
 
         }
         model.addAttribute("materiasprofesor", Materias_Profesor);
-        //System.out.println("Materias agreadas a la lista y enviadas al modelo");
-
         return "panelprofesores";
 
     }
@@ -136,13 +127,11 @@ public class ProfesoresServices {
 
         }
         model.addAttribute("GruposDesactivados", GruposDesactivados);
-
         return "Grupos_no_activos";
 
     }
 
     public String AlumnosGrupos(HttpServletRequest request, Model model, int GrupoId) throws SQLException {
-        //System.out.println("El id del grupo es "+GrupoId);
 
         connection = dataSource.getConnection();
         String Alumnos_Grupo = "select a.AlumnoId ,a.Nombre,a.PrimerApellido ,a.SegundoApellido from alumnos a, gruposalumnos ga  ,grupos g  where (ga.GrupoId =g.GrupoId and ga.AlumnoId =a.AlumnoId and g.GrupoId=?) order by a.PrimerApellido asc";
@@ -160,7 +149,6 @@ public class ProfesoresServices {
             gruposAlumnoList.add(gruposAlumno);
         }
         model.addAttribute("Lista_Alumnos", gruposAlumnoList);
-
         return "Alumnos_Grupo";
 
     }
@@ -170,13 +158,12 @@ public class ProfesoresServices {
         materias.setMateriaId(MateriaId);
         materias.setNivelId(NivelId);
         materias.setProfesorId(ProfesorId);
-
         return "NuevoTema";
     }
 
     public String RegistrarTema(HttpServletRequest request, Model model) throws SQLException {
-        LocalDate localDate = LocalDate.now();
 
+        LocalDate localDate = LocalDate.now();
         connection = dataSource.getConnection();
         String Agregar_Tema = "insert into Temas values(null,?,?,?,?,?,?,?,?,?)";
         PreparedStatement preparedStatement = connection.prepareStatement(Agregar_Tema);
@@ -189,10 +176,7 @@ public class ProfesoresServices {
         preparedStatement.setBoolean(7, Boolean.parseBoolean(request.getParameter("activar_Tema")));
         preparedStatement.setInt(8, Integer.parseInt(request.getParameter("tema_Number")));
         preparedStatement.setInt(9, Integer.parseInt(request.getParameter("tema_order")));
-        //System.out.println("Cargamos los datos del formulario");
-
         preparedStatement.execute();
-
         return "NuevoTema";
     }
 
@@ -204,7 +188,6 @@ public class ProfesoresServices {
         preparedStatement.setInt(1, profesores.getIdProfesor());
         preparedStatement.setInt(2, MateriaId);
         preparedStatement.setInt(3,NivelId);
-
         ResultSet resultSet = preparedStatement.executeQuery();
         List<Temas> temasList = new ArrayList<>();
         while (resultSet.next()) {
@@ -222,13 +205,12 @@ public class ProfesoresServices {
             temas.setTemaActivo(resultSet.getBoolean("EsActivo"));
             temasList.add(temas);
             }
-
-
             model.addAttribute("ListaTemas", temasList);
-
             return "Desplegar_Temas";
         }
+
         public String Puntos_Tema(HttpServletRequest request, Model model, int TemaId) throws SQLException {
+
                connection = dataSource.getConnection();
                String Ver_Puntos = "select pnt.TemaId,pnt.PuntoId,pnt.Titulo,pnt.resumen,pnt.texto,pnt.EsActivo from puntos pnt,temas t,profesores p where(pnt.temaId=t.temaId and t.profesorId=p.profesorId and t.materiaId=? and t.profesorId=? and pnt.TemaId=?)order by pnt.orden asc";
                PreparedStatement preparedStatement = connection.prepareStatement(Ver_Puntos);
@@ -248,7 +230,6 @@ public class ProfesoresServices {
                     puntosTemaList.add(puntosTema);
                }
                model.addAttribute("PuntosTema", puntosTemaList);
-
                return "Contenido_Temas";
         }
 
@@ -263,11 +244,11 @@ public class ProfesoresServices {
         preparedStatement.setInt(4,MateriaId);
         //System.out.println("Establecemos conexion y preparamos la consulta");
         preparedStatement.executeUpdate();
-
         return "redirect:/VerTemas/"+MateriaId+"/"+ProfesorId+"/"+NivelId;
     }
 
     public String DesactivarTema(HttpServletRequest request, Model model, int MateriaId, int TemaId, int ProfesorId, int NivelId) throws SQLException {
+
         connection=dataSource.getConnection();
         String Cambiar_Estado="update temas t set EsActivo=false where (TemaId=? and profesorId=? and NivelId=? and MateriaId=?)";
         PreparedStatement preparedStatement=connection.prepareStatement(Cambiar_Estado);
@@ -277,15 +258,15 @@ public class ProfesoresServices {
         preparedStatement.setInt(4,MateriaId);
         //System.out.println("Establecemos conexion y preparamos la consulta");
         preparedStatement.executeUpdate();
-
         return "redirect:/VerTemas/"+MateriaId+"/"+ProfesorId+"/"+NivelId;
     }
 
     public String CrearPunto(HttpServletRequest request, Model model, int TemaId){
-        temas.setTemaId(TemaId);
 
+        temas.setTemaId(TemaId);
         return "NuevoPunto";
     }
+    
     public String RegistrarPunto(HttpServletRequest request, Model model) throws  SQLException {
 
         connection=dataSource.getConnection();
@@ -303,25 +284,24 @@ public class ProfesoresServices {
     }
 
     public String OcultarPunto(HttpServletRequest request, Model model, int TemaId, int PuntoId) throws  SQLException{
-        connection=dataSource.getConnection();
 
+        connection=dataSource.getConnection();
         String Cambiar_Estado="update puntos set EsActivo=false where TemaId=? and PuntoId=?";
         PreparedStatement preparedStatement=connection.prepareStatement(Cambiar_Estado);
         preparedStatement.setInt(1,TemaId);
         preparedStatement.setInt(2,PuntoId);
         preparedStatement.executeUpdate();
-
         return "redirect:/Puntos_Tema/"+TemaId;
     }
-    public String VisualizarPunto(HttpServletRequest request, Model model, int TemaId, int PuntoId)throws SQLException{
-        connection=dataSource.getConnection();
 
+    public String VisualizarPunto(HttpServletRequest request, Model model, int TemaId, int PuntoId)throws SQLException{
+
+        connection=dataSource.getConnection();
         String Cambiar_Estado="update puntos set EsActivo=true where TemaId=? and PuntoId=?";
         PreparedStatement preparedStatement=connection.prepareStatement(Cambiar_Estado);
         preparedStatement.setInt(1,TemaId);
         preparedStatement.setInt(2,PuntoId);
         preparedStatement.executeUpdate();
-
         return "redirect:/Puntos_Tema/"+TemaId;
     }
 
@@ -333,7 +313,6 @@ public class ProfesoresServices {
     public String DatosCuestionario(HttpServletRequest request, Model model)throws SQLException{
 
         System.out.println("El id del profesor es "+profesores.getIdProfesor());
-        
         return "Cuestionario";
     }
 }
