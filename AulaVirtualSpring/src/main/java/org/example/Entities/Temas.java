@@ -1,8 +1,6 @@
 package org.example.Entities;
 
-import javax.persistence.Entity;
 
-@Entity
 public class Temas {
     private int TemaId;
     private String TituloTema;
