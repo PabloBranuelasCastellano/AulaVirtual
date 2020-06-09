@@ -104,4 +104,9 @@ public class ProfesorController {
     public String VisualizarPunto(HttpServletRequest request,Model model,@PathVariable int TemaId,@PathVariable int PuntoId)throws SQLException{
         return profesoresServices.VisualizarPunto(request, model, TemaId, PuntoId);
     }
+
+    @GetMapping("NuevoCuestionario/")
+    public String CrearCuestionario(HttpServletRequest request,Model model){
+        return profesoresServices.CrearCuestionario(request,model);
+    }
 }
