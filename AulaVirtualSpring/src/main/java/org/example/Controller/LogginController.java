@@ -10,8 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -23,7 +21,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-@RestController
+@Controller
 public class LogginController {
 
     @Autowired
@@ -36,52 +34,39 @@ public class LogginController {
     String Clave_Usuario;
 
     @GetMapping("/")
+    public String InicioSesion(HttpServletRequest request, Model model) {
 
-    public ModelAndView InicioSesion(HttpServletRequest request, Model model) {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("Login");
-        return modelAndView;
-
+        return "Login";
     }
 
     @PostMapping("/Comprobar")
-    public ModelAndView ComprobarUsuario(HttpServletRequest request, Model model) throws SQLException {
+    public String ComprobarUsuario(HttpServletRequest request, Model model) throws SQLException {
             loginServices.ComprobarUsuario(request,model);
-            ModelAndView modelAndView = new ModelAndView();
-
             if(loginServices.getRol()==null) {
-                modelAndView.setViewName("Errores");
-                return modelAndView;
-
+                return "Errores";
 
             }
 
 
 
         else if(loginServices.getRol().equals("Alumnos")) {
-                modelAndView.setViewName("redirect:/homeAlumnos");
-                return modelAndView;
-
+                return "redirect:/homeAlumnos";
         }
 
         else{
-            modelAndView.setViewName("redirect:/homeProfesores");
-            return modelAndView;
-
+            return "redirect:/homeProfesores";
         }
 
     }
 
     @GetMapping("/logout")
-    public ModelAndView Cerrar_Sesion(HttpServletRequest request, HttpServletResponse response, Model model) {
+    public String Cerrar_Sesion(HttpServletRequest request, HttpServletResponse response, Model model) {
         loginServices.Cerrar_Sesion(request, response, model);
-        ModelAndView modelAndView = new ModelAndView();
 
         if(loginServices.Cerrar_Sesion(request, response, model).equals("Sesion Cerrada")) {
-            modelAndView.setViewName("redirect:/");
-            return modelAndView;
 
+            return "redirect:/";
         }
-        return null;
+        return "Fallo al cerrar la sesion";
     }
 }
