@@ -109,4 +109,10 @@ public class ProfesorController {
     public String CrearCuestionario(HttpServletRequest request,Model model){
         return profesoresServices.CrearCuestionario(request,model);
     }
+
+    @PostMapping("AgregarCuestionario/")
+    public String DatosCuestionario(HttpServletRequest request,Model model)throws SQLException{
+        return profesoresServices.DatosCuestionario(request,model);
+
+    }
 }
