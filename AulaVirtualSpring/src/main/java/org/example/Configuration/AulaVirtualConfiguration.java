@@ -20,9 +20,9 @@ public class AulaVirtualConfiguration {
         return new OpenAPI()
             .components(new Components())
             .info(new Info()
-            .title("Biblioteca Spring")
+            .title("Aula Virtual Spring")
             .contact(contact)
             .version("1.0")
-            .description("Biblioteca Spring con Microservicios"));
+            .description("Aula Virtual con JSP y MYSQL"));
     }
 }
