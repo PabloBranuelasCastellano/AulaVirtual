@@ -306,4 +306,8 @@ public class ProfesoresServices {
         //System.out.println("Ejecutamos la actualización");
         return "redirect:/Puntos_Tema/"+TemaId;
     }
+
+    public String CrearCuestionario(HttpServletRequest request,Model model){
+        return "Cuestionario";
+    }
 }
