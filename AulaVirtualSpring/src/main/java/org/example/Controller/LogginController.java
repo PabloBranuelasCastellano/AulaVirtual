@@ -45,33 +45,43 @@ public class LogginController {
     }
 
     @PostMapping("/Comprobar")
-    public String ComprobarUsuario(HttpServletRequest request, Model model) throws SQLException {
+    public ModelAndView ComprobarUsuario(HttpServletRequest request, Model model) throws SQLException {
             loginServices.ComprobarUsuario(request,model);
+            ModelAndView modelAndView = new ModelAndView();
+
             if(loginServices.getRol()==null) {
-                return "Errores";
+                modelAndView.setViewName("Errores");
+                return modelAndView;
+
 
             }
 
 
 
         else if(loginServices.getRol().equals("Alumnos")) {
-                return "redirect:/homeAlumnos";
+                modelAndView.setViewName("redirect:/homeAlumnos");
+                return modelAndView;
+
         }
 
         else{
-            return "redirect:/homeProfesores";
+            modelAndView.setViewName("redirect:/homeProfesores");
+            return modelAndView;
+
         }
 
     }
 
     @GetMapping("/logout")
-    public String Cerrar_Sesion(HttpServletRequest request, HttpServletResponse response, Model model) {
+    public ModelAndView Cerrar_Sesion(HttpServletRequest request, HttpServletResponse response, Model model) {
         loginServices.Cerrar_Sesion(request, response, model);
+        ModelAndView modelAndView = new ModelAndView();
 
         if(loginServices.Cerrar_Sesion(request, response, model).equals("Sesion Cerrada")) {
+            modelAndView.setViewName("redirect:/");
+            return modelAndView;
 
-            return "redirect:/";
         }
-        return "Fallo al cerrar la sesion";
+        return null;
     }
 }
