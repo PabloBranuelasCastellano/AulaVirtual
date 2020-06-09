@@ -1,5 +1,8 @@
 package org.example.Entities;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Alumnos {
     private int IdAlumno;
     private int IdCentro;
