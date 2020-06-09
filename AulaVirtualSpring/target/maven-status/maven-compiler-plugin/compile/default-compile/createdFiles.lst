@@ -1,1 +1,15 @@
-Application.class
+org\example\Entities\Alumnos.class
+org\example\Controller\AlumnosController.class
+org\example\services\AlumnosServices.class
+org\example\Application.class
+org\example\Entities\GruposAlumno.class
+org\example\services\LoginServices.class
+org\example\Entities\Temas.class
+org\example\Controller\LogginController.class
+org\example\Entities\Materias.class
+org\example\Configuration\AulaVirtualConfiguration.class
+org\example\Entities\PuntosTema.class
+org\example\services\ProfesoresServices.class
+org\example\Controller\ProfesorController.class
+org\example\Entities\Grupos.class
+org\example\Entities\Profesores.class
