@@ -85,9 +85,10 @@
                                     <p><a href="${pageContext.request.contextPath}/PreguntasCuestionario/${ExamenesProfesor.getExamenId()}/${ExamenesProfesor.getNombre_Examen()}" style="color:black;">Titulo:${ExamenesProfesor.getNombre_Examen()} </a></p>
                                 </div>
                             </c:forEach>
+                            <p class="card-text" style="background-color:#FFA07A;"><a href="${pageContext.request.contextPath}/NuevoCuestionario/" style="margin-left:30%;color:black;"><u>Crear Nuevo cuestionario</a></u></p>
                         </p>
 					</div>
-					<p class="card-text" style="background-color:#FFA07A;"><a href="${pageContext.request.contextPath}/NuevoCuestionario/" style="margin-left:30%;color:black;"><u>Crear Nuevo cuestionario</a></u></p>
+
 				</div>
 
 			</div>
