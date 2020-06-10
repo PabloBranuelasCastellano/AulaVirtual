@@ -321,8 +321,8 @@ public class ProfesoresServices {
         preparedStatement.setString(3,request.getParameter("Instrucciones_Examen"));
         preparedStatement.setString(4,request.getParameter("Resumen_Examen"));
         preparedStatement.setInt(5, Integer.parseInt(request.getParameter("Num_Preguntas")));
-        preparedStatement.setInt(6, Integer.parseInt(request.getParameter("Punto_Correcto")));
-        preparedStatement.setInt(7, Integer.parseInt(request.getParameter("PuntoIncorrecto")));
+        preparedStatement.setFloat(6, Float.parseFloat((request.getParameter("Punto_Correcto"))));
+        preparedStatement.setFloat(7, Float.parseFloat((request.getParameter("PuntoIncorrecto"))));
         preparedStatement.setString(8,localDate.toString());
         preparedStatement.setBoolean(9, Boolean.parseBoolean(request.getParameter("activar_Examen")));
         preparedStatement.execute();
