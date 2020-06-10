@@ -119,7 +119,10 @@ public class ProfesoresServices {
         while (resultSet.next()){
             cuestionarios=new Cuestionarios();
             cuestionarios.setProfesorId(profesores.getIdProfesor());
+            cuestionariosArrayList.add(cuestionarios);
         }
+        model.addAttribute("Cuestionarios_Profesor",cuestionariosArrayList);
+        
         return "panelprofesores";
     }
 
