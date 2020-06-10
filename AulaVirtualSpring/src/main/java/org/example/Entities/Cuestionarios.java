@@ -1,6 +1,7 @@
 package org.example.Entities;
 
 public class Cuestionarios {
+    private int ExamenId;
     private int ProfesorId;
     private String Nombre_Examen;
     private String Resumen_Examen;
@@ -8,6 +9,14 @@ public class Cuestionarios {
     private float PuntosAcierto;
     private float PuntosError;
     private int Num_Preguntas;
+
+    public int getExamenId() {
+        return ExamenId;
+    }
+
+    public void setExamenId(int examenId) {
+        ExamenId = examenId;
+    }
 
     public int getProfesorId() {
         return ProfesorId;
