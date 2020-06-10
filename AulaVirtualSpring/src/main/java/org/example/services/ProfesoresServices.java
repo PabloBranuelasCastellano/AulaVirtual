@@ -317,6 +317,7 @@ public class ProfesoresServices {
         String NuevoExamen="insert into cuestionarios values(null,?,?,?,?,?,?,?,?)";
         PreparedStatement preparedStatement=connection.prepareStatement(NuevoExamen);
         preparedStatement.setInt(1,profesores.getIdProfesor());
+        preparedStatement.setString(2,request.getParameter("Title_Exam"));
 
 
         return "Cuestionario";
