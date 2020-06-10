@@ -15,7 +15,7 @@
     	</head>
 
 	<body>
-	    <form action="${pageContext.request.contextPath}/AgregarCuestionario/" method='post' style='margin-left:10rem;margin-top:2rem;'>
+	    <form action="${pageContext.request.contextPath}/AgregarCuestionario/" method='post' style='margin-left:10rem;margin-top:1rem;'>
 	        <div class="form-group">
                 <label>Titulo del Examen</label>
                 <p><input type="text" class="form-control" id="Title_Exam"></p>
