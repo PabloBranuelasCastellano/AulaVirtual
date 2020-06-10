@@ -312,7 +312,13 @@ public class ProfesoresServices {
 
     public String DatosCuestionario(HttpServletRequest request, Model model)throws SQLException{
 
-        System.out.println("El id del profesor es "+profesores.getIdProfesor());
+        LocalDate localDate = LocalDate.now();
+        connection=dataSource.getConnection();
+        String NuevoExamen="insert into cuestionarios values(null,?,?,?,?,?,?,?,?)";
+        PreparedStatement preparedStatement=connection.prepareStatement(NuevoExamen);
+        preparedStatement.setInt(1,profesores.getIdProfesor());
+
+
         return "Cuestionario";
     }
 }
