@@ -126,7 +126,7 @@ public class ProfesoresServices {
             cuestionarios.setPuntosAcierto(resultSet.getInt("PuntosAcierto"));
             cuestionarios.setPuntosError(resultSet.getInt("PuntosError"));
             cuestionariosArrayList.add(cuestionarios);
-            System.out.println("Cargamos los datos y lo enviamos al JSP");
+
         }
         model.addAttribute("Cuestionarios_Profesor",cuestionariosArrayList);
 
