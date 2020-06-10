@@ -31,6 +31,46 @@
               <textarea class="form-control"  rows="10"name="Resumen_Examen" ></textarea>
               </div>
 
+              <div class="container">
+                <div class="row">
+                    <div class="col">
+                  		<label>Activar Examen</label>
+                  			<div class="form-check">
+                  				<input class="form-check-input" type="radio" name="activar_Examen" id="exampleRadios1" value="true">
+                  				    <label class="form-check-label" for="exampleRadios1">
+                  			            Si
+                  				</label>
+
+                  			</div>
+                  			 <br>
+                  			<div class="form-check">
+                  				<input class="form-check-input" type="radio" name="activar_Examen" id="exampleRadios2" value="false">
+                  				    <label class="form-check-label" for="exampleRadios2">
+                  					    No
+                  					</label>
+                  			</div>
+
+                  			</div>
+                  			<div class="col">
+                  			    <p>Preguntas por Examen:</p>
+                  						<p><input type='number' name="Num_Preguntas"/></p>
+                  			</div>
+                  			<div class="col">
+                  			    <p>Puntos Pregunta Correcta:</p>
+                  				<p><input type='number' step="any" name="Punto_Correcto"/></p>
+                  			</div>
+
+                  			<div class="col">
+                                <p>Puntos Pregunta Incorecta:</p>
+                                <p><input type='number' step="any" name="PuntoIncorrecto"/></p>
+                            </div>
+
+                  	</div>
+
+                </div>
+                 <br>
+                 <br>
+
             <p><button type="submit" name="Agregar" 	class="btn btn-primary btn-lg" style='margin-left:10rem;width:20rem;'>Registrar Cuestionario</button>
                 &nbsp;&nbsp;
             <a class="btn btn-secondary btn-lg " href="${pageContext.request.contextPath}/homeProfesores" role="button" style="width:20rem;">Atras</a></p>
