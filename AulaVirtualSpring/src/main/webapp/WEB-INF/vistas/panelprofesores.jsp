@@ -79,7 +79,13 @@
 				<div class="card text-white  mb-3" style="background-color:#778899;max-width: 18rem;min-height:20rem;">
 					<div class="card-header">Mis Cuestionarios</div>
 					<div class="card-body" style="background-color:#FFA07A;">
-
+                        <p class="card-text " >
+                            <c:forEach var = "ExamenesProfesor" items="${Cuestionarios_Profesor}">
+                                <div id='Grupos' >
+                                    <p><a href="${pageContext.request.contextPath}/#/${ExamenesProfesor.getExamenId()}" style="color:black;">Titulo:${ExamenesProfesor.getNombre_Examen()} </a></p>
+                                </div>
+                            </c:forEach>
+                        </p>
 					</div>
 					<p class="card-text" style="background-color:#FFA07A;"><a href="${pageContext.request.contextPath}/NuevoCuestionario/" style="margin-left:30%;color:black;"><u>Crear Nuevo cuestionario</a></u></p>
 				</div>
