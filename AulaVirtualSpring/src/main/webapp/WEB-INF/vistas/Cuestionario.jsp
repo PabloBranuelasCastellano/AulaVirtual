@@ -18,7 +18,11 @@
 	    <form action="${pageContext.request.contextPath}/AgregarCuestionario/" method='post' style='margin-left:10rem;margin-top:1rem;'>
 	        <div class="form-group">
                 <label>Titulo del Examen</label>
-                <p><input type="text" class="form-control" name="Title_Exam"></p>
+                <p><input type="text" class="form-control" name="Title_Examen"></p>
+            </div>
+            <div class="form-group">
+                <label >Instrucciones del Examen</label>
+                <textarea class="form-control" rows="5" name="Instrucciones_Examen" ></textarea>
             </div>
             <p><button type="submit" name="Agregar" 	class="btn btn-primary btn-lg" style='margin-left:10rem;width:20rem;'>Registrar Cuestionario</button>
                 &nbsp;&nbsp;
