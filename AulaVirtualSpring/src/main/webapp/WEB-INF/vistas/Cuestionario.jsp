@@ -15,11 +15,14 @@
     	</head>
 
 	<body>
-	    <form action="${pageContext.request.contextPath}/AgregarCuestionario/" method='post'>
-	    <p><button type="submit" name="Agregar" 	class="btn btn-primary btn-lg" style='margin-left:10rem;width:20rem;'>Registrar Cuestionario</button>
-	    &nbsp;&nbsp;
-
-            			<a class="btn btn-secondary btn-lg " href="${pageContext.request.contextPath}/homeProfesores" role="button" style="width:20rem;">Atras</a></p>
+	    <form action="${pageContext.request.contextPath}/AgregarCuestionario/" method='post' style='margin-left:10rem;margin-top:5rem;'>
+	        <div class="form-group">
+                <label>Titulo del Examen</label>
+                <p><input type="text" class="form-control" id="Title_Exam"></p>
+            </div>
+            <p><button type="submit" name="Agregar" 	class="btn btn-primary btn-lg" style='margin-left:10rem;width:20rem;'>Registrar Cuestionario</button>
+                &nbsp;&nbsp;
+            <a class="btn btn-secondary btn-lg " href="${pageContext.request.contextPath}/homeProfesores" role="button" style="width:20rem;">Atras</a></p>
 	    </form>
 	</body>
 </html>
