@@ -103,8 +103,15 @@ public class ProfesoresServices {
 
         }
         model.addAttribute("materiasprofesor", Materias_Profesor);
-        return "panelprofesores";
+        return ExamenesProfesor(request, model);
 
+    }
+
+    public String ExamenesProfesor(HttpServletRequest request,Model model)throws  SQLException{
+
+        connection=dataSource.getConnection();
+        String Ver_Examenes="";
+        return "panelprofesores";
     }
 
 
