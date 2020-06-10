@@ -319,6 +319,7 @@ public class ProfesoresServices {
         preparedStatement.setInt(1,profesores.getIdProfesor());
         preparedStatement.setString(2,request.getParameter("Title_Examen"));
         preparedStatement.setString(3,request.getParameter("Instrucciones_Examen"));
+        preparedStatement.setString(4,request.getParameter("Resumen_Examen"));
 
 
         return "Cuestionario";
