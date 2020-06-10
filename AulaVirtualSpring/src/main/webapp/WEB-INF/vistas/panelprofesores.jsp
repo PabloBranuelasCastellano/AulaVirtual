@@ -82,7 +82,7 @@
                         <p class="card-text " >
                             <c:forEach var = "ExamenesProfesor" items="${Cuestionarios_Profesor}">
                                 <div id='Grupos' >
-                                    <p><a href="${pageContext.request.contextPath}/#/${ExamenesProfesor.getExamenId()}" style="color:black;">Titulo:${ExamenesProfesor.getNombre_Examen()} </a></p>
+                                    <p><a href="${pageContext.request.contextPath}/PreguntasCuestionario/${ExamenesProfesor.getExamenId()}" style="color:black;">Titulo:${ExamenesProfesor.getNombre_Examen()} </a></p>
                                 </div>
                             </c:forEach>
                         </p>
