@@ -111,7 +111,7 @@ public class ProfesoresServices {
     public String ExamenesProfesor(HttpServletRequest request,Model model)throws  SQLException{
 
         connection=dataSource.getConnection();
-        String Ver_Examenes="select c.Titulo from cuestionarios c,profesores p where(c.ProfesorId =p.ProfesorId and c.ProfesorId =?)";
+        String Ver_Examenes="select c.Titulo,c.Instrucciones,c.Resumen,c.NumPreguntasPorTest,c.PuntosAcierto,c.PuntosError from cuestionarios c,profesores p where(c.ProfesorId =p.ProfesorId and c.ProfesorId =?)";
         PreparedStatement preparedStatement=connection.prepareStatement(Ver_Examenes);
         preparedStatement.setInt(1,profesores.getIdProfesor());
         ArrayList<Cuestionarios>cuestionariosArrayList=new ArrayList<>();
@@ -119,10 +119,17 @@ public class ProfesoresServices {
         while (resultSet.next()){
             cuestionarios=new Cuestionarios();
             cuestionarios.setProfesorId(profesores.getIdProfesor());
+            cuestionarios.setNombre_Examen(resultSet.getString("Titulo"));
+            cuestionarios.setInstrucciones_Examen(resultSet.getString("Instrucciones"));
+            cuestionarios.setResumen_Examen(resultSet.getString("Resumen"));
+            cuestionarios.setNum_Preguntas(resultSet.getInt("NumPreguntasPorTest"));
+            cuestionarios.setPuntosAcierto(resultSet.getInt("PuntosAcierto"));
+            cuestionarios.setPuntosError(resultSet.getInt("PuntosError"));
             cuestionariosArrayList.add(cuestionarios);
+            System.out.println("Cargamos los datos y lo enviamos al JSP");
         }
         model.addAttribute("Cuestionarios_Profesor",cuestionariosArrayList);
-        
+
         return "panelprofesores";
     }
 
