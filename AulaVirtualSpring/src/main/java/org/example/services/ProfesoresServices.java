@@ -355,4 +355,10 @@ public class ProfesoresServices {
         preparedStatement.execute();
         return "Cuestionario";
     }
+
+    public String CuestionariosInactivos(HttpServletRequest request,Model model)throws SQLException{
+        System.out.println("El id del profesor es "+profesores.getIdProfesor());
+        return null;
+
+    }
 }
