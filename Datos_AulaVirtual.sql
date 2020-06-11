@@ -110,7 +110,7 @@ insert into opcionespuntos values
 (null,7,4),
 (null,8,4),
 (null,9,4);
-select c.Titulo from cuestionarios c,profesores p where(c.ProfesorId =p.ProfesorId and c.ProfesorId =1);
+select c.Titulo ,c.NumeroPreguntasPorTest from cuestionarios c,profesores p where(c.ProfesorId =p.ProfesorId and c.ProfesorId =1);
 select Texto from preguntas p where CuestionarioId =1; 
 select * from opciones o where PreguntaId=3;
 select * from opcionespuntos op ,puntos p,opciones o where(op.OpcionId =o.OpcionId and op.PuntoId =p.PuntoId and o.PreguntaId =3);
