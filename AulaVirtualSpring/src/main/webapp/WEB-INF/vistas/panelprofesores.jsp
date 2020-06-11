@@ -74,7 +74,8 @@
 						</div>
 						<p class="card-text" style="background-color:#87CEFA;"><a href="temas_no_activos.php" style="margin-left:40%;color:black;"><u>Ver temario no activo</a></u></p>
 					</div>
-			</div>
+
+				</div>
 			<div class="col-sm">
 				<div class="card text-white  mb-3" style="background-color:#778899;max-width: 18rem;min-height:20rem;">
 					<div class="card-header">Mis Cuestionarios</div>
@@ -86,9 +87,10 @@
                                 </div>
                             </c:forEach>
                             <p class="card-text" style="background-color:#FFA07A;"><a href="${pageContext.request.contextPath}/NuevoCuestionario/" style="margin-left:10%;color:black;"><u>Crear Nuevo cuestionario</a></u></p>
+
                         </p>
 					</div>
-
+                     <p class="card-text" style="background-color:#FFA07A;"><a href="${pageContext.request.contextPath}/CuestionariosDesactivados/" style="margin-left:35%;color:black;"><u>Cuestionarios no activos</a></u></p>
 				</div>
 
 			</div>
