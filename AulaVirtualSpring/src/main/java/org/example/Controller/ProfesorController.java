@@ -104,4 +104,9 @@ public class ProfesorController {
         return profesoresServices.DatosCuestionario(request,model);
 
     }
+
+    @GetMapping("CuestionariosDesactivados/")
+    public String CuestionariosInactivos(HttpServletRequest request,Model model)throws SQLException{
+        return profesoresServices.CuestionariosInactivos(request,model);
+    }
 }
