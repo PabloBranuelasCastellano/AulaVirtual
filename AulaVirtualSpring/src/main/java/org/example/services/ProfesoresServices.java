@@ -395,7 +395,7 @@ public class ProfesoresServices {
             preparedStatement.setString(2,request.getParameter("Pregunta_"+i));
             preparedStatement.setString(3,localDate.toString());
             //preparedStatement.setInt(4, Integer.parseInt(request.getParameter("orderPregunta_"+i)));
-           System.out.println(request.getParameter("orderPregunta_"i));
+           System.out.println(request.getParameter("orderPregunta_"+i));
             preparedStatement.setBoolean(5, Boolean.parseBoolean(request.getParameter("activar_Pregunta_"+i)));
             //preparedStatement.execute();
         }
