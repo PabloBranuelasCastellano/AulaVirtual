@@ -22,6 +22,7 @@
                             <label>Pregunta </label>
                             <input type="text" class="form-control" name="Pregunta_${N}">
                         </div>
+                        <br>
                         <label>Activar Pregunta</label>
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="activar_Pregunta_{N}" id="exampleRadios1" value="true">
@@ -37,9 +38,10 @@
                                         No
                                    </label>
                                 </div>
+                                <br>
                                  <div class="form-group">
                                     <label>Orden Pregunta</label>
-                                    <input type="number" class="form-control" name="order_${N}">
+                                    <input type="number" class="form-control" name="order_${N}" style="width:20%;">
                                  </div>
                         <br>
 
