@@ -68,7 +68,7 @@ public class ProfesoresServices {
             //System.out.print(resultSet.getString(3) + " ");
             grupos.setNombreGrupo(resultSet.getString(3));
             grupos.setNombreMateria(resultSet.getString(4));
-            System.out.print(resultSet.getString(4) + " ");
+            //System.out.print(resultSet.getString(4) + " ");
             //System.out.print(resultSet.getString(5) + " ");
             grupos.setNivelGrupo(resultSet.getString(5));
             //System.out.print(resultSet.getString(6) + " ");
