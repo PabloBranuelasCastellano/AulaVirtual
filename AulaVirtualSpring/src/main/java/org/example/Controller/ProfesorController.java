@@ -109,4 +109,14 @@ public class ProfesorController {
     public String CuestionariosInactivos(HttpServletRequest request,Model model)throws SQLException{
         return profesoresServices.CuestionariosInactivos(request,model);
     }
+
+    @GetMapping("PreguntasCuestionario/{ExamenId}/{NombreExamen}")
+    public String ListaCuestionarios(HttpServletRequest request,Model model,@PathVariable int ExamenId,@PathVariable String NombreExamen)throws SQLException{
+        return profesoresServices.ListaCuestionarios(request,model,ExamenId,NombreExamen);
+    }
+
+    @PostMapping("AgregarPreguntas/")
+    public String CrearPreguntas(HttpServletRequest request,Model model)throws SQLException{
+        return profesoresServices.CrearPreguntas(request,model);
+    }
 }
