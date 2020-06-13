@@ -364,8 +364,7 @@ public class ProfesoresServices {
     }
 
     public String ListaCuestionarios(HttpServletRequest request, Model model, int examenId, String nombreExamen) throws SQLException {
-        System.out.println("El id del examen es "+examenId+" y el numero de preguntas es "+cuestionarios.getNum_Preguntas()+
-                " y el nombre del examen es "+nombreExamen);
+
         connection=dataSource.getConnection();
         String numPreguntas="select NumeroPreguntasPorTest from cuestionarios  where CuestionarioId=?";
         PreparedStatement preparedStatement=connection.prepareStatement(numPreguntas);
@@ -373,11 +372,14 @@ public class ProfesoresServices {
         ResultSet resultSet=preparedStatement.executeQuery();
         if(resultSet.next()) {
             cuestionarios.setExamenId(examenId);
-            cuestionarios.setNum_Preguntas(resultSet.getInt(1));
+            cuestionarios.setNum_Preguntas(resultSet.getInt("NumeroPreguntasPorTest"));
+            cuestionarios.setNombre_Examen(nombreExamen);
         }
+        System.out.println("El id del examen es "+examenId+" y el numero de preguntas es "+cuestionarios.getNum_Preguntas()+
+                " y el nombre del examen es "+nombreExamen);
         model.addAttribute("Numero_Preguntas",cuestionarios.getNum_Preguntas());
-        request.getSession().setAttribute("Num_Cuestionario",examenId);
-        request.getSession().setAttribute("Num_Pregunta",cuestionarios.getNum_Preguntas());
+        /*request.getSession().setAttribute("Num_Cuestionario",examenId);
+        request.getSession().setAttribute("Num_Pregunta",cuestionarios.getNum_Preguntas());*/
         return "Preguntas";
     }
 
@@ -385,12 +387,14 @@ public class ProfesoresServices {
         /*String numCuestionario=String.valueOf(request.getSession().getAttribute("Num_Cuestionario"));
         String numCuestionario=String.valueOf(request.getSession().getAttribute("Num_Cuestionario"));
         int numCuestionarios=Integer.parseInt(numCuestionario);*/
-        System.out.println("El numero del cuestionario es "+cuestionarios.getExamenId());
+        System.out.println("El numero del cuestionario es "+cuestionarios.getExamenId() +"y el numero de pregubtas que tiene es "
+                +cuestionarios.getNum_Preguntas()+ "y el nombre del examen es "+ cuestionarios.getNombre_Examen());
         String guardar_pregunta="insert into Preguntas values(null,?,?,?,?,?)";
         for(int i=0;i<cuestionarios.getNum_Preguntas();i++){
             request.getParameter("Pregunta_"+i);
             request.getParameter("activar_Pregunta_"+i);
         }
+        model.addAttribute("Numero_Preguntas",cuestionarios.getNum_Preguntas());
         return "Preguntas";
     }
 }
