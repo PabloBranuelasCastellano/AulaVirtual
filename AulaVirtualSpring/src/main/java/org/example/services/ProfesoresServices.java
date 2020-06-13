@@ -61,19 +61,19 @@ public class ProfesoresServices {
 
         while (resultSet.next()) {
             grupos = new Grupos();
-            System.out.print(resultSet.getInt(1) + " ");
+            //System.out.print(resultSet.getInt(1) + " ");
             grupos.setIdGrupo(resultSet.getInt(1));
-            System.out.print(resultSet.getString(2) + " ");
+            //System.out.print(resultSet.getString(2) + " ");
             grupos.setCursoAcademicoGrupo(resultSet.getString(2));
-            System.out.print(resultSet.getString(3) + " ");
+            //System.out.print(resultSet.getString(3) + " ");
             grupos.setNombreGrupo(resultSet.getString(3));
             grupos.setNombreMateria(resultSet.getString(4));
             System.out.print(resultSet.getString(4) + " ");
-            System.out.print(resultSet.getString(5) + " ");
+            //System.out.print(resultSet.getString(5) + " ");
             grupos.setNivelGrupo(resultSet.getString(5));
-            System.out.print(resultSet.getString(6) + " ");
+            //System.out.print(resultSet.getString(6) + " ");
             grupos.setProfesorGrupo(resultSet.getString(6));
-            System.out.println();
+            //System.out.println();
             gruposMateria.add(grupos);
 
         }
