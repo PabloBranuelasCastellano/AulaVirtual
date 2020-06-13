@@ -41,7 +41,7 @@
                                 <br>
                                  <div class="form-group">
                                     <label>Orden Pregunta</label>
-                                    <input type="number" class="form-control" name="orderPregunta_${N}" style="width:20%;">
+                                    <input type="number" class="form-control" name="orderPregunta_${N}" style="width:20%;"/>
                                  </div>
                         <br>
 
