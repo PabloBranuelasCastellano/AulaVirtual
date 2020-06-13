@@ -37,6 +37,10 @@
                                         No
                                    </label>
                                 </div>
+                                 <div class="form-group">
+                                    <label>Orden Pregunta</label>
+                                    <input type="number" class="form-control" name="order_${N}">
+                                 </div>
                         <br>
 
 
