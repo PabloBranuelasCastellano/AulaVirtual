@@ -396,7 +396,7 @@ public class ProfesoresServices {
             preparedStatement.setString(3,localDate.toString());
             preparedStatement.setInt(4,Integer.parseInt(request.getParameter("orderPregunta_"+i)));
             preparedStatement.setBoolean(5, Boolean.parseBoolean(request.getParameter("activar_Pregunta_"+i)));
-            preparedStatement.execute();
+            preparedStatement.execute();    
         }
         model.addAttribute("Numero_Preguntas",cuestionarios.getNum_Preguntas());
         return "Preguntas";
