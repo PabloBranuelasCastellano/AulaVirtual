@@ -25,7 +25,7 @@
                         <br>
                         <label>Activar Pregunta</label>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="activar_Pregunta_{N}" id="exampleRadios1" value="true">
+                                    <input class="form-check-input" type="radio" name="activar_Pregunta_${N}" id="exampleRadios1" value="true">
                                         <label class="form-check-label" for="exampleRadios1">
                                                 Si
                                         </label>
