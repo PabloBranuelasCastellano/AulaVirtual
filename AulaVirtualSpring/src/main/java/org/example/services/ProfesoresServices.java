@@ -390,13 +390,14 @@ public class ProfesoresServices {
                 +cuestionarios.getNum_Preguntas()+ "y el nombre del examen es "+ cuestionarios.getNombre_Examen());
         String guardar_preguntas="insert into Preguntas values(null,?,?,?,?,?)";
         PreparedStatement preparedStatement= connection.prepareStatement(guardar_preguntas);
-        for(int i=0;i<cuestionarios.getNum_Preguntas();i++){
+        for(int i=1;i<cuestionarios.getNum_Preguntas()+1;i++){
             preparedStatement.setInt(1,cuestionarios.getExamenId());
             preparedStatement.setString(2,request.getParameter("Pregunta_"+i));
             preparedStatement.setString(3,localDate.toString());
-            preparedStatement.setInt(4, Integer.parseInt(request.getParameter("orderPregunta_"+i)));
+            //preparedStatement.setInt(4, Integer.parseInt(request.getParameter("orderPregunta_"+i)));
+           System.out.println(request.getParameter("orderPregunta_"i));
             preparedStatement.setBoolean(5, Boolean.parseBoolean(request.getParameter("activar_Pregunta_"+i)));
-            preparedStatement.execute();
+            //preparedStatement.execute();
         }
         model.addAttribute("Numero_Preguntas",cuestionarios.getNum_Preguntas());
         return "Preguntas";
