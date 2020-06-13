@@ -22,27 +22,24 @@
                             <label>Pregunta </label>
                             <input type="text" class="form-control" name="Pregunta_${N}">
                         </div>
-                        <div class="container">
-                            <div class="row">
-                                <div class="col">
-                                    <label>Activar Pregunta</label>
-                                          	<div class="form-check">
-                                          			<input class="form-check-input" type="radio" name="activar_Pregunta_{N}" id="exampleRadios1" value="true">
-                                          				   <label class="form-check-label" for="exampleRadios1">
-                                          			            Si
-                                          				</label>
-
-                                          	</div>
-                                          	<br>
-                                          	<div class="form-check">
-                                          	    <input class="form-check-input" type="radio" name="activar_Pregunta_${N}" id="exampleRadios2" value="false">
-                                          		    <label class="form-check-label" for="exampleRadios2">
-                                          					   No
-                                          			</label>
-                                          	</div>
+                        <label>Activar Pregunta</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="activar_Pregunta_{N}" id="exampleRadios1" value="true">
+                                        <label class="form-check-label" for="exampleRadios1">
+                                                Si
+                                        </label>
 
                                 </div>
-                        </div>
+                                <br>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="activar_Pregunta_${N}" id="exampleRadios2" value="false">
+                                   <label class="form-check-label" for="exampleRadios2">
+                                        No
+                                   </label>
+                                </div>
+                        <br>
+
+
                     
             </c:forEach>
             <br>
