@@ -383,16 +383,20 @@ public class ProfesoresServices {
         return "Preguntas";
     }
 
-    public String CrearPreguntas(HttpServletRequest request, Model model) {
-        /*String numCuestionario=String.valueOf(request.getSession().getAttribute("Num_Cuestionario"));
-        String numCuestionario=String.valueOf(request.getSession().getAttribute("Num_Cuestionario"));
-        int numCuestionarios=Integer.parseInt(numCuestionario);*/
+    public String CrearPreguntas(HttpServletRequest request, Model model) throws SQLException{
+        LocalDate localDate = LocalDate.now();
+        connection=dataSource.getConnection();
         System.out.println("El numero del cuestionario es "+cuestionarios.getExamenId() +"y el numero de pregubtas que tiene es "
                 +cuestionarios.getNum_Preguntas()+ "y el nombre del examen es "+ cuestionarios.getNombre_Examen());
-        String guardar_pregunta="insert into Preguntas values(null,?,?,?,?,?)";
+        String guardar_preguntas="insert into Preguntas values(null,?,?,?,?,?)";
+        PreparedStatement preparedStatement= connection.prepareStatement(guardar_preguntas);
         for(int i=0;i<cuestionarios.getNum_Preguntas();i++){
-            request.getParameter("Pregunta_"+i);
-            request.getParameter("activar_Pregunta_"+i);
+            preparedStatement.setInt(1,cuestionarios.getExamenId());
+            preparedStatement.setString(2,request.getParameter("Pregunta_"+i));
+            preparedStatement.setString(3,localDate.toString());
+            preparedStatement.setInt(4,Integer.parseInt(request.getParameter("orderPregunta_"+i)));
+            preparedStatement.setBoolean(5, Boolean.parseBoolean(request.getParameter("activar_Pregunta_"+i)));
+            preparedStatement.execute();
         }
         model.addAttribute("Numero_Preguntas",cuestionarios.getNum_Preguntas());
         return "Preguntas";
