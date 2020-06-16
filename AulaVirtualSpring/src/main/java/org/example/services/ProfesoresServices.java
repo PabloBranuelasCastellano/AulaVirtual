@@ -462,6 +462,23 @@ public class ProfesoresServices {
 
         }
         model.addAttribute("GruposProfesor",gruposList);
+        model.addAttribute("IdExamen",cuestionarioId);
         return "CuestionarioGrupos";
+    }
+
+    public String AgregarCuestionarioGrupo(HttpServletRequest request, Model model)throws SQLException {
+        /*System.out.println("El id del Grupo es "+request.getParameter("GruposProfesor"));
+        System.out.println("El id del Profesor es "+cuestionarios.getProfesorId());
+        System.out.println("El id del Examen es "+request.getParameter("Id_Examen"));*/
+        //LocalDate localDate = LocalDate.now();
+        connection=dataSource.getConnection();
+        String GrupoExamen="insert into CuestionariosGrupos values(null,?,?,?,?)";
+        PreparedStatement preparedStatement=connection.prepareStatement(GrupoExamen);
+        preparedStatement.setInt(1, Integer.parseInt(request.getParameter("Id_Examen")));
+        preparedStatement.setInt(2, Integer.parseInt(request.getParameter("GruposProfesor")));
+        preparedStatement.setString(3,request.getParameter("FechaInicio"));
+        preparedStatement.setString(4,request.getParameter("FechaFin"));
+       preparedStatement.execute();
+        return "redirect:/ExamenGrupo/"+request.getParameter("Id_Examen")+"/"+cuestionarios.getProfesorId();
     }
 }
