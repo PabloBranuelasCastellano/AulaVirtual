@@ -414,6 +414,7 @@ public class ProfesoresServices {
         while (resultSet.next()){
             preguntas=new Preguntas();
             preguntas.setPreguntaId(resultSet.getInt("PreguntaId"));
+            preguntas.setCuestionarioId(ExamenId);
             preguntas.setTexto(resultSet.getString("Texto"));
             preguntas.setFecha_Creacion(resultSet.getString("FechaCreacion"));
             preguntasList.add(preguntas);
