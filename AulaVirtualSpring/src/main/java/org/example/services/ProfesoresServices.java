@@ -433,7 +433,7 @@ public class ProfesoresServices {
         preparedStatement.setInt(1,CuestionarioId);
         preparedStatement.setInt(2,PreguntaId);
         preparedStatement.executeUpdate();
-        return "MenuPreguntas";
+        return "redirect:/PanelPreguntas/"+CuestionarioId;
     }
 
     public String ActivarPregunta(HttpServletRequest request, Model model, int PreguntaId,int CuestionarioId) throws SQLException{
@@ -444,6 +444,6 @@ public class ProfesoresServices {
         preparedStatement.setInt(1,CuestionarioId);
         preparedStatement.setInt(2,PreguntaId);
         preparedStatement.executeUpdate();
-        return "MenuPreguntas";
+        return "redirect:/PanelPreguntas/"+CuestionarioId;
     }
 }
