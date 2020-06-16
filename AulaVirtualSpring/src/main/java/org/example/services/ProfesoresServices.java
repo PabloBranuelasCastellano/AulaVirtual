@@ -427,9 +427,10 @@ public class ProfesoresServices {
     public String DesactivarPregunta(HttpServletRequest request, Model model, int PreguntaId,int CuestionarioId) throws SQLException {
 
         connection=dataSource.getConnection();
-        String CambiarEstado="update Preguntas set EsActivo=false where PreguntaId=?";
+        String CambiarEstado="update Preguntas set EsActivo=false where CuestionarioId=? and PreguntaId=?";
         PreparedStatement preparedStatement=connection.prepareStatement(CambiarEstado);
-        preparedStatement.setInt(1,PreguntaId);
+        preparedStatement.setInt(1,CuestionarioId);
+        preparedStatement.setInt(2,PreguntaId);
         preparedStatement.executeUpdate();
         return "MenuPreguntas";
     }
@@ -437,9 +438,10 @@ public class ProfesoresServices {
     public String ActivarPregunta(HttpServletRequest request, Model model, int PreguntaId,int CuestionarioId) throws SQLException{
 
         connection=dataSource.getConnection();
-        String CambiarEstado="update Preguntas set EsActivo=true where PreguntaId=?";
+        String CambiarEstado="update Preguntas set EsActivo=true where CuestionarioId=? and PreguntaId=?";
         PreparedStatement preparedStatement=connection.prepareStatement(CambiarEstado);
-        preparedStatement.setInt(1,PreguntaId);
+        preparedStatement.setInt(1,CuestionarioId);
+        preparedStatement.setInt(2,PreguntaId);
         preparedStatement.executeUpdate();
         return "MenuPreguntas";
     }
