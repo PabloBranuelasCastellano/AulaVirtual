@@ -142,7 +142,7 @@ public class ProfesorController {
 
     @GetMapping("CuestionariosDesactivados/")
     public String CuestionariosDesactivados(@RequestParam("ProfesorId") int profesorId, Model model){
-
+        System.out.println("profesorId: "+profesorId);
         return profesoresServices.CuestionariosDesactivados(profesorId,model);
     }
 }
