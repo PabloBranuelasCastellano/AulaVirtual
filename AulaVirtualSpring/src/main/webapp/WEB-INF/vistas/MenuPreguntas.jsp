@@ -19,7 +19,7 @@
                 <ul class='list-group'>
                     <c:forEach var = "ListPreguntas" items="${PreguntasCuestionario}">
 
-                        <li class='list-group-item list-group-item-action list-group-item-primary'><p>${ListPreguntas.getTexto()}<a class='btn btn-primary'  href='${pageContext.request.contextPath}/AgregarOpciones/${ListPreguntas.getPreguntaId()}' role='button'  style='margin-left:10%;margin-top:0%;'>Añadir Respuestas</p></a>
+                        <p><li class='list-group-item list-group-item-action list-group-item-primary'><p>${ListPreguntas.getTexto()}<a class='btn btn-primary'  href='${pageContext.request.contextPath}/AgregarOpciones/${ListPreguntas.getPreguntaId()}' role='button'  style='margin-left:10%;margin-top:0%;'>Añadir Respuestas</a></p>
                         <p><a class='btn btn-primary' role='button' href='${pageContext.request.contextPath}/ActivarPregunta/${ListPreguntas.getPreguntaId()}/${ListPreguntas.getCuestionarioId()}' role='button' aria-expanded='false' aria-controls='multiCollapseExample1' style='margin-left:50%;'>Activar Pregunta Alumnos</a> &nbsp;&nbsp;<a class='btn btn-primary' href='${pageContext.request.contextPath}/DesactivarPregunta/${ListPreguntas.getPreguntaId()}/${ListPreguntas.getCuestionarioId()}' role='button' style='width:20%;margin-left:auto%;'>Desactivar Pregunta Alumnos</p></a>
                         </li>
 
