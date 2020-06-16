@@ -15,9 +15,9 @@
     	</head>
     <body>
         <c:choose>
-            <c:when test="${ListaCuestionarios.size() gt 0}">
+            <c:when test="${Cuestionarios_Profesor.size() gt 0}">
                 <ul class='list-group'>
-                    <c:forEach var = "ListCuestionarios" items="${ListaCuestionarios}">
+                    <c:forEach var = "ListCuestionarios" items="${Cuestionarios_Profesor}">
 
                         <li class='list-group-item list-group-item-action list-group-item-primary'>${ListCuestionarios.getNombre_Examen(}<a class='btn btn-primary'  href='${pageContext.request.contextPath}/VerPreguntas/${ListCuestionarios.getExamenId()}' role='button'  style='margin-left:10%;'>Ver Preguntas</a>&nbsp;&nbsp;<a class='btn btn-primary' role='button' href='${pageContext.request.contextPath}/Activar_Examen/${ListCuestionarios.getProfesorId()}/${ListTemas.getExamenId()}' role='button' aria-expanded='false' aria-controls='multiCollapseExample1' style='margin-left:30%;'>Activar Cuestionario Alumnos</a> &nbsp;&nbsp;<a class='btn btn-primary' href='${pageContext.request.contextPath}/Desactivar_Examen/${ListCuestionarios.getProfesorId()}/${ListTemas.getExamenId()}' role='button' style='width:20%;margin-left:35%;margin-top:-3%;'>Desactivar Cuestionario Alumnos</a>
                         </li>
