@@ -144,4 +144,10 @@ public class ProfesorController {
 
         return profesoresServices.AgregarCuestionarioGrupo(request,model);
     }
+
+    @GetMapping("CuestionariosDesactivados/")
+    public String CuestionariosDesactivados(@RequestParam("ProfesorId") int profesorId, Model model){
+
+        return profesoresServices.CuestionariosDesactivados(profesorId,model);
+    }
 }
