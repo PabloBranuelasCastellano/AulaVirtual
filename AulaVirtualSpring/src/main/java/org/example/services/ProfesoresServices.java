@@ -28,8 +28,9 @@ public class ProfesoresServices {
     PuntosTema puntosTema;
     Cuestionarios cuestionarios;
     Preguntas preguntas;
-    DataSource dataSource = null;
-    Connection connection = null;
+    @Autowired
+    DataSource dataSource;
+    Connection connection;
     public String PanelProfesor(HttpServletRequest request, Model model) throws SQLException {
 
         profesores = loginServices.getProfesores();
