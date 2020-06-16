@@ -380,7 +380,7 @@ public class ProfesoresServices {
         model.addAttribute("Numero_Preguntas",cuestionarios.getNum_Preguntas());
         /*request.getSession().setAttribute("Num_Cuestionario",examenId);
         request.getSession().setAttribute("Num_Pregunta",cuestionarios.getNum_Preguntas());*/
-        return "C://Users/PabloTrabajo/Desktop/Collapse.html";
+        return "Preguntas";
     }
 
     public String CrearPreguntas(HttpServletRequest request, Model model) throws SQLException{
