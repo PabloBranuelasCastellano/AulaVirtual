@@ -19,7 +19,7 @@
                 <ul class='list-group'>
                     <c:forEach var = "ListPreguntas" items="${PreguntasCuestionario}">
 
-                        <li class='list-group-item list-group-item-action list-group-item-primary'>${ListPreguntas.getTexto()}<a class='btn btn-primary'  href='${pageContext.request.contextPath}/AgregarOpciones/${{ListPreguntas.getPreguntaId()}' role='button'  style='margin-left:10%;'>Añadir Respuestas</a>&nbsp;&nbsp;<a class='btn btn-primary' role='button' href='${pageContext.request.contextPath}/ACtivarPregunta/${ListPreguntas.getPreguntaId()}' role='button' aria-expanded='false' aria-controls='multiCollapseExample1' style='margin-left:30%;'>Activar Pregunta Alumnos</a> &nbsp;&nbsp;<a class='btn btn-primary' href='${pageContext.request.contextPath}/DesactivarPregunta/${ListPreguntas.getPreguntaId()}' role='button' style='width:20%;margin-left:35%;margin-top:-3%;'>Desactivar Pregunta Alumnos</a>
+                        <li class='list-group-item list-group-item-action list-group-item-primary'>${ListPreguntas.getTexto()}<a class='btn btn-primary'  href='${pageContext.request.contextPath}/AgregarOpciones/${ListPreguntas.getPreguntaId()}' role='button'  style='margin-left:10%;'>Añadir Respuestas</a>&nbsp;&nbsp;<a class='btn btn-primary' role='button' href='${pageContext.request.contextPath}/ActivarPregunta/${ListPreguntas.getPreguntaId()}' role='button' aria-expanded='false' aria-controls='multiCollapseExample1' style='margin-left:30%;'>Activar Pregunta Alumnos</a> &nbsp;&nbsp;<a class='btn btn-primary' href='${pageContext.request.contextPath}/DesactivarPregunta/${ListPreguntas.getPreguntaId()}' role='button' style='width:20%;margin-left:35%;margin-top:-3%;'>Desactivar Pregunta Alumnos</a>
                         </li>
 
                     </c:forEach>
@@ -27,7 +27,7 @@
             </c:when>
 
             <c:otherwise>
-                <h1>No hay Cuestionarios para mostrar</h1>
+                <h1>No hay Preguntas para mostrar</h1>
             </c:otherwise>
         </c:choose>
     </body>
