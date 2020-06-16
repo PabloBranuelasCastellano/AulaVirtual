@@ -27,6 +27,7 @@ public class ProfesoresServices {
     Temas temas;
     PuntosTema puntosTema;
     Cuestionarios cuestionarios;
+    Preguntas preguntas;
     @Autowired
     DataSource dataSource = null;
     Connection connection = null;
@@ -402,15 +403,15 @@ public class ProfesoresServices {
         return "Preguntas";
     }
 
-    public String VerCuestionarios(HttpServletRequest request, Model model) throws SQLException{
+    public String VerPreguntas(HttpServletRequest request, Model model) throws SQLException{
         connection=dataSource.getConnection();
         String Ver_Examenes="select c.CuestionarioId,c.Titulo , c.Instrucciones , c.Resumen ,c.NumeroPreguntasPorTest , c.PuntosAcierto , c.PuntosError from cuestionarios c,profesores p where(c.ProfesorId =p.ProfesorId and c.ProfesorId =?)";
         PreparedStatement preparedStatement=connection.prepareStatement(Ver_Examenes);
         preparedStatement.setInt(1,profesores.getIdProfesor());
-        ArrayList<Cuestionarios>ListaCuestionarios=new ArrayList<>();
+        ArrayList<Preguntas>preguntasList=new ArrayList<>();
         ResultSet resultSet=preparedStatement.executeQuery();
         while (resultSet.next()){
-            cuestionarios=new Cuestionarios();
+            preguntas=new Preguntas();
             cuestionarios.setProfesorId(profesores.getIdProfesor());
             cuestionarios.setExamenId(resultSet.getInt("CuestionarioId"));
             cuestionarios.setNombre_Examen(resultSet.getString("Titulo"));
