@@ -446,4 +446,22 @@ public class ProfesoresServices {
         preparedStatement.executeUpdate();
         return "redirect:/PanelPreguntas/"+CuestionarioId;
     }
+
+    public String CuestionariosGrupos(HttpServletRequest request, Model model, int cuestionarioId,int ProfesorId) throws SQLException{
+        connection=dataSource.getConnection();
+        String VerGrupos = "select g.GrupoId as GrupoId,G.Nombre as NombreGrupo  from grupos g,materias m ,niveles n ,profesores p, cursosacademicos ca where(g.MateriaId=M.MateriaId and g.NivelId =n.NivelId and g.ProfesorId =P.ProfesorId and g.CursoAcademicoId =ca.CursoAcademicoId  and ca.EsActivo =true and P.ProfesorId=?)";
+        PreparedStatement preparedStatement=connection.prepareStatement(VerGrupos);
+        preparedStatement.setInt(1,ProfesorId);
+        ResultSet resultSet=preparedStatement.executeQuery();
+        List<Grupos>gruposList=new ArrayList<Grupos>();
+        while (resultSet.next()){
+            Grupos grupos=new Grupos();
+            grupos.setIdGrupo(resultSet.getInt("GrupoId"));
+            grupos.setNombreGrupo(resultSet.getString("NombreGrupo"));
+            gruposList.add(grupos);
+
+        }
+        model.addAttribute("GruposProfesor",gruposList);
+        return "CuestionarioGrupos";
+    }
 }
