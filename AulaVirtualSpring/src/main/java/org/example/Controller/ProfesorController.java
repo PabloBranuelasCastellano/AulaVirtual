@@ -133,4 +133,9 @@ public class ProfesorController {
     public String DesactivarPregunta(HttpServletRequest request,Model model,@PathVariable int PreguntaId,@PathVariable int CuestionarioId)throws SQLException{
         return profesoresServices.DesactivarPregunta(request,model,PreguntaId,CuestionarioId);
     }
+
+    @GetMapping("ExamenGrupo/{ExamenId}/{ProfesorId}")
+    public String CuestionariosGrupos(HttpServletRequest request,Model model,@PathVariable int ExamenId,@PathVariable(value = "ProfesorId") int ProfesorId ) throws SQLException{
+        return profesoresServices.CuestionariosGrupos(request,model, ExamenId,ProfesorId);
+    }
 }
