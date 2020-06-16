@@ -140,9 +140,9 @@ public class ProfesorController {
         return profesoresServices.AgregarCuestionarioGrupo(request,model);
     }
 
-    @GetMapping("CuestionariosDesactivados/")
-    public String CuestionariosDesactivados(@RequestParam("ProfesorId") int profesorId, Model model){
-        System.out.println("profesorId: "+profesorId);
+    @GetMapping("CuestionariosDesactivados")
+    public String CuestionariosDesactivados(@RequestParam("ProfesorId") int profesorId, Model model)throws SQLException{
+        //System.out.println("profesorId: "+profesorId);
         return profesoresServices.CuestionariosDesactivados(profesorId,model);
     }
 }
