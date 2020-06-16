@@ -403,11 +403,12 @@ public class ProfesoresServices {
         return "Preguntas";
     }
 
-    public String VerPreguntas(HttpServletRequest request, Model model) throws SQLException{
+    public String VerPreguntas(HttpServletRequest request, Model model,int ExamenId) throws SQLException{
         connection=dataSource.getConnection();
         String Ver_Preguntas="select * from preguntas where CuestionarioId=?";
         PreparedStatement preparedStatement=connection.prepareStatement(Ver_Preguntas);
-        preparedStatement.setInt(1,cuestionarios.getExamenId());
+
+        preparedStatement.setInt(1,ExamenId);
         ArrayList<Preguntas>preguntasList=new ArrayList<>();
         ResultSet resultSet=preparedStatement.executeQuery();
         while (resultSet.next()){
