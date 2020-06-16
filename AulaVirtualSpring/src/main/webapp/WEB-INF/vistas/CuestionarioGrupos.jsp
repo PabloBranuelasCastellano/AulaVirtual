@@ -15,12 +15,28 @@
     	</head>
 
 	<body>
-	    <form action="${pageContext.request.contextPath}/AgregarCuestionario/" method='post' style='margin-left:10rem;margin-top:1rem;'>
-            <select class="form-control form-control-lg" name='GruposProfesor'>
+	    <form action="${pageContext.request.contextPath}/AgregarCuestionarioGrupo/" method='post' style='margin-left:10rem;margin-top:1rem;'>
+	        <div class="form-group">
+            <label>Mis Grupos</label>
+            <select class="form-control " name='GruposProfesor'>
                 <c:forEach var = "ListGrupos" items="${GruposProfesor}">
                     <option value="${ListGrupos.getIdGrupo()}">${ListGrupos.getNombreGrupo()}</option>
                 </c:forEach>
             </select>
+            <input type="hidden" value="${IdExamen}" name="Id_Examen"/>
+           </div>
+           <div class="form-group">
+                <label>Fecha Incio</label>
+                <input type="date" class="form-control" name="FechaInicio">
+           </div>
+
+           <div class="form-group">
+                <label>Fecha Incio</label>
+                <input type="date" class="form-control" name="FechaFin">
+           </div>
+           <p><button type="submit" name="Agregar" 	class="btn btn-primary btn-lg" style='margin-left:10rem;width:20rem;'>Agregar Cuestionario al Grupo</button>
+            &nbsp;&nbsp;
+           <a class="btn btn-secondary btn-lg " href="${pageContext.request.contextPath}/homeProfesores" role="button" style="width:20rem;">Atras</a></p>
 	    </form>
 	</body>
 
