@@ -401,4 +401,29 @@ public class ProfesoresServices {
         model.addAttribute("Numero_Preguntas",cuestionarios.getNum_Preguntas());
         return "Preguntas";
     }
+
+    public String VerCuestionarios(HttpServletRequest request, Model model) throws SQLException{
+        connection=dataSource.getConnection();
+        String Ver_Examenes="select c.CuestionarioId,c.Titulo , c.Instrucciones , c.Resumen ,c.NumeroPreguntasPorTest , c.PuntosAcierto , c.PuntosError from cuestionarios c,profesores p where(c.ProfesorId =p.ProfesorId and c.ProfesorId =?)";
+        PreparedStatement preparedStatement=connection.prepareStatement(Ver_Examenes);
+        preparedStatement.setInt(1,profesores.getIdProfesor());
+        ArrayList<Cuestionarios>ListaCuestionarios=new ArrayList<>();
+        ResultSet resultSet=preparedStatement.executeQuery();
+        while (resultSet.next()){
+            cuestionarios=new Cuestionarios();
+            cuestionarios.setProfesorId(profesores.getIdProfesor());
+            cuestionarios.setExamenId(resultSet.getInt("CuestionarioId"));
+            cuestionarios.setNombre_Examen(resultSet.getString("Titulo"));
+            cuestionarios.setInstrucciones_Examen(resultSet.getString("Instrucciones"));
+            cuestionarios.setResumen_Examen(resultSet.getString("Resumen"));
+            cuestionarios.setNum_Preguntas(resultSet.getInt("NumeroPreguntasPorTest"));
+            cuestionarios.setPuntosAcierto(resultSet.getInt("PuntosAcierto"));
+            cuestionarios.setPuntosError(resultSet.getInt("PuntosError"));
+            ListaCuestionarios.add(cuestionarios);
+
+        }
+        model.addAttribute("Cuestionarios_Profesor",ListaCuestionarios);
+
+        return "MenuCuestionarios";
+    }
 }
