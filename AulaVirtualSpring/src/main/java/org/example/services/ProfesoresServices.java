@@ -28,19 +28,8 @@ public class ProfesoresServices {
     PuntosTema puntosTema;
     Cuestionarios cuestionarios;
     Preguntas preguntas;
-    @Autowired
     DataSource dataSource = null;
     Connection connection = null;
-    private boolean Activado;
-
-    public boolean isActivado() {
-        return Activado;
-    }
-
-    public void setActivado(boolean activado) {
-        Activado = activado;
-    }
-
     public String PanelProfesor(HttpServletRequest request, Model model) throws SQLException {
 
         profesores = loginServices.getProfesores();
@@ -118,7 +107,7 @@ public class ProfesoresServices {
         ArrayList<Cuestionarios>cuestionariosArrayList=new ArrayList<>();
         ResultSet resultSet=preparedStatement.executeQuery();
         while (resultSet.next()){
-            cuestionarios=new Cuestionarios();
+            Cuestionarios cuestionarios=new Cuestionarios();
             cuestionarios.setProfesorId(profesores.getIdProfesor());
             cuestionarios.setExamenId(resultSet.getInt("CuestionarioId"));
             cuestionarios.setNombre_Examen(resultSet.getString("Titulo"));
@@ -131,6 +120,8 @@ public class ProfesoresServices {
 
         }
         model.addAttribute("Cuestionarios_Profesor",cuestionariosArrayList);
+        model.addAttribute("profesorId",profesores.getIdProfesor());
+
 
         return "panelprofesores";
     }
@@ -480,5 +471,29 @@ public class ProfesoresServices {
         preparedStatement.setString(4,request.getParameter("FechaFin"));
        preparedStatement.execute();
         return "redirect:/ExamenGrupo/"+request.getParameter("Id_Examen")+"/"+cuestionarios.getProfesorId();
+    }
+
+    public String CuestionariosDesactivados(int profesorId, Model model) throws SQLException{
+        connection=dataSource.getConnection();
+        String CuestionariosDesactivados="select c.CuestionarioId,c.Titulo , c.Instrucciones , c.Resumen ,c.NumeroPreguntasPorTest , c.PuntosAcierto , c.PuntosError from cuestionarios c,profesores p where(c.ProfesorId =p.ProfesorId and c.EsActivo=false and c.ProfesorId =?)";
+        PreparedStatement preparedStatement=connection.prepareStatement(CuestionariosDesactivados);
+        preparedStatement.setInt(1,profesorId);
+        ArrayList<Cuestionarios>cuestionariosArrayList=new ArrayList<>();
+        ResultSet resultSet=preparedStatement.executeQuery();
+        while (resultSet.next()){
+            cuestionarios=new Cuestionarios();
+            cuestionarios.setProfesorId(profesores.getIdProfesor());
+            cuestionarios.setExamenId(resultSet.getInt("CuestionarioId"));
+            cuestionarios.setNombre_Examen(resultSet.getString("Titulo"));
+            cuestionarios.setInstrucciones_Examen(resultSet.getString("Instrucciones"));
+            cuestionarios.setResumen_Examen(resultSet.getString("Resumen"));
+            cuestionarios.setNum_Preguntas(resultSet.getInt("NumeroPreguntasPorTest"));
+            cuestionarios.setPuntosAcierto(resultSet.getInt("PuntosAcierto"));
+            cuestionarios.setPuntosError(resultSet.getInt("PuntosError"));
+            cuestionariosArrayList.add(cuestionarios);
+
+        }
+        model.addAttribute("Cuestionarios_Profesor",cuestionariosArrayList);
+        return "Cuestionarios_no_activos";
     }
 }
