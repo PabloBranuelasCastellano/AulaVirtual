@@ -4,6 +4,7 @@ public class Preguntas {
     private int PreguntaId;
     private int CuestionarioId;
     private String Fecha_Creacion;
+    private String Texto;
 
     public int getPreguntaId() {
         return PreguntaId;
@@ -27,5 +28,13 @@ public class Preguntas {
 
     public void setFecha_Creacion(String fecha_Creacion) {
         Fecha_Creacion = fecha_Creacion;
+    }
+
+    public String getTexto() {
+        return Texto;
+    }
+
+    public void setTexto(String texto) {
+        Texto = texto;
     }
 }
