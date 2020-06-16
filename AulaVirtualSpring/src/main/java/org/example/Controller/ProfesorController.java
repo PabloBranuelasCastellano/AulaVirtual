@@ -119,4 +119,9 @@ public class ProfesorController {
     public String CrearPreguntas(HttpServletRequest request,Model model)throws SQLException{
         return profesoresServices.CrearPreguntas(request,model);
     }
+
+    @GetMapping("PanelCuestionarios/")
+    public String VerCuestionarios(HttpServletRequest request,Model model)throws SQLException{
+        return profesoresServices.VerCuestionarios(request,model);
+    }
 }
