@@ -405,26 +405,21 @@ public class ProfesoresServices {
 
     public String VerPreguntas(HttpServletRequest request, Model model) throws SQLException{
         connection=dataSource.getConnection();
-        String Ver_Examenes="select c.CuestionarioId,c.Titulo , c.Instrucciones , c.Resumen ,c.NumeroPreguntasPorTest , c.PuntosAcierto , c.PuntosError from cuestionarios c,profesores p where(c.ProfesorId =p.ProfesorId and c.ProfesorId =?)";
-        PreparedStatement preparedStatement=connection.prepareStatement(Ver_Examenes);
-        preparedStatement.setInt(1,profesores.getIdProfesor());
+        String Ver_Preguntas="select * from preguntas where CuestionarioId=?";
+        PreparedStatement preparedStatement=connection.prepareStatement(Ver_Preguntas);
+        preparedStatement.setInt(1,cuestionarios.getExamenId());
         ArrayList<Preguntas>preguntasList=new ArrayList<>();
         ResultSet resultSet=preparedStatement.executeQuery();
         while (resultSet.next()){
             preguntas=new Preguntas();
-            cuestionarios.setProfesorId(profesores.getIdProfesor());
-            cuestionarios.setExamenId(resultSet.getInt("CuestionarioId"));
-            cuestionarios.setNombre_Examen(resultSet.getString("Titulo"));
-            cuestionarios.setInstrucciones_Examen(resultSet.getString("Instrucciones"));
-            cuestionarios.setResumen_Examen(resultSet.getString("Resumen"));
-            cuestionarios.setNum_Preguntas(resultSet.getInt("NumeroPreguntasPorTest"));
-            cuestionarios.setPuntosAcierto(resultSet.getInt("PuntosAcierto"));
-            cuestionarios.setPuntosError(resultSet.getInt("PuntosError"));
-            ListaCuestionarios.add(cuestionarios);
+            preguntas.setPreguntaId(resultSet.getInt("PreguntaId"));
+            preguntas.setTexto(resultSet.getString("Texto"));
+            preguntas.setFecha_Creacion(resultSet.getString("FechaCreacion"));
+            preguntasList.add(preguntas);
 
         }
-        model.addAttribute("Cuestionarios_Profesor",ListaCuestionarios);
+        model.addAttribute("PreguntasCuestionario",preguntasList);
 
-        return "MenuCuestionarios";
+        return "MenuPreguntas";
     }
 }
