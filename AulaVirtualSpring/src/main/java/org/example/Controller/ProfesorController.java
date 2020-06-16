@@ -138,4 +138,10 @@ public class ProfesorController {
     public String CuestionariosGrupos(HttpServletRequest request,Model model,@PathVariable int ExamenId,@PathVariable(value = "ProfesorId") int ProfesorId ) throws SQLException{
         return profesoresServices.CuestionariosGrupos(request,model, ExamenId,ProfesorId);
     }
+
+    @PostMapping("AgregarCuestionarioGrupo/")
+    public String AgregarCuestionarioGrupo(HttpServletRequest request,Model model)throws SQLException{
+
+        return profesoresServices.AgregarCuestionarioGrupo(request,model);
+    }
 }
