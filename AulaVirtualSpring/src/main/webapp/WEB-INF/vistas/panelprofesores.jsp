@@ -84,6 +84,7 @@
                             <c:forEach var = "ExamenesProfesor" items="${Cuestionarios_Profesor}">
                                 <div id='Grupos' >
                                     <p><a href="${pageContext.request.contextPath}/PanelPreguntas/${ExamenesProfesor.getExamenId()}" style="color:black;">Titulo:${ExamenesProfesor.getNombre_Examen()} </a></p>
+                                    <p><a href='${pageContext.request.contextPath}/ExamenGrupo/${ExamenesProfesor.getExamenId()}'>Añadir a grupo</a></p>
                                 </div>
                             </c:forEach>
                             <p class="card-text" style="background-color:#FFA07A;"><a href="${pageContext.request.contextPath}/NuevoCuestionario/" style="margin-left:10%;color:black;"><u>Crear Nuevo cuestionario</a></u></p>
