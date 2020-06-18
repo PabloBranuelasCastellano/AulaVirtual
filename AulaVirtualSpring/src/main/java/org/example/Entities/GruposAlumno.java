@@ -6,8 +6,17 @@ public class GruposAlumno {
     private String nombreAlumno;
     private String primerApellidoAlumno;
     private String segundoApellidoAlumno;
+    private int GrupoId;
     private int MateriaId;
     private String MateriaNombre;
+
+    public int getGrupoId() {
+        return GrupoId;
+    }
+
+    public void setGrupoId(int grupoId) {
+        GrupoId = grupoId;
+    }
 
     public int getMateriaId() {
         return MateriaId;
@@ -55,5 +64,18 @@ public class GruposAlumno {
 
     public void setSegundoApellidoAlumno(String segundoApellidoAlumno) {
         this.segundoApellidoAlumno = segundoApellidoAlumno;
+    }
+
+    @Override
+    public String toString() {
+        return "GruposAlumno{" +
+                "IdAlumno=" + IdAlumno +
+                ", nombreAlumno='" + nombreAlumno + '\'' +
+                ", primerApellidoAlumno='" + primerApellidoAlumno + '\'' +
+                ", segundoApellidoAlumno='" + segundoApellidoAlumno + '\'' +
+                ", GrupoId=" + GrupoId +
+                ", MateriaId=" + MateriaId +
+                ", MateriaNombre='" + MateriaNombre + '\'' +
+                "}\n";
     }
 }
