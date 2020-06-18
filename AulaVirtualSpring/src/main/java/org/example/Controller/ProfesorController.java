@@ -145,4 +145,11 @@ public class ProfesorController {
         //System.out.println("profesorId: "+profesorId);
         return profesoresServices.CuestionariosDesactivados(profesorId,model);
     }
+
+    @GetMapping("AgregarOpciones/{PreguntaId}")
+
+    public String AgregarRespuesta(HttpServletRequest request,Model model,@PathVariable int PreguntaId)throws SQLException{
+
+        return profesoresServices.AgregarRespuesta(request,model,PreguntaId);
+    }
 }
