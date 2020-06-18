@@ -497,4 +497,9 @@ public class ProfesoresServices {
         model.addAttribute("Cuestionarios_Profesor",cuestionariosArrayList);
         return "Cuestionarios_no_activos";
     }
+
+    public String AgregarRespuesta(HttpServletRequest request, Model model, int preguntaId) {
+
+        return "Respuestas";
+    }
 }
