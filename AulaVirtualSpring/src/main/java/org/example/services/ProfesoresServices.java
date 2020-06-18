@@ -471,7 +471,7 @@ public class ProfesoresServices {
         preparedStatement.setString(3,request.getParameter("FechaInicio"));
         preparedStatement.setString(4,request.getParameter("FechaFin"));
        preparedStatement.execute();
-        return "redirect:/ExamenGrupo/"+request.getParameter("Id_Examen")+"/"+cuestionarios.getProfesorId();
+        return "redirect:/ExamenGrupo/"+request.getParameter("Id_Examen")+"/"+loginServices.profesores.getIdProfesor();
     }
 
     public String CuestionariosDesactivados(int profesorId, Model model) throws SQLException{
