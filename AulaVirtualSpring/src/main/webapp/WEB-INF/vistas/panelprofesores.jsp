@@ -91,7 +91,7 @@
 
                         </p>
 					</div>
-					<div>profeId: ${profesorId}</div>
+					
                      <p class="card-text" style="background-color:#FFA07A;"><a href="${pageContext.request.contextPath}/CuestionariosDesactivados?ProfesorId=${profesorId}" style="margin-left:35%;color:black;"><u>Cuestionarios no activos</a></u></p>
 				</div>
 
