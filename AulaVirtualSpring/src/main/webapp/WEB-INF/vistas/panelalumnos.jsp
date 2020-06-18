@@ -76,7 +76,13 @@
 				<div class="card text-white  mb-3" style="background-color:#778899;max-width: 18rem;min-height:20rem;">
 					<div class="card-header">Mis Cuestionarios</div>
 					<div class="card-body" style="background-color:#FFA07A;">
-						<p class="card-text text-dark">Info card title</p>
+					    <div class="card-text">
+                            <c:forEach var = "examenAlumnos" items="${lstExamen}">
+                                <div id='Grupos' >
+                                    <p style='color:black;'>Nombre del Examen:${examenAlumnos.getTituloCuestionario()}</p>
+                                </div>
+                            </c:forEach>
+					    </div>
 					</div>
 				</div>
 			</div>
