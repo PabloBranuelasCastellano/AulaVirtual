@@ -22,11 +22,14 @@ public class AlumnosController {
 
     @GetMapping("/homeAlumnos")
     public String PanelAlumnos(HttpServletRequest request, Model model) throws SQLException {
-        return alumnosServices.PanelAlumnos(request, model);
+        alumnosServices.PanelAlumnos(request, model);
+
+        return "panelalumnos";
     }
 
     public String MateriasAlumnos(HttpServletRequest request, Model model) throws SQLException {
-        return alumnosServices.MateriasAlumnos(request, model);
+        alumnosServices.MateriasAlumnos(request, model);
+        return "panelalumnos";
     }
 
     @GetMapping("VerTemasAlumnos/{ProfesorId}/{MateriaId}/{NivelId}")
